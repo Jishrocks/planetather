@@ -1,16 +1,70 @@
 html,
 body {
+  background-color: #080913;
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  -webkit-font-smoothing: 'antialiased';
+  text-rendering: 'optimizeLegibility';
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+@font-face {
+  font-family: VampireWars;
+  src: url("../public/fonts/Vampire\ Wars.ttf");
 }
 
-* {
-  box-sizing: border-box;
+@font-face {
+  font-family: Sohne;
+  src: url("../public/fonts/SohneBreit-Halbfett.otf");
+}
+
+@font-face {
+  font-family: Regular;
+  src: url("../public/fonts/Poppins-Regular.ttf");
+}
+
+@font-face {
+  font-family: Medium;
+  src: url("../public/fonts/Poppins-Medium.ttf");
+}
+
+@font-face {
+  font-family: SemiBold;
+  src: url("../public/fonts/Poppins-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: Bold;
+  src: url("../public/fonts/Poppins-Bold.ttf");
+}
+
+@font-face {
+  font-family: Mandalore;
+  src: url("../public/fonts/Mandalore.otf");
+}
+
+@font-face {
+  font-family: Subheading;
+  src: url("../public/fonts/subheading.woff2");
+}
+
+@font-face {
+  font-family: Mono;
+  src: url("../public/fonts/SpaceMono-Regular.ttf");
+}
+
+@font-face {
+  font-family: MonoBold;
+  src: url("../public/fonts/SpaceMono-Bold.ttf");
+}
+
+@font-face {
+  font-family: FFMark;
+  src: url("../public/fonts/FFMark.otf");
+}
+
+@font-face {
+  font-family: Galactica;
+  src: url("../public/fonts/Deciso-Bold.otf");
 }
