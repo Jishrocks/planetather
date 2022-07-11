@@ -35,7 +35,7 @@ const Navbar: NextPage = () => {
     const animation = useAnimation()
 
     useEffect(() => {
-        window.addEventListener('scroll', () => {
+        let eventListener = () => {
             var scrollTop = document.documentElement.scrollTop
             if (scrollTop > lastScrollTop) {
                 animation.start('hidden')
@@ -43,7 +43,8 @@ const Navbar: NextPage = () => {
                 animation.start('visible')
             }
             setScrollTop(scrollTop)
-        })
+        }
+        window.addEventListener('scroll', eventListener)
     }, [lastScrollTop])
 
     return (
@@ -51,6 +52,7 @@ const Navbar: NextPage = () => {
 			<motion.div
             transition={{
                 y: { type: "spring", stiffness: 300, damping: 50 },
+                duration: 1.5
             }}
             variants={{
                 hidden: {
@@ -64,7 +66,7 @@ const Navbar: NextPage = () => {
             animate={animation}
             style={{
                 height: '5rem', 
-                position: 'sticky', 
+                position: 'sticky',
                 top: 0,
                 backgroundColor: '#080913',
                 borderBottom: '1px solid #171725',
@@ -117,22 +119,6 @@ const Navbar: NextPage = () => {
                         <motion.img whileHover={{scale: 1.1}} src="/images/discord.png" style={{marginTop: '2px', cursor: 'pointer'}} width={"18px"} height={"auto"} alt="discord" />
                         <motion.img whileHover={{scale: 1.1}} src="/images/twitter.png" style={{cursor: 'pointer'}} width={"18px"} height={"auto"} alt="twitter" />
                         <motion.img whileHover={{scale: 1.1}} src="/images/instagram.svg" style={{cursor: 'pointer'}} width={"18px"} height={"auto"} alt="instagram" />
-                        {/* <motion.div 
-                        style={{
-                            width: '128px',
-                            height: '48px',
-                            fontFamily: 'Sohne',
-                            cursor: 'pointer',
-                            color: 'white',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            textTransform: 'uppercase',
-                            fontSize: '0.875rem',
-                            letterSpacing: '1px'
-                        }}
-                        >Join Us</motion.div> */}
-
                     </Grid>
                 </Grid>
             </motion.div>

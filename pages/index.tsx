@@ -12,6 +12,7 @@ import Epilogue from '../components/Home/Epilogue'
 import Creators from '../components/Home/Creators'
 import Roadmap from '../components/Home/Roadmap'
 import Vision from '../components/Home/Vision'
+import { Parallax, ParallaxProvider } from 'react-scroll-parallax'
 
 const Home: NextPage = () => {
 
@@ -24,15 +25,29 @@ const Home: NextPage = () => {
 			</Head>
 
 			<Box>
-				<Navbar />
-				<Landing />
-				<Box sx={{marginTop: '5rem', marginBottom: '5rem', display: 'flex', flexDirection: 'column', gap: '10rem'}}>
-					<Epilogue />
-					<Vision />
-					<Roadmap />
-					<Creators />
-				</Box>
-				<Footer />
+				<ParallaxProvider>
+					<Navbar />
+					<Box sx={{overflowX: 'hidden'}}>
+						<Parallax scale={[0.9, 1.05]} speed={10} style={{overflowX: 'hidden'}}>
+							<Landing />
+						</Parallax>
+						<Box sx={{marginTop: '7.6rem', marginBottom: '5rem', display: 'flex', flexDirection: 'column', gap: '12rem'}}>
+							<Parallax scale={[1, 0.95]}>
+								<Epilogue />
+							</Parallax>
+							<Parallax scale={[1, 0.95]}>
+								<Vision />
+							</Parallax>
+							<Parallax scale={[1, 0.95]}>
+								<Roadmap />
+							</Parallax>
+							<Parallax scale={[1, 0.95]}>
+								<Creators />
+							</Parallax>
+						</Box>
+						<Footer />
+					</Box>
+				</ParallaxProvider>
 			</Box>
 		</>
 	)

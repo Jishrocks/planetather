@@ -5,6 +5,7 @@ import { motion, useAnimation } from "framer-motion";
 import { NextPage } from "next";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
+import { Parallax } from "react-scroll-parallax";
 
 const Epilogue: NextPage = ({children}: any) => {
     
@@ -51,90 +52,98 @@ const Epilogue: NextPage = ({children}: any) => {
 
     return (
         <motion.div
-        transition={transition}
-        ref={ref}
-        variants={animationVariants}
-        initial={"hidden"}
-        animate={animation}
-        style={{display: 'flex', flexDirection: 'column', alignItems: 'start', marginLeft: '8rem', marginRight: '8rem', gap: 8}}>
+        // transition={transition}
+        // ref={ref}
+        // variants={animationVariants}
+        // initial={"hidden"}
+        // animate={animation}
+        style={{display: 'flex', height: '28rem', flexDirection: 'column', alignItems: 'start', marginLeft: '8rem', marginRight: '8rem', gap: 8, background: 'linear-gradient(to top, #080913, #080913, #080913, #080913, transparent)'}}>
             <Grid container gap={6}>
                 <Grid item xs>
-                    <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'start', justifyContent: 'start', paddingBottom: '0.9em', borderBottom: '2px solid #fa4454'}}>
+                    <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'start', justifyContent: 'start', paddingBottom: '0.9em', borderBottom: '4px solid #282840'}}>
                         <h1 style={{fontFamily: 'Subheading', color: '#ece8e1', fontSize: '0.6rem', letterSpacing: '0.2em', marginBlock: '0', transform: 'rotateY(180deg)', textTransform: 'uppercase'}}>προσοχή, αυτό είναι</h1>
                         <h1 style={{fontFamily: 'Subheading', color: '#ece8e1', fontSize: '0.6rem', letterSpacing: '0.2em', marginBlock: '0', transform: 'rotateY(180deg)', textTransform: 'uppercase'}}>\\ ειδοποίηση επιπέδου 7</h1>
                     </Box>
                 </Grid>
                 <Grid item xs>
                     <motion.h1
-                    ref={ref}
-                    animate={animation}
-                    transition={headingTransition}
-                    initial={"hidden"}
-                    variants={headingAnimationVariants}
+                    // ref={ref}
+                    // animate={animation}
+                    // transition={headingTransition}
+                    // initial={"hidden"}
+                    // variants={headingAnimationVariants}
                     style={{fontFamily: 'Mandalore', color: '#ece8e1', fontSize: '6rem', letterSpacing: '4px', marginBlock: '0'}}>epilogue</motion.h1>
                 </Grid>
             </Grid>
             <Grid container gap={6}>
                 <Grid item xs>
+                    <Parallax speed={-10} style={{position: 'absolute'}}>
+                        <h1 style={{opacity: 0.1, fontSize: '15rem', fontFamily: 'Mandalore', marginLeft: '0rem', marginTop: '25rem', letterSpacing: '4px', color: 'inherit', textShadow: `-1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff`}}>beginnings</h1>    
+                    </Parallax>
                     <Box sx={{position: 'relative', display: 'flex', justifyContent: 'center'}}>
-                        <motion.img style={{position: 'absolute'}} src="/images/Planet.png" width={"400px"} alt="" />
-                        <motion.img 
-                            style={{position: 'absolute'}}
-                            animate={animation}
-                            initial={"hidden"}
-                            variants={{
-                                hidden: {
-                                    opacity: 0.6
-                                },
-                                visible: {
-                                    opacity: 1,
-                                    transition: {
-                                        duration: 2,
-                                        yoyo: Infinity,
-                                    }
-                                }
-                            }}
-                            src="/images/Flares.png" width={"400px"} alt="" />
-                        <motion.img 
-                            style={{position: 'absolute'}}
-                            animate={animation}
-                            initial={"hidden"}
-                            variants={{
-                                hidden: {
-                                    y: 0,
-                                    scale: 0.98
-                                },
-                                visible: {
-                                    y: -10,
-                                    scale: 1,
-                                    transition: {
-                                        duration: 5,
-                                        yoyo: Infinity,
-                                    }
-                                }
-                            }}
-                            src="/images/Rock.png" width={"400px"} alt="" />
-                        <motion.img 
-                            style={{position: 'absolute'}}
-                            animate={animation}
-                            initial={"hidden"}
-                            variants={{
-                                hidden: {
-                                    x: 0,
-                                    y: 0,
-                                    scale: 0.98
-                                },
-                                visible: {
-                                    x: 20,
-                                    y: 20,
-                                    scale: 1,
-                                    transition: {
-                                        duration: 5,
-                                        yoyo: Infinity,
-                                    }
-                                }
-                            }}
-                            src="/images/Spaceship.png" width={"400px"} alt="" />
+                        <Parallax speed={5} style={{position: 'absolute'}}>
+                            <motion.img src="/images/Planet.png" width={"400px"} alt="" />
+                        </Parallax>
+                        <Parallax speed={5} style={{position: 'absolute'}}>
+                            <motion.img
+                                // animate={animation}
+                                // initial={"hidden"}
+                                // variants={{
+                                //     hidden: {
+                                //         opacity: 0.6
+                                //     },
+                                //     visible: {
+                                //         opacity: 1,
+                                //         transition: {
+                                //             duration: 2,
+                                //             yoyo: Infinity,
+                                //         }
+                                //     }
+                                // }}
+                                src="/images/Flares.png" width={"400px"} alt="" />
+                        </Parallax>
+                        <Parallax speed={10} style={{position: 'absolute'}}>
+                            <motion.img
+                                // animate={animation}
+                                // initial={"hidden"}
+                                // variants={{
+                                //     hidden: {
+                                //         y: 0,
+                                //         scale: 0.98
+                                //     },
+                                //     visible: {
+                                //         y: -10,
+                                //         scale: 1,
+                                //         transition: {
+                                //             duration: 5,
+                                //             yoyo: Infinity,
+                                //         }
+                                //     }
+                                // }}
+                                src="/images/Rock.png" width={"400px"} alt="" />
+                        </Parallax>
+                        <Parallax speed={2} translateX={['-50px', '50px']} style={{position: 'absolute'}}>
+                            <motion.img
+                                // animate={animation}
+                                // initial={"hidden"}
+                                // variants={{
+                                //     hidden: {
+                                //         x: 0,
+                                //         y: 0,
+                                //         scale: 0.98
+                                //     },
+                                //     visible: {
+                                //         x: 20,
+                                //         y: 20,
+                                //         scale: 1,
+                                //         transition: {
+                                //             duration: 5,
+                                //             yoyo: Infinity,
+                                //         }
+                                //     }
+                                // }}
+                                src="/images/Spaceship.png" width={"400px"} alt="" />
+                        </Parallax>
                     </Box>
                 </Grid>
                 <Grid item xs>

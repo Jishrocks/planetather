@@ -34,7 +34,7 @@ const Landing: NextPage = ({children}: any) => {
                 <Grid item sx={{display: 'flex', alignItems: 'center'}} xs>
                     <motion.img 
                     style={{
-                        marginTop: '7rem',
+                        marginTop: '2.5rem',
                         marginLeft: '38rem',
                         position: 'absolute',
                         alignItems: 'center',

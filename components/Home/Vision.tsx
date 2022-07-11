@@ -5,6 +5,7 @@ import { motion, useAnimation } from "framer-motion";
 import { NextPage } from "next";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
+import { Parallax } from "react-scroll-parallax";
 
 const Vision: NextPage = ({children}: any) => {
 
@@ -51,24 +52,24 @@ const Vision: NextPage = ({children}: any) => {
 
     return (
         <motion.div 
-        transition={transition}
-        ref={ref}
-        variants={animationVariants}
-        initial={"hidden"}
-        animate={animation}
-        style={{display: 'flex', flexDirection: 'column', alignItems: 'start', marginLeft: '8rem', marginRight: '8rem', gap: 8}}>
+        // transition={transition}
+        // ref={ref}
+        // variants={animationVariants}
+        // initial={"hidden"}
+        // animate={animation}
+        style={{display: 'flex', flexDirection: 'column', alignItems: 'start', marginLeft: '8rem', marginRight: '8rem', gap: 8, background: 'linear-gradient(to top, #080913, #080913, #080913, #080913, #080913, #080913, transparent)'}}>
             <Grid container gap={6}>
                 <Grid item xs style={{display: 'flex', justifyContent: 'end'}}>
                     <motion.h1
-                    ref={ref}
-                    animate={animation}
-                    transition={headingTransition}
-                    initial={"hidden"}
-                    variants={headingAnimationVariants}
+                    // ref={ref}
+                    // animate={animation}
+                    // transition={headingTransition}
+                    // initial={"hidden"}
+                    // variants={headingAnimationVariants}
                     style={{fontFamily: 'Mandalore', color: '#ece8e1', fontSize: '6rem', letterSpacing: '4px', marginBlock: '0'}}>vision</motion.h1>
                 </Grid>
                 <Grid item xs>
-                    <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'end', justifyContent: 'end', paddingBottom: '0.9em', borderBottom: '2px solid #fa4454'}}>
+                    <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'end', justifyContent: 'end', paddingBottom: '0.9em', borderBottom: '4px solid #282840'}}>
                         <h1 style={{fontFamily: 'Subheading', color: '#ece8e1', fontSize: '0.6rem', letterSpacing: '0.2em', marginBlock: '0', transform: 'rotateY(180deg)', textTransform: 'uppercase'}}>αυτό είμαστε</h1>
                         <h1 style={{fontFamily: 'Subheading', color: '#ece8e1', fontSize: '0.6rem', letterSpacing: '0.2em', marginBlock: '0', transform: 'rotateY(180deg)', textTransform: 'uppercase'}}>είμαστε ατhέρ //</h1>
                     </Box>
@@ -86,6 +87,9 @@ const Vision: NextPage = ({children}: any) => {
                     </motion.div>
                 </Grid>
                 <Grid item xs>
+                    <Parallax speed={-10} style={{position: 'absolute', right: '7%'}}>
+                        <h1 style={{opacity: 0.1, fontSize: '14rem', fontFamily: 'Mandalore', marginTop: '16rem', marginRight: '0rem', letterSpacing: '4px', color: 'inherit', textShadow: `-1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff`}}>protocol</h1>
+                    </Parallax>
                 </Grid>
             </Grid>
         </motion.div>
