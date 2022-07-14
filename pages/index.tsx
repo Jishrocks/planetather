@@ -13,8 +13,10 @@ import Collection from '../components/Home/Collection'
 import Creators from '../components/Home/Creators'
 import StarQuest from '../components/Home/StarQuest'
 import Vision from '../components/Home/Vision'
+
 import { Parallax, ParallaxProvider } from 'react-scroll-parallax'
 import React from 'react'
+
 const Home: NextPage = () => {
 
 	return (
@@ -23,6 +25,14 @@ const Home: NextPage = () => {
 				<title>Planet Ather | Home</title>
 				<meta name="description" content="idk right now I'll change this later" />
 				<link rel="icon" href="/favicon.ico" />
+
+				{Array.from({length: 22}, (_, i) => <link rel="preload" as="image" href={`/images/atherians/${i+1}.avif`} />)}
+
+				<link rel="preload" as="font" href="/fonts/Mandalore.woff2" />
+				<link rel="preload" as="font" href="/fonts/Poppins-Bold.woff2" />
+				<link rel="preload" as="font" href="/fonts/Poppins-Regular.woff2" />
+				<link rel="preload" as="font" href="/fonts/SpaceMono-Regular.woff2" />
+				
 			</Head>
 
 			<Box sx={{overflowX: 'hidden'}}>

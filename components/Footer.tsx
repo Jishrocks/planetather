@@ -21,7 +21,7 @@ const Footer: NextPage = ({children}: any) => {
             <Box style={{display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '2rem'}}>
                 {/* <img style={{borderRadius: '10px'}} width={"40px"} height={"40px"} src="/images/stratos.webp" alt="stratos" /> */}
                 <span style={{marginLeft: '0.5rem'}}>
-                    <p style={{fontFamily: 'Medium', fontSize: '1rem', color: '#ffffff', lineHeight: 0}}>StratosLabs</p>
+                    <p style={{fontFamily: 'Regular', fontSize: '1rem', color: '#ffffff', lineHeight: 0}}>StratosLabs</p>
                     {/* <p style={{fontFamily: 'Medium', fontSize: '1rem', color: '#ffffff', lineHeight: '1px'}}>Labs</p> */}
                 </span>
             </Box>
