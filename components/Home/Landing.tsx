@@ -1,4 +1,4 @@
-import { TextScramble } from "@Jishrocks/scramble";
+import { TextScramble } from "../ScrambledText";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { motion } from "framer-motion";
