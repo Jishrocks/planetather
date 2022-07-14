@@ -32,7 +32,9 @@ const Home: NextPage = () => {
 				<link rel="preload" as="font" href="/fonts/Poppins-Bold.woff2" />
 				<link rel="preload" as="font" href="/fonts/Poppins-Regular.woff2" />
 				<link rel="preload" as="font" href="/fonts/SpaceMono-Regular.woff2" />
-				
+				<link rel="preload" as="font" href="/fonts/FFMark.woff2" />
+				<link rel="preload" as="font" href="/fonts/subheading.woff2" />
+
 			</Head>
 
 			<Box sx={{overflowX: 'hidden'}}>
