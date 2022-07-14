@@ -31,11 +31,11 @@ const Home: NextPage = () => {
 					<Box sx={{overflowX: 'hidden'}}>
 						<Box style={{position: 'absolute', height: '100%', width: '10rem', left: '35%', background: 'linear-gradient(to right, #080913, black)'}} />
 						<img src="/images/stars.avif" style={{position: 'absolute', left: '45%', bottom: '0%', filter: 'contrast(140%)'}} height={"800vh"} alt="ather" />
-						<img src="/images/Sun.png" style={{position: 'absolute', left: '47.5%', bottom: '0%', filter: 'blur(10px) contrast(140%)'}} height={"800vh"} alt="ather" />
-						<img src="/images/Ather.png" style={{position: 'absolute', left: '45%', top: '0%', filter: 'contrast(140%)'}} height={"800vh"} alt="ather" />
-						<img src="/images/Flare.png" style={{position: 'absolute', left: '47.5%', bottom: '0%'}} height={"800vh"} alt="ather" />
-						<img src="/images/P3.png" style={{position: 'absolute', left: '47.5%', bottom: '0%', filter: 'blur(2px) contrast(140%)'}} height={"800vh"} alt="ather" />
-						<img src="/images/P2.png" style={{position: 'absolute', left: '47.5%', bottom: '0%', filter: 'blur(1px) contrast(140%)'}} height={"800vh"} alt="ather" />
+						<img src="/images/Sun.avif" style={{position: 'absolute', left: '47.5%', bottom: '0%', filter: 'blur(10px) contrast(140%)'}} height={"800vh"} alt="ather" />
+						<img src="/images/Ather.avif" style={{position: 'absolute', left: '45%', top: '0%', filter: 'contrast(140%)'}} height={"800vh"} alt="ather" />
+						<img src="/images/Flare.avif" style={{position: 'absolute', left: '47.5%', bottom: '0%'}} height={"800vh"} alt="ather" />
+						<img src="/images/P3.avif" style={{position: 'absolute', left: '47.5%', bottom: '0%', filter: 'blur(2px) contrast(140%)'}} height={"800vh"} alt="ather" />
+						<img src="/images/P2.avif" style={{position: 'absolute', left: '47.5%', bottom: '0%', filter: 'blur(1px) contrast(140%)'}} height={"800vh"} alt="ather" />
 						<Parallax scale={[0.9, 1.05]} speed={10} style={{overflowX: 'hidden'}}>
 							<Landing />
 						</Parallax>

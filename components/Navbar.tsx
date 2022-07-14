@@ -79,7 +79,7 @@ const Navbar: NextPage = () => {
                                 // if (parallaxRef) {
                                 //     (parallaxRef.current as any).scrollTo(0)
                                 // }
-                            }} width={"auto"} height={"50px"} src={"/images/logo.png"} style={{marginRight: '5px', marginTop: '3px', cursor: 'pointer'}}></img>
+                            }} width={"auto"} height={"50px"} src={"/images/logo.avif"} style={{marginRight: '5px', marginTop: '3px', cursor: 'pointer'}}></img>
                             <Typography onClick={() => {
                                 // if (parallaxRef) {
                                 //     (parallaxRef.current as any).scrollTo(0)
@@ -119,10 +119,10 @@ const Navbar: NextPage = () => {
                     <Grid item xs={1.5} sx={{display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 3}}>
                         <motion.img onClick={() => {
                             window.open("https://discord.gg/xjETANVKBe")
-                        }} whileHover={{scale: 1.1}} src="/images/discord.png" style={{marginTop: '2px', cursor: 'pointer'}} width={"18px"} height={"auto"} alt="discord" />
+                        }} whileHover={{scale: 1.1}} src="/images/discord.avif" style={{marginTop: '2px', cursor: 'pointer'}} width={"18px"} height={"auto"} alt="discord" />
                         <motion.img onClick={() => {
                             window.open("https://twitter.com/planetather")
-                        }} whileHover={{scale: 1.1}} src="/images/twitter.png" style={{cursor: 'pointer'}} width={"18px"} height={"auto"} alt="twitter" />
+                        }} whileHover={{scale: 1.1}} src="/images/twitter.avif" style={{cursor: 'pointer'}} width={"18px"} height={"auto"} alt="twitter" />
                         <motion.img onClick={() => {
                             window.open("https://www.instagram.com/planetather/")
                         }} whileHover={{scale: 1.1}} src="/images/instagram.svg" style={{cursor: 'pointer'}} width={"18px"} height={"auto"} alt="instagram" />

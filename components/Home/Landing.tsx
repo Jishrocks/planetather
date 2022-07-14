@@ -55,7 +55,7 @@ const Landing: NextPage = ({children}: any) => {
                     }}
                     height='auto'
                     width={"900px"}
-                    src={"/images/ather_00240.png"}
+                    src={"/images/ather_00240.avif"}
                     ></motion.img> */}
                 </Grid>
             </Grid>

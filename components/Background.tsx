@@ -33,7 +33,7 @@ const Background: NextPage = ({children}: any) => {
 		// 				right: 25,
 		// 			}}
 		// 			width={"1300px"}
-		// 			src={"/images/hero-background-circle.png"}
+		// 			src={"/images/hero-background-circle.avif"}
 		// 			animate={{
 		// 				y: 50,
 		// 				scale: 0.99,
@@ -53,7 +53,7 @@ const Background: NextPage = ({children}: any) => {
 		// 				right: 0,
 		// 			}}
 		// 			width={"1300px"}
-		// 			src={"/images/hero-smoke.png"}
+		// 			src={"/images/hero-smoke.avif"}
 		// 			animate={{
 		// 				// y: 15,
 		// 				scale: 0.95,
@@ -73,7 +73,7 @@ const Background: NextPage = ({children}: any) => {
 		// 				right: 0,
 		// 			}}
 		// 			width={"1300px"}
-		// 			src={"/images/home-hero.png"}
+		// 			src={"/images/home-hero.avif"}
 		// 			></motion.img> */}
 		// 		</Box>
 		// 	</Box>

@@ -10,38 +10,18 @@ body {
 }
 
 @font-face {
-  font-family: VampireWars;
-  src: url("../public/fonts/Vampire\ Wars.ttf");
-}
-
-@font-face {
-  font-family: Sohne;
-  src: url("../public/fonts/SohneBreit-Halbfett.otf");
-}
-
-@font-face {
   font-family: Regular;
-  src: url("../public/fonts/Poppins-Regular.ttf");
-}
-
-@font-face {
-  font-family: Medium;
-  src: url("../public/fonts/Poppins-Medium.ttf");
-}
-
-@font-face {
-  font-family: SemiBold;
-  src: url("../public/fonts/Poppins-SemiBold.ttf");
+  src: url("../public/fonts/Poppins-Regular.woff2");
 }
 
 @font-face {
   font-family: Bold;
-  src: url("../public/fonts/Poppins-Bold.ttf");
+  src: url("../public/fonts/Poppins-Bold.woff2");
 }
 
 @font-face {
   font-family: Mandalore;
-  src: url("../public/fonts/Mandalore.otf");
+  src: url("../public/fonts/Mandalore.woff2");
 }
 
 @font-face {
@@ -51,20 +31,10 @@ body {
 
 @font-face {
   font-family: Mono;
-  src: url("../public/fonts/SpaceMono-Regular.ttf");
-}
-
-@font-face {
-  font-family: MonoBold;
-  src: url("../public/fonts/SpaceMono-Bold.ttf");
+  src: url("../public/fonts/SpaceMono-Regular.woff2");
 }
 
 @font-face {
   font-family: FFMark;
-  src: url("../public/fonts/FFMark.otf");
-}
-
-@font-face {
-  font-family: Galactica;
-  src: url("../public/fonts/Deciso-Bold.otf");
+  src: url("../public/fonts/FFMark.woff2");
 }

@@ -83,7 +83,7 @@ const Epilogue: NextPage = ({children}: any) => {
                     </Parallax>
                     <Box sx={{position: 'relative', display: 'flex', justifyContent: 'center'}}>
                         <Parallax speed={5} style={{position: 'absolute'}}>
-                            <motion.img src="/images/Planet.png" width={"400px"} alt="" />
+                            <motion.img src="/images/Planet.avif" width={"400px"} alt="" />
                         </Parallax>
                         <Parallax speed={5} style={{position: 'absolute'}}>
                             <motion.img
@@ -101,7 +101,7 @@ const Epilogue: NextPage = ({children}: any) => {
                                 //         }
                                 //     }
                                 // }}
-                                src="/images/Flares.png" width={"400px"} alt="" />
+                                src="/images/Flares.avif" width={"400px"} alt="" />
                         </Parallax>
                         <Parallax speed={10} style={{position: 'absolute'}}>
                             <motion.img
@@ -121,7 +121,7 @@ const Epilogue: NextPage = ({children}: any) => {
                                 //         }
                                 //     }
                                 // }}
-                                src="/images/Rock.png" width={"400px"} alt="" />
+                                src="/images/Rock.avif" width={"400px"} alt="" />
                         </Parallax>
                         <Parallax speed={2} translateX={['-50px', '50px']} style={{position: 'absolute'}}>
                             <motion.img
@@ -143,7 +143,7 @@ const Epilogue: NextPage = ({children}: any) => {
                                 //         }
                                 //     }
                                 // }}
-                                src="/images/Spaceship.png" width={"400px"} alt="" />
+                                src="/images/Spaceship.avif" width={"400px"} alt="" />
                         </Parallax>
                     </Box>
                 </Grid>
