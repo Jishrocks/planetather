@@ -6,6 +6,7 @@ import { NextPage } from "next";
 import { styled } from '@mui/system';
 import { motion, useAnimation } from "framer-motion";
 import { MutableRefObject, useEffect, useState } from "react";
+import React from "react";
 
 const TabItem = styled('p')({
     fontSize: '0.8rem',

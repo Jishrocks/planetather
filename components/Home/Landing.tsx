@@ -1,9 +1,10 @@
-import { TextScramble } from "@a7sc11u/scramble";
+import { TextScramble } from "@Jishrocks/scramble";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { motion } from "framer-motion";
 
 import { NextPage } from "next";
+import React from "react";
 
 const Landing: NextPage = ({children}: any) => {
     return (
@@ -32,7 +33,6 @@ const Landing: NextPage = ({children}: any) => {
                     <h1 style={{width: '85%', fontFamily: 'Mono', color: '#c7c3bb', fontSize: '0.875rem', letterSpacing: '1px', marginBlockStart: '1rem'}}>A planet rich in power and mystique consumed by death and disaster. A race against time to find a new home.</h1>
                 </Grid>
                 <Grid item sx={{display: 'flex', alignItems: 'center'}} xs>
-                    <img src="/images/Ather.png" alt="" />
                     {/* <motion.img 
                     style={{
                         marginTop: '2.5rem',
@@ -59,6 +59,7 @@ const Landing: NextPage = ({children}: any) => {
                     ></motion.img> */}
                 </Grid>
             </Grid>
+            
         </Box>
     )
 }

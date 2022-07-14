@@ -3,6 +3,7 @@ import Grid from "@mui/material/Grid";
 import { motion, useAnimation } from "framer-motion";
 
 import { NextPage } from "next";
+import React from "react";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { Parallax } from "react-scroll-parallax";

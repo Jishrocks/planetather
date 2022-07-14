@@ -2,6 +2,7 @@ import Box from "@mui/material/Box";
 import { motion } from "framer-motion";
 
 import { NextPage } from "next";
+import React from "react";
 
 const Footer: NextPage = ({children}: any) => {
     return (

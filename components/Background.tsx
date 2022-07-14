@@ -1,6 +1,7 @@
 import Box from "@mui/material/Box"
 import { motion } from "framer-motion"
 import { NextPage } from "next"
+import React from "react"
 import { ReactNode } from "react"
 import Navbar from "./Navbar"
 
