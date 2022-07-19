@@ -26,7 +26,7 @@ const Home: NextPage = () => {
 				<meta name="description" content="idk right now I'll change this later" />
 				<link rel="icon" href="/favicon.ico" />
 
-				{Array.from({length: 22}, (_, i) => <link rel="preload" as="image" href={`/images/atherians/${i+1}.avif`} />)}
+				{Array.from({length: 22}, (_, i) => <link key={i} rel="preload" as="image" href={`/images/atherians/${i+1}.png`} />)}
 
 				<link rel="preload" as="font" href="/fonts/Mandalore.woff2" />
 				<link rel="preload" as="font" href="/fonts/Poppins-Bold.woff2" />
@@ -37,17 +37,17 @@ const Home: NextPage = () => {
 
 			</Head>
 
+			<Navbar />
 			<Box sx={{overflowX: 'hidden'}}>
 				<ParallaxProvider>
-					<Navbar />
 					<Box sx={{overflowX: 'hidden'}}>
-						<Box style={{position: 'absolute', height: '100%', width: '10rem', left: '35%', background: 'linear-gradient(to right, #080913, black)'}} />
-						<img src="/images/stars.avif" style={{position: 'absolute', left: '45%', bottom: '0%', filter: 'contrast(140%)'}} height={"800vh"} alt="ather" />
-						<img src="/images/Sun.avif" style={{position: 'absolute', left: '47.5%', bottom: '0%', filter: 'blur(10px) contrast(140%)'}} height={"800vh"} alt="ather" />
-						<img src="/images/Ather.avif" style={{position: 'absolute', left: '45%', top: '0%', filter: 'contrast(140%)'}} height={"800vh"} alt="ather" />
-						<img src="/images/Flare.avif" style={{position: 'absolute', left: '47.5%', bottom: '0%'}} height={"800vh"} alt="ather" />
-						<img src="/images/P3.avif" style={{position: 'absolute', left: '47.5%', bottom: '0%', filter: 'blur(2px) contrast(140%)'}} height={"800vh"} alt="ather" />
-						<img src="/images/P2.avif" style={{position: 'absolute', left: '47.5%', bottom: '0%', filter: 'blur(1px) contrast(140%)'}} height={"800vh"} alt="ather" />
+						{/* <Box style={{position: 'absolute', height: '100%', width: '10rem', left: '35%', background: 'linear-gradient(to right, #080913, black)'}} />
+						<img src="/images/stars.png" style={{position: 'absolute', left: '45%', bottom: '0%', filter: 'contrast(140%)'}} height={"800vh"} alt="ather" />
+						<img src="/images/Sun.png" style={{position: 'absolute', left: '47.5%', bottom: '0%', filter: 'blur(10px) contrast(140%)'}} height={"800vh"} alt="ather" />
+						<img src="/images/Ather.png" style={{position: 'absolute', left: '45%', top: '0%', filter: 'contrast(140%)'}} height={"800vh"} alt="ather" />
+						<img src="/images/Flare.png" style={{position: 'absolute', left: '47.5%', bottom: '0%'}} height={"800vh"} alt="ather" />
+						<img src="/images/P3.png" style={{position: 'absolute', left: '47.5%', bottom: '0%', filter: 'blur(2px) contrast(140%)'}} height={"800vh"} alt="ather" />
+						<img src="/images/P2.png" style={{position: 'absolute', left: '47.5%', bottom: '0%', filter: 'blur(1px) contrast(140%)'}} height={"800vh"} alt="ather" /> */}
 						<Parallax scale={[0.9, 1.05]} speed={10} style={{overflowX: 'hidden'}}>
 							<Landing />
 						</Parallax>

@@ -3,10 +3,9 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { motion } from "framer-motion";
 
-import { NextPage } from "next";
 import React from "react";
 
-const Landing: NextPage = ({children}: any) => {
+const Landing = ({children}: any) => {
     return (
         <Box sx={{display: 'flex', height: '80vh', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginLeft: '8rem', marginRight: '8rem', gap: 8}}>
             <Grid container gap={6}>
@@ -55,7 +54,7 @@ const Landing: NextPage = ({children}: any) => {
                     }}
                     height='auto'
                     width={"900px"}
-                    src={"/images/ather_00240.avif"}
+                    src={"/images/ather_00240.png"}
                     ></motion.img> */}
                 </Grid>
             </Grid>

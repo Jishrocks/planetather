@@ -2,13 +2,11 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { motion, useAnimation } from "framer-motion";
 
-import { NextPage } from "next";
 import React from "react";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
-import { Parallax } from "react-scroll-parallax";
 
-const Creators: NextPage = ({children}: any) => {
+const Creators = ({children}: any) => {
 
     const animation = useAnimation()
     const [ref, inView] = useInView()
@@ -33,8 +31,7 @@ const Creators: NextPage = ({children}: any) => {
     useEffect(() => {
         if (inView) {
             animation.start("visible")
-        } else {
-            animation.start("hidden")
+            return
         }
     }, [animation, inView])
 
@@ -54,11 +51,11 @@ const Creators: NextPage = ({children}: any) => {
 
     return (
         <motion.div 
-        // transition={transition}
-        // ref={ref}
-        // variants={animationVariants}
-        // initial={"hidden"}
-        // animate={animation}
+        transition={transition}
+        ref={ref}
+        variants={animationVariants}
+        initial={"hidden"}
+        animate={animation}
         style={{display: 'flex', height: '28rem', flexDirection: 'column', alignItems: 'start', marginLeft: '8rem', marginRight: '8rem', gap: 8, background: 'linear-gradient(to top, #080913, #080913, #080913, #080913, #080913, #080913, transparent)'}}>
             <Grid container gap={6}>
                 <Grid item xs>
@@ -69,11 +66,11 @@ const Creators: NextPage = ({children}: any) => {
                 </Grid>
                 <Grid item xs>
                     <motion.h1
-                    // ref={ref}
-                    // animate={animation}
-                    // transition={headingTransition}
-                    // initial={"hidden"}
-                    // variants={headingAnimationVariants}
+                    ref={ref}
+                    animate={animation}
+                    transition={headingTransition}
+                    initial={"hidden"}
+                    variants={headingAnimationVariants}
                     style={{fontFamily: 'Mandalore', color: '#ece8e1', fontSize: '6rem', letterSpacing: '4px', marginBlock: '0'}}>creators</motion.h1>
                 </Grid>
             </Grid>

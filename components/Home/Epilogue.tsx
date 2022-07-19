@@ -2,13 +2,12 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { motion, useAnimation } from "framer-motion";
 
-import { NextPage } from "next";
 import React from "react";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { Parallax } from "react-scroll-parallax";
 
-const Epilogue: NextPage = ({children}: any) => {
+const Epilogue = ({children}: any) => {
     
     const animation = useAnimation()
     const [ref, inView] = useInView()
@@ -32,8 +31,7 @@ const Epilogue: NextPage = ({children}: any) => {
     useEffect(() => {
         if (inView) {
             animation.start("visible")
-        } else {
-            animation.start("hidden")
+            return
         }
     }, [animation, inView])
 
@@ -53,11 +51,11 @@ const Epilogue: NextPage = ({children}: any) => {
 
     return (
         <motion.div
-        // transition={transition}
-        // ref={ref}
-        // variants={animationVariants}
-        // initial={"hidden"}
-        // animate={animation}
+        transition={transition}
+        ref={ref}
+        variants={animationVariants}
+        initial={"hidden"}
+        animate={animation}
         style={{display: 'flex', height: '28rem', flexDirection: 'column', alignItems: 'start', marginLeft: '8rem', marginRight: '8rem', gap: 8, background: 'linear-gradient(to top, #080913, #080913, #080913, #080913, transparent)'}}>
             <Grid container gap={6}>
                 <Grid item xs>
@@ -68,11 +66,11 @@ const Epilogue: NextPage = ({children}: any) => {
                 </Grid>
                 <Grid item xs>
                     <motion.h1
-                    // ref={ref}
-                    // animate={animation}
-                    // transition={headingTransition}
-                    // initial={"hidden"}
-                    // variants={headingAnimationVariants}
+                    ref={ref}
+                    animate={animation}
+                    transition={headingTransition}
+                    initial={"hidden"}
+                    variants={headingAnimationVariants}
                     style={{fontFamily: 'Mandalore', color: '#ece8e1', fontSize: '6rem', letterSpacing: '4px', marginBlock: '0'}}>epilogue</motion.h1>
                 </Grid>
             </Grid>
@@ -83,7 +81,7 @@ const Epilogue: NextPage = ({children}: any) => {
                     </Parallax>
                     <Box sx={{position: 'relative', display: 'flex', justifyContent: 'center'}}>
                         <Parallax speed={5} style={{position: 'absolute'}}>
-                            <motion.img src="/images/Planet.avif" width={"400px"} alt="" />
+                            <motion.img src="/images/Planet.png" width={"400px"} alt="" />
                         </Parallax>
                         <Parallax speed={5} style={{position: 'absolute'}}>
                             <motion.img
@@ -101,7 +99,7 @@ const Epilogue: NextPage = ({children}: any) => {
                                 //         }
                                 //     }
                                 // }}
-                                src="/images/Flares.avif" width={"400px"} alt="" />
+                                src="/images/Flares.png" width={"400px"} alt="" />
                         </Parallax>
                         <Parallax speed={10} style={{position: 'absolute'}}>
                             <motion.img
@@ -121,7 +119,7 @@ const Epilogue: NextPage = ({children}: any) => {
                                 //         }
                                 //     }
                                 // }}
-                                src="/images/Rock.avif" width={"400px"} alt="" />
+                                src="/images/Rock.png" width={"400px"} alt="" />
                         </Parallax>
                         <Parallax speed={2} translateX={['-50px', '50px']} style={{position: 'absolute'}}>
                             <motion.img
@@ -143,7 +141,7 @@ const Epilogue: NextPage = ({children}: any) => {
                                 //         }
                                 //     }
                                 // }}
-                                src="/images/Spaceship.avif" width={"400px"} alt="" />
+                                src="/images/Spaceship.png" width={"400px"} alt="" />
                         </Parallax>
                     </Box>
                 </Grid>

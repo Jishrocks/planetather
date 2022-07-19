@@ -2,9 +2,8 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { motion, useAnimation } from "framer-motion";
 
-import { LazyLoadImage } from 'react-lazy-load-image-component'
+import Image from 'next/image'
 
-import { NextPage } from "next";
 import React from "react";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
@@ -21,7 +20,7 @@ function shuffle(a) {
     return a;
 }
 
-const Collection: NextPage = ({children}: any) => {
+const Collection = ({children}: any) => {
 
     const animation = useAnimation()
     const [ref, inView] = useInView()
@@ -46,8 +45,7 @@ const Collection: NextPage = ({children}: any) => {
     useEffect(() => {
         if (inView) {
             animation.start("visible")
-        } else {
-            animation.start("hidden")
+            return
         }
     }, [animation, inView])
 
@@ -66,20 +64,20 @@ const Collection: NextPage = ({children}: any) => {
 
     return (
         <motion.div 
-        // transition={transition}
-        // ref={ref}
-        // variants={animationVariants}
-        // initial={"hidden"}
-        // animate={animation}
+        transition={transition}
+        ref={ref}
+        variants={animationVariants}
+        initial={"hidden"}
+        animate={animation}
         style={{display: 'flex', height: '28rem', flexDirection: 'column', alignItems: 'start', marginLeft: '8rem', marginRight: '8rem', gap: 8, background: 'linear-gradient(to top, #080913, #080913, #080913, #080913, #080913, #080913, transparent)'}}>
             <Grid container gap={6}>
                 <Grid item xs style={{display: 'flex', justifyContent: 'end'}}>
                     <motion.h1
-                    // ref={ref}
-                    // animate={animation}
-                    // transition={headingTransition}
-                    // initial={"hidden"}
-                    // variants={headingAnimationVariants}
+                    ref={ref}
+                    animate={animation}
+                    transition={headingTransition}
+                    initial={"hidden"}
+                    variants={headingAnimationVariants}
                     style={{fontFamily: 'Mandalore', color: '#ece8e1', fontSize: '6rem', letterSpacing: '4px', marginBlock: '0'}}>Collection</motion.h1>
                 </Grid>
                 <Grid item xs>
@@ -94,28 +92,24 @@ const Collection: NextPage = ({children}: any) => {
                     <Parallax translateX={[0, -10]} style={{position: 'absolute', backgroundColor: '#e1ffac'}}>
                         <motion.div initial={{opacity: 0}} animate={{opacity: 1}} style={{display: 'flex', width: '200vw', height: '200px', backgroundColor: '#e1ffac'}}>
                         {shuffle(Array.from({length: 12}, (_, i) => 
-                                <LazyLoadImage 
-                                key={i + 1} 
-                                height={"200px"} 
-                                width={"200px"}
-                                effect="blur"
-                                style={{borderRight: '7px solid black'}}
-                                placeholder={<Box style={{borderRight: '7px solid black', height: '200px', width: '200px'}} />}
-                                src={`/images/atherians/${i + 1}.avif`} />
+                                <Box key={i + 1} style={{borderRight: '7px solid black'}}>
+                                    <Image 
+                                    height={"200px"} 
+                                    width={"200px"}
+                                    src={`/images/atherians/${i + 1}.png`} />
+                                </Box>
                         ))}
                         </motion.div>
                     </Parallax>
                     <Parallax translateX={[-10, 0]} style={{position: 'absolute', backgroundColor: '#fec8d8', marginTop: '14rem'}}>
                         <motion.div initial={{opacity: 0}} animate={{opacity: 1}} style={{display: 'flex', width: '200vw', height: '200px', backgroundColor: '#fec8d8'}}>
                         {shuffle(Array.from({length: 11}, (_, i) => 
-                                <LazyLoadImage 
-                                key={i + 1 + 11} 
-                                height={"200px"} 
-                                width={"200px"}
-                                effect="blur"
-                                style={{borderRight: '7px solid black'}}
-                                placeholder={<Box style={{borderRight: '7px solid black', height: '200px', width: '200px'}} />}
-                                src={`/images/atherians/${i + 1 + 11}.avif`} />
+                                <Box key={i + 1 + 11} style={{borderRight: '7px solid black'}}>
+                                    <Image
+                                    height={"200px"} 
+                                    width={"200px"}
+                                    src={`/images/atherians/${i + 1 + 11}.png`} />
+                                </Box>
                         ))}
                         </motion.div>
                     </Parallax>

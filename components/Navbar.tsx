@@ -1,11 +1,10 @@
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import { NextPage } from "next";
 
 import { styled } from '@mui/system';
 import { motion, useAnimation } from "framer-motion";
-import { MutableRefObject, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
 
 const TabItem = styled('p')({
@@ -29,7 +28,7 @@ const Tab = styled('div')({
     gap: '3.5rem',
 })
 
-const Navbar: NextPage = () => {
+const Navbar = () => {
 
     const [lastScrollTop, setScrollTop] = useState(0)
 
@@ -64,13 +63,12 @@ const Navbar: NextPage = () => {
                 }
             }}
             initial={"visible"}
-            animate={animation}
+            // animate={animation}
             style={{
                 height: '5rem', 
                 position: 'sticky',
                 top: 0,
-                backgroundColor: '#080913',
-                borderBottom: '1px solid #171725',
+                background: 'linear-gradient(to bottom, #080913, transparent)',
                 zIndex: '999'}}>
                 <Grid container sx={{height: 'inherit', width: 'auto', position: 'sticky', top: 0, marginLeft: '10%', marginRight: '10%'}}>
                     <Grid item xs={2}>

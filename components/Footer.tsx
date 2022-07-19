@@ -1,19 +1,18 @@
 import Box from "@mui/material/Box";
 import { motion } from "framer-motion";
 
-import { NextPage } from "next";
 import React from "react";
 
-const Footer: NextPage = ({children}: any) => {
+const Footer = ({children}: any) => {
     return (
         <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', borderTop: '1px solid #171725'}}>
             <Box sx={{display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 3, marginTop: '2rem'}}>
                 <motion.img onClick={() => {
                     window.open("https://discord.gg/xjETANVKBe")
-                }} whileHover={{scale: 1.1}} src="/images/discord.avif" style={{marginTop: '2px', cursor: 'pointer'}} width={"18px"} height={"auto"} alt="discord" />
+                }} whileHover={{scale: 1.1}} src="/images/discord.png" style={{marginTop: '2px', cursor: 'pointer'}} width={"18px"} height={"auto"} alt="discord" />
                 <motion.img onClick={() => {
                     window.open("https://twitter.com/planetather")
-                }} whileHover={{scale: 1.1}} src="/images/twitter.avif" style={{cursor: 'pointer'}} width={"18px"} height={"auto"} alt="twitter" />
+                }} whileHover={{scale: 1.1}} src="/images/twitter.png" style={{cursor: 'pointer'}} width={"18px"} height={"auto"} alt="twitter" />
                 <motion.img onClick={() => {
                     window.open("https://www.instagram.com/planetather/")
                 }} whileHover={{scale: 1.1}} src="/images/instagram.svg" style={{cursor: 'pointer'}} width={"18px"} height={"auto"} alt="instagram" />
