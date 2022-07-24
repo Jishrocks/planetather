@@ -77,17 +77,17 @@ const Navbar = () => {
                                 // if (parallaxRef) {
                                 //     (parallaxRef.current as any).scrollTo(0)
                                 // }
-                            }} width={"auto"} height={"50px"} src={"/images/logo.avif"} style={{marginRight: '5px', marginTop: '3px', cursor: 'pointer'}}></img>
+                            }} width={"auto"} height={"42px"} src={"/images/logo.png"} style={{marginRight: '5px', cursor: 'pointer', color: 'white'}}></img>
                             <Typography onClick={() => {
                                 // if (parallaxRef) {
                                 //     (parallaxRef.current as any).scrollTo(0)
                                 // }
-                            }} sx={{color: 'white', fontFamily: 'Regular', fontSize: '1.5rem', cursor: 'pointer'}}>planet</Typography>
+                            }} sx={{color: 'white', fontFamily: 'FFMark', fontSize: '1.5rem', cursor: 'pointer'}}>planet</Typography>
                             <Typography onClick={() => {
                                 // if (parallaxRef) {
                                 //     (parallaxRef.current as any).scrollTo(0)
                                 // }
-                            }} sx={{color: 'white', fontFamily: 'Bold', fontSize: '1.5rem', cursor: 'pointer'}}>ather.</Typography>
+                            }} sx={{color: 'white', fontFamily: 'FFMark', fontWeight: 'bold', fontSize: '1.5rem', cursor: 'pointer'}}>ather</Typography>
                         </Box>
                     </Grid>
                     <Grid item xs>

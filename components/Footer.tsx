@@ -5,7 +5,7 @@ import React from "react";
 
 const Footer = ({children}: any) => {
     return (
-        <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', borderTop: '1px solid #171725'}}>
+        <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
             <Box sx={{display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 3, marginTop: '2rem'}}>
                 <motion.img onClick={() => {
                     window.open("https://discord.gg/xjETANVKBe")

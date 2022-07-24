@@ -80,7 +80,7 @@ const Epilogue = ({children}: any) => {
                         <h1 style={{opacity: 0.1, fontSize: '15rem', fontFamily: 'Mandalore', marginLeft: '0rem', marginTop: '25rem', letterSpacing: '4px', color: 'inherit', textShadow: `-1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff`}}>beginnings</h1>    
                     </Parallax>
                     <Box sx={{position: 'relative', display: 'flex', justifyContent: 'center'}}>
-                        <Parallax speed={5} style={{position: 'absolute'}}>
+                        {/* <Parallax speed={5} style={{position: 'absolute'}}>
                             <motion.img src="/images/Planet.png" width={"400px"} alt="" />
                         </Parallax>
                         <Parallax speed={5} style={{position: 'absolute'}}>
@@ -142,7 +142,7 @@ const Epilogue = ({children}: any) => {
                                 //     }
                                 // }}
                                 src="/images/Spaceship.png" width={"400px"} alt="" />
-                        </Parallax>
+                        </Parallax> */}
                     </Box>
                 </Grid>
                 <Grid item xs>
