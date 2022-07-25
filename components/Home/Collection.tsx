@@ -120,7 +120,7 @@ const Collection = ({children}: any) => {
                 </Grid>
                 <Grid item xs>
                     <Parallax speed={-10} style={{position: 'absolute', right: '7%', zIndex: -999}}>
-                        <h1 style={{opacity: 0.1, fontSize: '14rem', fontFamily: 'Mandalore', marginTop: '26rem', marginRight: '0rem', letterSpacing: '4px', color: 'inherit', textShadow: `-1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff`}}>protocol</h1>
+                        <h1 style={{opacity: 0.1, fontSize: '14rem', fontFamily: 'Mandalore', marginTop: '26rem', marginRight: '0rem', letterSpacing: '4px', color: 'inherit', textShadow: `-1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff`}}>squad</h1>
                     </Parallax>
                 </Grid>
             </Grid>

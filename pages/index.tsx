@@ -8,7 +8,7 @@ import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
 
 import Landing from '../components/Home/Landing'
-import Epilogue from '../components/Home/Epilogue'
+import Prologue from '../components/Home/Prologue'
 import Collection from '../components/Home/Collection'
 import Creators from '../components/Home/Creators'
 import StarQuest from '../components/Home/StarQuest'
@@ -48,12 +48,12 @@ const Home: NextPage = () => {
 						<img src="/images/Flare.png" style={{position: 'absolute', left: '47.5%', bottom: '0%'}} height={"800vh"} alt="ather" />
 						<img src="/images/P3.png" style={{position: 'absolute', left: '47.5%', bottom: '0%', filter: 'blur(2px) contrast(140%)'}} height={"800vh"} alt="ather" />
 						<img src="/images/P2.png" style={{position: 'absolute', left: '47.5%', bottom: '0%', filter: 'blur(1px) contrast(140%)'}} height={"800vh"} alt="ather" /> */}
-						<Parallax scale={[0.9, 1.05]} speed={10} style={{overflowX: 'hidden'}}>
+						<Parallax scale={[0.9, 1.05]} speed={10} style={{overflow: 'hidden'}}>
 							<Landing />
 						</Parallax>
 						<Box sx={{marginTop: '7.6rem', marginBottom: '5rem', display: 'flex', flexDirection: 'column', gap: '12rem'}}>
 							<Parallax scale={[1, 0.95]}>
-								<Epilogue />
+								<Prologue />
 							</Parallax>
 							<Parallax scale={[1, 0.95]}>
 								<Vision />
