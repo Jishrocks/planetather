@@ -7,10 +7,14 @@ import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { Parallax } from "react-scroll-parallax";
 
+import useMediaQuery from "@mui/material/useMediaQuery";
+
 const Vision = ({children}: any) => {
 
     const animation = useAnimation()
     const [ref, inView] = useInView()
+
+    let isMobile = useMediaQuery('(max-width: 1200px)')
 
     const animationVariants = {
         hidden: {
@@ -56,7 +60,7 @@ const Vision = ({children}: any) => {
         variants={animationVariants}
         initial={"hidden"}
         animate={animation}
-        style={{display: 'flex', flexDirection: 'column', alignItems: 'start', marginLeft: '8rem', marginRight: '8rem', gap: 8, background: 'linear-gradient(to top, #080913, #080913, #080913, #080913, #080913, #080913, transparent)'}}>
+        style={{display: 'flex', flexDirection: 'column', alignItems: 'start', marginLeft: '10%', marginRight: '10%', gap: 8, background: 'linear-gradient(to top, #080913, #080913, #080913, #080913, #080913, #080913, transparent)'}}>
             <Grid container gap={6}>
                 <Grid item xs style={{display: 'flex', justifyContent: 'end'}}>
                     <motion.h1
@@ -65,23 +69,31 @@ const Vision = ({children}: any) => {
                     transition={headingTransition}
                     initial={"hidden"}
                     variants={headingAnimationVariants}
-                    style={{fontFamily: 'Mandalore', color: '#ece8e1', fontSize: '6rem', letterSpacing: '4px', marginBlock: '0'}}>vision</motion.h1>
+                    style={{fontFamily: 'Mandalore', color: '#ece8e1', fontSize: isMobile ? '3.5rem' : '6rem', letterSpacing: '4px', marginBlock: '0'}}>vision</motion.h1>
                 </Grid>
                 <Grid item xs>
-                    <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'end', justifyContent: 'end', paddingBottom: '0.9em', borderBottom: '4px solid #282840'}}>
-                        <h1 style={{fontFamily: 'Subheading', color: '#ece8e1', fontSize: '0.6rem', letterSpacing: '0.2em', marginBlock: '0', transform: 'rotateY(180deg)', textTransform: 'uppercase'}}>αυτό είμαστε</h1>
-                        <h1 style={{fontFamily: 'Subheading', color: '#ece8e1', fontSize: '0.6rem', letterSpacing: '0.2em', marginBlock: '0', transform: 'rotateY(180deg)', textTransform: 'uppercase'}}>είμαστε ατhέρ //</h1>
+                    <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'end', justifyContent: 'end', paddingBottom: '0.9em', marginTop: isMobile ? '0.9em' : '0', borderBottom: '4px solid #282840'}}>
+                        <h1 style={{fontFamily: 'Subheading', color: '#ece8e1', fontSize: isMobile ? '0.4rem' : '0.6rem', letterSpacing: '0.2em', marginBlock: '0', transform: 'rotateY(180deg)', textTransform: 'uppercase'}}>αυτό είμαστε</h1>
+                        <h1 style={{fontFamily: 'Subheading', color: '#ece8e1', fontSize: isMobile ? '0.4rem' : '0.6rem', letterSpacing: '0.2em', marginBlock: '0', transform: 'rotateY(180deg)', textTransform: 'uppercase'}}>είμαστε ατhέρ //</h1>
                     </Box>
                 </Grid>
             </Grid>
+            {isMobile ?
+            <Box>
+                <motion.div>
+                    <h1 style={{fontFamily: 'Mono', color: '#ece8e1', fontSize: '1rem', letterSpacing: '1px', textAlign: 'right', textTransform: 'uppercase'}}>get. set. ather.</h1>
+                    <h1 style={{fontFamily: 'Mono', color: '#c7c3bb', fontSize: '0.8rem', letterSpacing: '1px', marginBlockStart: '2rem'}}>
+                        In the midst of the nft heat-wave all round the world, we are your very own entertainment company, emerging to take over the digital horizon. From comics, web series, merch and games to a super-charged blazing community filled with creativity and zeal, we are ready to zip tie your imaginations and weave a whole new world, hand together.
+                    </h1>
+                </motion.div>
+            </Box>
+            :
             <Grid container gap={6}>
                 <Grid item xs>
-                    <motion.div
-                    >
+                    <motion.div>
                         <h1 style={{fontFamily: 'Mono', color: '#ece8e1', fontSize: '1.175rem', letterSpacing: '1px', textTransform: 'uppercase', textAlign: 'right'}}>get. set. ather.</h1>
                         <h1 style={{fontFamily: 'Mono', color: '#c7c3bb', fontSize: '0.875rem', letterSpacing: '1px', marginBlockStart: '1rem', textAlign: 'right'}}>
-                            In the midst of the nft heat-wave all round the world, we are your very own entertainment company, emerging to take over the digital horizon. From comics, web series, merch and games to a super-charged blazing community filled with creativity and zeal, we are ready to zip tie your imaginations and weave a whole new world, hand together. 
-
+                            In the midst of the nft heat-wave all round the world, we are your very own entertainment company, emerging to take over the digital horizon. From comics, web series, merch and games to a super-charged blazing community filled with creativity and zeal, we are ready to zip tie your imaginations and weave a whole new world, hand together.
                         </h1>
                     </motion.div>
                 </Grid>
@@ -91,6 +103,7 @@ const Vision = ({children}: any) => {
                     </Parallax>
                 </Grid>
             </Grid>
+            }
         </motion.div>
     )
 }

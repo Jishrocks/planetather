@@ -4,10 +4,15 @@ import Grid from "@mui/material/Grid";
 import { motion } from "framer-motion";
 
 import React from "react";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const Landing = ({children}: any) => {
+
+    let isMobile = useMediaQuery('(max-width: 1200px)')
+    
     return (
-        <Box sx={{display: 'flex', height: '80vh', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginLeft: '8rem', marginRight: '8rem', gap: 8}}>
+        <>
+            {!isMobile ? <Box sx={{display: 'flex', height: '80vh', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginLeft: '10%', marginRight: '10%', gap: 8}}>
             <Grid container gap={6}>
                 <Grid item sx={{display: 'flex', flexDirection: 'column'}} xs>
                     <Box sx={{display: 'flex', alignItems: 'center', marginLeft: '1rem', gap: 2}}>
@@ -72,8 +77,31 @@ const Landing = ({children}: any) => {
                     ></motion.img> */}
                 </Grid>
             </Grid>
-            
+        </Box> 
+        : 
+        <Box sx={{marginRight: '10%', marginLeft: '10%', height: '25rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+            <Box sx={{display: 'flex', alignItems: 'center', gap: 2, marginTop: '5rem'}}>
+                <motion.div
+                initial={{
+                    boxShadow: '#fa4454 0px 0px 1px 0px'
+                }}
+                animate={{
+                    boxShadow: '#fa4454 0px 0px 10px 1px',
+                    transition: {
+                        duration: 1,
+                        yoyo: Infinity,
+                    }
+                }}
+                style={{width: '0.5rem', height: '0.5rem', borderRadius: '50%', backgroundColor: '#fa4454'}}>
+                </motion.div>
+                <h1 style={{fontFamily: 'Mono', color: '#ece8e1', fontSize: '0.8rem', letterSpacing: '3px', textTransform: 'uppercase'}}>ACT I : Epilogue - AYR 1</h1>	
+            </Box>
+            <h1 style={{fontFamily: 'Mandalore', color: '#ece8e1', fontSize: '8rem', marginBlock: '1rem', textTransform: 'lowercase'}}>
+                <TextScramble text="ather"></TextScramble>
+            </h1>
         </Box>
+        }
+        </>
     )
 }
 
