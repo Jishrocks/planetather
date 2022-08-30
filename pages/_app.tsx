@@ -1,5 +1,4 @@
 import '../styles/globals.css'
-import dynamic from 'next/dynamic'
 import React from 'react'
 
 function MyApp({ Component, pageProps }) {

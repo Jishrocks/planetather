@@ -8,12 +8,16 @@ import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { Parallax } from "react-scroll-parallax";
 
+import assetsStyles from '../../styles/assets.module.css'
+
 const StarQuest = ({children}: any) => {
 
     const animation = useAnimation()
     const [ref, inView] = useInView()
 
-    let isMobile = useMediaQuery('(max-width: 1200px)')
+    let isMobile = useMediaQuery('(max-width: 450px)')
+    let isTablet = useMediaQuery('(max-width: 900px)')
+    let isDesktop = useMediaQuery('(max-width: 1200px)')
 
     const animationVariants = {
         hidden: {
@@ -53,19 +57,28 @@ const StarQuest = ({children}: any) => {
 
     const headingTransition = {duration: 1, type: 'spring'}
 
+    let starquestTopics = ['Inspiration', 'Vision', 'Community', 'Neural', 'Tangibles', 'Collaborations']
+
     return (
-        <motion.div 
+        <motion.div
         transition={transition}
         ref={ref}
         variants={animationVariants}
         initial={"hidden"}
         animate={animation}
-        style={{display: 'flex', height: '28rem', flexDirection: 'column', alignItems: 'start', marginLeft: '10%', marginRight: '10%', gap: 8, background: 'linear-gradient(to top, #080913, #080913, #080913, #080913, #080913, #080913, transparent)'}}>
+        style={{display: 'flex', flexDirection: 'column', alignItems: 'start', marginLeft: '10%', marginRight: '10%', gap: 8, marginTop: '8rem', marginBottom: '8rem',
+        }}>
+
+            {/* First part - aesthetic text and heading */}
             <Grid container gap={6}>
                 <Grid item xs>
-                    <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'start', justifyContent: 'start', paddingBottom: '0.9em', borderBottom: '4px solid #282840'}}>
-                        <h1 style={{fontFamily: 'Subheading', color: '#ece8e1', fontSize: isMobile ? '0.4rem' : '0.6rem', letterSpacing: '0.2em', marginBlock: '0', transform: 'rotateY(180deg)', textTransform: 'uppercase'}}>υπάρχουμε</h1>
-                        <h1 style={{fontFamily: 'Subheading', color: '#ece8e1', fontSize: isMobile ? '0.4rem' : '0.6rem', letterSpacing: '0.2em', marginBlock: '0', transform: 'rotateY(180deg)', textTransform: 'uppercase'}}>\\ για αθέρα</h1>
+                    <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'start', justifyContent: 'start', paddingBottom: '0.9em', marginTop: isMobile ? '0.9em' : '0', borderBottom: '4px solid #282840'}}>
+                        {!isMobile &&
+                            <>
+                            <h1 style={{fontFamily: 'Subheading', color: '#13141e', fontSize: isMobile ? '0.4rem' : '0.6rem', letterSpacing: '0.2em', marginBlock: '0', transform: 'rotateY(180deg)', textTransform: 'uppercase'}}>προσοχή, αυτό είναι</h1>
+                            <h1 style={{fontFamily: 'Subheading', color: '#13141e', fontSize: isMobile ? '0.4rem' : '0.6rem', letterSpacing: '0.2em', marginBlock: '0', transform: 'rotateY(180deg)', textTransform: 'uppercase'}}>\\ ειδοποίηση επιπέδου 7</h1>
+                            </>
+                        }
                     </Box>
                 </Grid>
                 <Grid item xs>
@@ -75,44 +88,22 @@ const StarQuest = ({children}: any) => {
                     transition={headingTransition}
                     initial={"hidden"}
                     variants={headingAnimationVariants}
-                    style={{fontFamily: 'Mandalore', color: '#ece8e1', fontSize: isMobile ? '3.5rem' : '6rem', letterSpacing: '4px', marginBlock: '0'}}>StarQuest</motion.h1>
+                    style={{fontFamily: 'Mandalore', color: '#ece8e1', textShadow: `-2px -2px 0 #111222, 2px -2px 0 #111222, -2px 2px 0 #111222, 2px 2px 0 #111222`, fontSize: isMobile ? '3.5rem' : '6rem', letterSpacing: '4px', marginBlock: '0'}}>StarQuest</motion.h1>
                 </Grid>
             </Grid>
-            {isMobile ? 
-            <Box>
-                <motion.div>
-                    <h1 style={{fontFamily: 'Mono', color: '#ece8e1', fontSize: '1rem', letterSpacing: '1px', textTransform: 'uppercase'}}>What we are here for</h1>
-                    <h1 style={{fontFamily: 'Mono', color: '#c7c3bb', fontSize: '0.8rem', letterSpacing: '1px', marginBlockStart: '2rem'}}>
-                        Before time ever existed, deep into Space, there was an enchanted planet, named Ather. No one knew how it got created, but it had the potent to give birth to a new race, the Atherians. A race rich in power and mystique, with unique yet diverse creatures, living in peace & harmony for a very long time. 
 
-                        With the power of their great mind and body, they created a world rich in tech. But with great power comes the urge to control the uncontrolled. All was fine, until one day, a group set an expedition to explore and extract the core of the Planet to harvest it’s source of energy. The process left imbalances in stability of the core. And this… stroke the beginning of the doom of Ather. 
-
-                        Slowly, the planet was consumed by death and disaster. Ather was destined to be destroyed.
-                    </h1>
-                </motion.div>
+            <Box style={{display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '2rem', gap: 50}}>
+                {starquestTopics.map((topic) => 
+                    <Box key={topic} style={{clipPath: 'polygon(11% 0, 100% 0, 100% 94%, 89% 100%, 0 100%, 0 6%)', width: '16rem', height: '32rem'}}>
+                        <Box style={{width: 'auto', height: 'calc(32rem - 10px)', margin: '5px', background: 'linear-gradient(56deg, rgba(35,38,59,1) 0%, rgba(19,20,30,1) 75%)'}}>
+                            <h1 style={{position: 'relative', fontSize: '2.6rem', fontFamily: 'Hikou', 
+                            textShadow: '0 0 64px rgb(192 219 255 / 48%), 0 0 16px rgb(65 120 255 / 24%)', 
+                            letterSpacing: '4px',
+                            color: '#ece8e1', transform: 'rotate(90deg) translateY(5rem) translateX(8rem)', textTransform: 'uppercase'}}>{topic}</h1>
+                        </Box>
+                    </Box>)
+                }
             </Box>
-            :
-            <Grid container gap={6}>
-                <Grid item xs>
-                    <Parallax speed={-10} style={{position: 'absolute'}}>
-                        <h1 style={{opacity: 0.1, fontSize: '15rem', fontFamily: 'Mandalore', marginLeft: '0rem', marginTop: '25rem', letterSpacing: '4px', color: 'inherit', textShadow: `-1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff`}}>atherians</h1>
-                    </Parallax>
-                </Grid>
-                <Grid item xs>
-                    <motion.div
-                    >
-                        <h1 style={{fontFamily: 'Mono', color: '#ece8e1', fontSize: '1.175rem', letterSpacing: '1px', textTransform: 'uppercase'}}>What we are here for</h1>
-                        <h1 style={{fontFamily: 'Mono', color: '#c7c3bb', fontSize: '0.875rem', letterSpacing: '1px', marginBlockStart: '1rem'}}>
-                            Before time ever existed, deep into Space, there was an enchanted planet, named Ather. No one knew how it got created, but it had the potent to give birth to a new race, the Atherians. A race rich in power and mystique, with unique yet diverse creatures, living in peace & harmony for a very long time. 
-
-                            With the power of their great mind and body, they created a world rich in tech. But with great power comes the urge to control the uncontrolled. All was fine, until one day, a group set an expedition to explore and extract the core of the Planet to harvest it’s source of energy. The process left imbalances in stability of the core. And this… stroke the beginning of the doom of Ather. 
-
-                            Slowly, the planet was consumed by death and disaster. Ather was destined to be destroyed.
-                        </h1>
-                    </motion.div>
-                </Grid>
-            </Grid>
-            }
         </motion.div>
     )
 }

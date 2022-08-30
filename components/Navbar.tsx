@@ -73,7 +73,7 @@ const Navbar = () => {
                 height: '5rem', 
                 position: 'sticky',
                 top: 0,
-                background: 'linear-gradient(to bottom, #080913, 70%, transparent)',
+                background: 'transparent',
                 zIndex: '999'}}>
                 <Box sx={{height: 'inherit', width: 'auto', position: 'sticky', top: 0, marginLeft: '10%', marginRight: '10%', display: 'flex'}}>
                     {/* Logo */}
@@ -82,7 +82,7 @@ const Navbar = () => {
                             // if (parallaxRef) {
                             //     (parallaxRef.current as any).scrollTo(0)
                             // }
-                        }} width={"auto"} height={"42px"} src={"/images/logo.png"} style={{marginRight: '5px', cursor: 'pointer', color: 'white'}}></img>
+                        }} width={"auto"} height={"50px"} src={"/images/Outline.png"} style={{marginRight: '5px', cursor: 'pointer'}}></img>
                         <Typography onClick={() => {
                             // if (parallaxRef) {
                             //     (parallaxRef.current as any).scrollTo(0)
@@ -102,7 +102,7 @@ const Navbar = () => {
                                 // if (parallaxRef) {
                                 //     (parallaxRef.current as any).scrollTo(1)
                                 // }
-                            }}>Epilogue</TabItem>
+                            }}>Prologue</TabItem>
                             <TabItem onClick={() => {
                                 // if (parallaxRef) {
                                 //     (parallaxRef.current as any).scrollTo(2)
@@ -112,7 +112,7 @@ const Navbar = () => {
                                 // if (parallaxRef) {
                                 //     (parallaxRef.current as any).scrollTo(3)
                                 // }
-                            }}>Roadmap</TabItem>
+                            }}>Starquest</TabItem>
                             <TabItem onClick={() => {
                                 // if (parallaxRef) {
                                 //     (parallaxRef.current as any).scrollTo(4)

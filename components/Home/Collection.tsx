@@ -26,7 +26,9 @@ const Collection = ({children}: any) => {
     const animation = useAnimation()
     const [ref, inView] = useInView()
 
-    let isMobile = useMediaQuery('(max-width: 1200px)')
+    let isMobile = useMediaQuery('(max-width: 450px)')
+    let isTablet = useMediaQuery('(max-width: 900px)')
+    let isDesktop = useMediaQuery('(max-width: 1200px)')
 
     const animationVariants = {
         hidden: {
@@ -72,7 +74,7 @@ const Collection = ({children}: any) => {
         variants={animationVariants}
         initial={"hidden"}
         animate={animation}
-        style={{display: 'flex', height: isMobile ? '18rem' : '28rem', flexDirection: 'column', alignItems: 'start', marginLeft: '10%', marginRight: '10%', gap: 8, background: 'linear-gradient(to top, #080913, #080913, #080913, #080913, #080913, #080913, transparent)'}}>
+        style={{display: 'flex', height: isMobile ? '18rem' : '28rem', flexDirection: 'column', alignItems: 'start', marginLeft: '10%', marginRight: '10%', gap: 8}}>
             <Grid container gap={6}>
                 <Grid item xs style={{display: 'flex', justifyContent: 'end'}}>
                     <motion.h1
@@ -123,7 +125,7 @@ const Collection = ({children}: any) => {
                 </Grid>
                 <Grid item xs>
                     <Parallax speed={-10} style={{position: 'absolute', right: '7%', zIndex: -999}}>
-                        <h1 style={{opacity: 0.1, fontSize: '14rem', fontFamily: 'Mandalore', marginTop: '26rem', marginRight: '0rem', letterSpacing: '4px', color: 'inherit', textShadow: `-1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff`}}>squad</h1>
+                        <h1 style={{opacity: 0.1, fontSize: '14rem', fontFamily: 'Mandalore', marginTop: '26rem', marginRight: '0rem', letterSpacing: '4px', color: '#13141e', textShadow: `-1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff`}}>squad</h1>
                     </Parallax>
                 </Grid>
             </Grid>

@@ -1,6 +1,8 @@
 html,
 body {
-  background-color: #080913;
+  background: rgb(35,38,59);
+background: linear-gradient(52deg, rgba(35,38,59,1) 0%, rgba(19,20,30,1) 75%);
+
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -37,3 +39,9 @@ body {
   font-family: FFMark;
   src: url("../public/fonts/FFMark.woff2");
 }
+
+@font-face {
+  font-family: Hikou;
+  src: url("../public/fonts/Hikou\ Light.otf");
+}
+

@@ -14,7 +14,9 @@ const Vision = ({children}: any) => {
     const animation = useAnimation()
     const [ref, inView] = useInView()
 
-    let isMobile = useMediaQuery('(max-width: 1200px)')
+    let isMobile = useMediaQuery('(max-width: 450px)')
+    let isTablet = useMediaQuery('(max-width: 900px)')
+    let isDesktop = useMediaQuery('(max-width: 1200px)')
 
     const animationVariants = {
         hidden: {
@@ -60,7 +62,7 @@ const Vision = ({children}: any) => {
         variants={animationVariants}
         initial={"hidden"}
         animate={animation}
-        style={{display: 'flex', flexDirection: 'column', alignItems: 'start', marginLeft: '10%', marginRight: '10%', gap: 8, background: 'linear-gradient(to top, #080913, #080913, #080913, #080913, #080913, #080913, transparent)'}}>
+        style={{display: 'flex', flexDirection: 'column', alignItems: 'start', marginLeft: '10%', marginRight: '10%', gap: 8, marginTop: '8rem', marginBottom: '8rem'}}>
             <Grid container gap={6}>
                 <Grid item xs style={{display: 'flex', justifyContent: 'end'}}>
                     <motion.h1
@@ -83,7 +85,7 @@ const Vision = ({children}: any) => {
                 <motion.div>
                     <h1 style={{fontFamily: 'Mono', color: '#ece8e1', fontSize: '1rem', letterSpacing: '1px', textAlign: 'right', textTransform: 'uppercase'}}>get. set. ather.</h1>
                     <h1 style={{fontFamily: 'Mono', color: '#c7c3bb', fontSize: '0.8rem', letterSpacing: '1px', marginBlockStart: '2rem'}}>
-                        In the midst of the nft heat-wave all round the world, we are your very own entertainment company, emerging to take over the digital horizon. From comics, web series, merch and games to a super-charged blazing community filled with creativity and zeal, we are ready to zip tie your imaginations and weave a whole new world, hand together.
+                    Amid the nft heat wave around the world, we are your own decentralized entertainment company, that will take over digital horizons. From community-driven comics, web series, merch, cosplays, and gamification to a super-charged blazing community filled with creativity and zeal, we are here to zip your imaginations and weave a whole new world, hand together.
                     </h1>
                 </motion.div>
             </Box>
@@ -93,14 +95,26 @@ const Vision = ({children}: any) => {
                     <motion.div>
                         <h1 style={{fontFamily: 'Mono', color: '#ece8e1', fontSize: '1.175rem', letterSpacing: '1px', textTransform: 'uppercase', textAlign: 'right'}}>get. set. ather.</h1>
                         <h1 style={{fontFamily: 'Mono', color: '#c7c3bb', fontSize: '0.875rem', letterSpacing: '1px', marginBlockStart: '1rem', textAlign: 'right'}}>
-                            In the midst of the nft heat-wave all round the world, we are your very own entertainment company, emerging to take over the digital horizon. From comics, web series, merch and games to a super-charged blazing community filled with creativity and zeal, we are ready to zip tie your imaginations and weave a whole new world, hand together.
+                        Amid the nft heat wave around the world, we are your own decentralized entertainment company, that will take over digital horizons. From community-driven comics, web series, merch, cosplays, and gamification to a super-charged blazing community filled with creativity and zeal, we are here to zip your imaginations and weave a whole new world, hand together.
                         </h1>
                     </motion.div>
                 </Grid>
                 <Grid item xs>
-                    <Parallax speed={-10} style={{position: 'absolute', right: '7%'}}>
-                        <h1 style={{opacity: 0.1, fontSize: '14rem', fontFamily: 'Mandalore', marginTop: '16rem', marginRight: '0rem', letterSpacing: '4px', color: 'inherit', textShadow: `-1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff`}}>protocol</h1>
-                    </Parallax>
+                {/* <motion.img
+								// animate={{
+								//     y: 20,
+								//     // scale: 1.05,
+								//     transition: {
+								//         duration: 4,
+								//         yoyo: Infinity,
+								//     }
+								// }}
+								style={{width: '55rem', position: 'absolute', transform: 'translateY(-20rem) translateX(-5rem)'}}
+								src="/images/atherians-island.png"
+								></motion.img> */}
+                    {/* <Parallax speed={-10} style={{position: 'absolute', right: '7%'}}>
+                        <h1 style={{opacity: 0.1, fontSize: '14rem', fontFamily: 'Mandalore', marginTop: '16rem', marginRight: '0rem', letterSpacing: '4px', color: '#13141e', textShadow: `-1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff`}}>protocol</h1>
+                    </Parallax> */}
                 </Grid>
             </Grid>
             }

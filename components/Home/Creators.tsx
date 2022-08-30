@@ -12,7 +12,9 @@ const Creators = ({children}: any) => {
     const animation = useAnimation()
     const [ref, inView] = useInView()
 
-    let isMobile = useMediaQuery('(max-width: 1200px)')
+    let isMobile = useMediaQuery('(max-width: 450px)')
+    let isTablet = useMediaQuery('(max-width: 900px)')
+    let isDesktop = useMediaQuery('(max-width: 1200px)')
 
     const animationVariants = {
         hidden: {
@@ -59,7 +61,7 @@ const Creators = ({children}: any) => {
         variants={animationVariants}
         initial={"hidden"}
         animate={animation}
-        style={{display: 'flex', height: '28rem', flexDirection: 'column', alignItems: 'start', marginLeft: '10%', marginRight: '10%', gap: 8, background: 'linear-gradient(to top, #080913, #080913, #080913, #080913, #080913, #080913, transparent)'}}>
+        style={{display: 'flex', height: '28rem', flexDirection: 'column', alignItems: 'start', marginLeft: '10%', marginRight: '10%', gap: 8}}>
             <Grid container gap={6}>
                 <Grid item xs>
                     <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'start', justifyContent: 'start', paddingBottom: '0.9em', borderBottom: '4px solid #282840'}}>
