@@ -57,7 +57,7 @@ const StarQuest = ({children}: any) => {
 
     const headingTransition = {duration: 1, type: 'spring'}
 
-    let starquestTopics = ['Inspiration', 'Vision', 'Community', 'Neural', 'Tangibles', 'Collaborations']
+    let starquestTopics = ['Inspiration', 'Community', 'Neural', 'Tangibles', 'Collaborations']
 
     return (
         <motion.div

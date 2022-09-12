@@ -7,6 +7,8 @@ import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { Parallax } from "react-scroll-parallax";
 
+import Image from 'next/image'
+
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 const Vision = ({children}: any) => {
@@ -93,13 +95,20 @@ const Vision = ({children}: any) => {
             <Grid container gap={6}>
                 <Grid item xs>
                     <motion.div>
-                        <h1 style={{fontFamily: 'Mono', color: '#ece8e1', fontSize: '1.175rem', letterSpacing: '1px', textTransform: 'uppercase', textAlign: 'right'}}>get. set. ather.</h1>
-                        <h1 style={{fontFamily: 'Mono', color: '#c7c3bb', fontSize: '0.875rem', letterSpacing: '1px', marginBlockStart: '1rem', textAlign: 'right'}}>
+                        <h1 style={{fontFamily: 'Roobert-Semibold', color: '#ece8e1', fontSize: '1.2rem', letterSpacing: '1px', textTransform: 'uppercase', textAlign: 'right'}}>get. set. ather.</h1>
+                        <h1 style={{fontFamily: 'Roobert-Regular', color: '#c7c3bb', fontSize: '1rem', letterSpacing: '1px', lineHeight: '1.8rem', marginBlockStart: '1rem', textAlign: 'right'}}>
                         Amid the nft heat wave around the world, we are your own decentralized entertainment company, that will take over digital horizons. From community-driven comics, web series, merch, cosplays, and gamification to a super-charged blazing community filled with creativity and zeal, we are here to zip your imaginations and weave a whole new world, hand together.
                         </h1>
                     </motion.div>
                 </Grid>
                 <Grid item xs>
+                        <Box>
+                            <Image
+                                style={{transform: 'translateY(-100px) translateX(80px)'}}
+                                    height={'600px'}
+                                    width={'600px'}
+                                    src={`/images/atherians2/2.PNG`} />
+                        </Box>
                 {/* <motion.img
 								// animate={{
 								//     y: 20,

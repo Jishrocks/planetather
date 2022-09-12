@@ -94,13 +94,15 @@ const Prologue = ({children}: any) => {
             // Mobile view
             <Box>
                 <motion.div>
-                <h1 style={{fontFamily: 'Mono', color: '#ece8e1', fontSize: '1rem', letterSpacing: '1px', textTransform: 'uppercase'}}>EP 00 - the doomsday</h1>
-                    <h1 style={{fontFamily: 'Mono', color: '#c7c3bb', fontSize: '0.8rem', letterSpacing: '1px', marginBlockStart: '2rem'}}>
-                        Before time ever existed, deep into Space, there was an enchanted planet, named Ather. No one knew how it got created, but it had the potent to give birth to a new race, the Atherians. A race rich in power and mystique, with unique yet diverse creatures, living in peace & harmony for a very long time. 
+                <h1 style={{fontFamily: 'Roobert-Regular', color: '#ece8e1', fontSize: '1rem', letterSpacing: '1px', textTransform: 'uppercase'}}>EP 00 - the doomsday</h1>
+                    <h1 style={{fontFamily: 'Roobert-Regular', color: '#c7c3bb', fontSize: '0.8rem', letterSpacing: '1px', marginBlockStart: '2rem'}}>
+                    A story of renewal, love, faith and humble new journeys. An incredible journey to rebuild and restore their remarkable legacy. 
 
-                        With the power of their great mind and body, they created a world rich in tech. But with great power comes the urge to control the uncontrolled. All was fine, until one day, a group set an expedition to explore and extract the core of the Planet to harvest it’s source of energy. The process left imbalances in stability of the core. And this… stroke the beginning of the doom of Ather. 
+                    The story of restoration and the struggles to rebuild and prosper on a desolate planet identified to them as Earth.
 
-                        Slowly, the planet was consumed by death and disaster. Ather was destined to be destroyed.
+                     They are from a planet afar, known as Ather. Situated in a galaxy deep in the womb of the Universe. A planet with enchanted soil. With a core harnessing the mighty power of a thousand Suns. A planet which rivals even time itself. With soil so potent that gave birth to a noble race of intelligent beings who named themselves after their beloved planet they call home. 
+
+                    They are the Atherians...
                     </h1>
                 </motion.div>
             </Box>
@@ -120,13 +122,15 @@ const Prologue = ({children}: any) => {
                 {/* Right grid - full screen */}
                 <Grid item xs>
                     <motion.div>
-                        <h1 style={{fontFamily: 'Mono', color: '#13141e', fontSize: '1.2rem', letterSpacing: '1px', textTransform: 'uppercase'}}>EP 00 - the doomsday</h1>
-                        <h1 style={{fontFamily: 'Mono', color: '#768079', fontSize: '0.95rem', letterSpacing: '1px', marginBlockStart: '1rem'}}>
-                            Before time ever existed, deep into Space, there was an enchanted planet, named Ather. No one knew how it got created, but it had the potent to give birth to a new race, the Atherians. A race rich in power and mystique, with unique yet diverse creatures, living in peace & harmony for a very long time. 
+                        <h1 style={{fontFamily: 'Roobert-Semibold', color: '#13141e', fontSize: '1.2rem', letterSpacing: '1px', textTransform: 'uppercase'}}>EP 00</h1>
+                        <h1 style={{fontFamily: 'Roobert-Regular', color: '#768079', fontSize: '1rem', letterSpacing: '1px', lineHeight: '1.8rem', marginBlockStart: '1rem'}}>
+                        A story of renewal, love, faith and humble new journeys. An incredible journey to rebuild and restore their remarkable legacy. 
 
-                            With the power of their great mind and body, they created a world rich in tech. But with great power comes the urge to control the uncontrolled. All was fine, until one day, a group set an expedition to explore and extract the core of the Planet to harvest it’s source of energy. The process left imbalances in stability of the core. And this… stroke the beginning of the doom of Ather. 
+                        The story of restoration and the struggles to rebuild and prosper on a desolate planet identified to them as Earth.
 
-                            Slowly, the planet was consumed by death and disaster. Ather was destined to be destroyed.
+                         They are from a planet afar, known as Ather. Situated in a galaxy deep in the womb of the Universe. A planet with enchanted soil. With a core harnessing the mighty power of a thousand Suns. A planet which rivals even time itself. With soil so potent that gave birth to a noble race of intelligent beings who named themselves after their beloved planet they call home.
+
+                        They are the Atherians...
                         </h1>
                     </motion.div>
                 </Grid>

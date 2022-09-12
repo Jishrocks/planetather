@@ -36,6 +36,17 @@ background: linear-gradient(52deg, rgba(35,38,59,1) 0%, rgba(19,20,30,1) 75%);
 }
 
 @font-face {
+  font-family: Roobert-Regular;
+  src: url("../public/fonts/Roobert-Regular.otf");
+}
+
+@font-face {
+  font-family: Roobert-Semibold;
+  src: url("../public/fonts/Roobert-SemiBold.woff2");
+}
+
+
+@font-face {
   font-family: FFMark;
   src: url("../public/fonts/FFMark.woff2");
 }

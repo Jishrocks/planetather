@@ -152,9 +152,9 @@ const Home: NextPage = () => {
 								<Collection />
 							</Box>
 
-							<Box className={assetsStyles.whiteBackground} style={{height: '45rem', position: 'relative'}}>
+							{/* <Box className={assetsStyles.whiteBackground} style={{height: '45rem', position: 'relative'}}>
 								<Creators />
-							</Box>
+							</Box> */}
 						</Box>
 
 						<Footer />

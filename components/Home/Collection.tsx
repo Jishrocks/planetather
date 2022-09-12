@@ -96,24 +96,40 @@ const Collection = ({children}: any) => {
                 <Box sx={{transform: 'rotate(358deg)', right: '15%', marginTop: '4rem', position: 'relative'}}>
                     <Parallax translateX={[0, -10]} style={{position: 'absolute', backgroundColor: '#e1ffac'}}>
                         <motion.div initial={{opacity: 0}} animate={{opacity: 1}} style={{display: 'flex', backgroundColor: '#e1ffac'}}>
-                        {shuffle(Array.from({length: 12}, (_, i) => 
+                        {shuffle(Array.from({length: 9}, (_, i) => 
                                 <Box key={i + 1} style={{borderRight: '7px solid black', height: isMobile ? '150px' : '200px', width: isMobile ? '150px' : '200px'}}>
                                     <Image 
                                     height={isMobile ? '150px' : '200px'} 
                                     width={isMobile ? '150px' : '200px'}
-                                    src={`/images/atherians/${i + 1}.png`} />
+                                    src={`/images/atherians2/${i + 1}.PNG`} />
+                                </Box>
+                        ))}
+                        {shuffle(Array.from({length: 3}, (_, i) => 
+                                <Box key={i + 1} style={{borderRight: '7px solid black', height: isMobile ? '150px' : '200px', width: isMobile ? '150px' : '200px'}}>
+                                    <Image 
+                                    height={isMobile ? '150px' : '200px'} 
+                                    width={isMobile ? '150px' : '200px'}
+                                    src={`/images/atherians2/${i + 1}.PNG`} />
                                 </Box>
                         ))}
                         </motion.div>
                     </Parallax>
                     <Parallax translateX={[-10, 0]} style={{position: 'absolute', backgroundColor: '#fec8d8', marginTop: isMobile ? '10rem' : '14rem'}}>
                         <motion.div initial={{opacity: 0}} animate={{opacity: 1}} style={{display: 'flex', backgroundColor: '#fec8d8'}}>
-                        {shuffle(Array.from({length: 11}, (_, i) => 
-                                <Box key={i + 1 + 11} style={{borderRight: '7px solid black', height: isMobile ? '150px' : '200px', width: isMobile ? '150px' : '200px'}}>
+                        {shuffle(Array.from({length: 9}, (_, i) => 
+                                <Box key={i + 1} style={{borderRight: '7px solid black', height: isMobile ? '150px' : '200px', width: isMobile ? '150px' : '200px'}}>
                                     <Image
                                     height={isMobile ? '150px' : '200px'}
                                     width={isMobile ? '150px' : '200px'}
-                                    src={`/images/atherians/${i + 1 + 11}.png`} />
+                                    src={`/images/atherians2/${i + 1}.PNG`} />
+                                </Box>
+                        ))}
+                        {shuffle(Array.from({length: 3}, (_, i) => 
+                                <Box key={i + 1} style={{borderRight: '7px solid black', height: isMobile ? '150px' : '200px', width: isMobile ? '150px' : '200px'}}>
+                                    <Image
+                                    height={isMobile ? '150px' : '200px'}
+                                    width={isMobile ? '150px' : '200px'}
+                                    src={`/images/atherians2/${i + 1}.PNG`} />
                                 </Box>
                         ))}
                         </motion.div>
