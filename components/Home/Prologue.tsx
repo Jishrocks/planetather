@@ -113,9 +113,9 @@ const Prologue = ({children}: any) => {
                 <Grid item xs>
                     
                     {/* Korean text - Prologue */}
-                    <Parallax className={assetsStyles.whiteBackgroundText} speed={15} style={{position: 'absolute'}}>
+                    {/* <Parallax className={assetsStyles.whiteBackgroundText} speed={15} style={{position: 'absolute'}}>
                         <h1 style={{opacity: 0.1, fontSize: '15rem', fontFamily: 'Mandalore', marginTop: '8rem', letterSpacing: '4px', color: '#ece8e1', textShadow: '-2px -2px 0 #111222, 2px -2px 0 #111222, -2px 2px 0 #111222, 2px 2px 0 #111222', transform: 'rotate(90deg) translateY(58rem) translateX(25rem)'}}>시작시작시작시작</h1>    
-                    </Parallax>
+                    </Parallax> */}
 
                 </Grid>
 

@@ -82,7 +82,7 @@ const Navbar = () => {
                             // if (parallaxRef) {
                             //     (parallaxRef.current as any).scrollTo(0)
                             // }
-                        }} width={"auto"} height={"50px"} src={"/images/Outline.png"} style={{marginRight: '5px', cursor: 'pointer'}}></img>
+                        }} width={"auto"} height={"40px"} src={"/images/logov2.png"} style={{marginRight: '10px', cursor: 'pointer'}}></img>
                         <Typography onClick={() => {
                             // if (parallaxRef) {
                             //     (parallaxRef.current as any).scrollTo(0)

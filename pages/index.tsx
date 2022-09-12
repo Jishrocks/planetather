@@ -61,10 +61,16 @@ const Home: NextPage = () => {
 				<ParallaxProvider>
 					<Box sx={{overflowX: 'hidden'}}>
 						{/* Landing page korean text and characters */}
-						<h1 style={{position: 'absolute', width: 'auto', marginLeft: '45%', opacity: 0.1, transform: 'translateY(-11rem) translateX(0rem)', fontFamily: 'Mandalore', color: '#13141e', fontSize: '13rem', letterSpacing: '3px', textTransform: 'uppercase', textShadow: `-2px -2px 200px #595488, 2px -2px 10px #595488, -2px 2px 10px #595488, 2px 2px 10px #595488`}}>시작시시작시시작시시작시시작시시작시시작시시작시시작시시작시</h1>	
-						{/* <Box style={{overflowX: 'hidden', background: 'linear-gradient(56deg, rgba(35,38,59,0) 0%, rgba(19,20,30,1) 90%)', width: '30rem', height: '100rem', position: 'absolute', marginLeft: '75%', transform: 'translateY(-10rem)'}}></Box>  */}
-						<Parallax className={assetsStyles.overlayElement} speed={20} style={{marginLeft: '45%'}}>
-								<motion.img
+						<img width={"auto"} height={"1200px"} style={{position: 'absolute', opacity: 0.1, marginLeft: '50%', transform: 'translateY(-200px)'}} src={"/images/logo-outline.png"}></img>
+						{/* <img width={"auto"} height={"600px"} style={{position: 'absolute', opacity: 0.1, marginRight: '50%', transform: 'translateY(200px) translateX(-200px)'}} src={"/images/logo-outline.png"}></img> */}
+						{/* <h1 style={{position: 'absolute', width: 'auto', marginLeft: '45%', opacity: 0.1, transform: 'translateY(-11rem) translateX(0rem)', fontFamily: 'Mandalore', color: '#13141e', fontSize: '13rem', letterSpacing: '3px', textTransform: 'uppercase', textShadow: `-2px -2px 200px #595488, 2px -2px 10px #595488, -2px 2px 10px #595488, 2px 2px 10px #595488`}}>시작시시작시시작시시작시시작시시작시시작시시작시시작시시작시</h1>	 */}
+						<motion.img
+							style={{width: '160rem', position: 'absolute', transform: 'translateY(-27rem) translateX(-105rem)', filter: 'blur(0.5px)'}}
+							src="/images/atherians1.png"
+						></motion.img>
+						{/* <motion.img style={{position: 'absolute', opacity: 0.4, width: '16rem', transform: 'translateY(-6rem) translateX(27rem)'}} src='/images/smokecig.png'></motion.img> */}
+
+								{/* <motion.img
 								// animate={{
 								//     y: 20,
 								//     // scale: 1.05,
@@ -73,9 +79,11 @@ const Home: NextPage = () => {
 								//         yoyo: Infinity,
 								//     }
 								// }}
-								style={{width: '51rem', position: 'absolute', transform: 'translateY(9rem) translateX(2rem)'}}
-								src="/images/atherians-island.png"
-								></motion.img>
+								style={{width: '132rem', position: 'absolute', transform: 'translateY(-5rem) translateX(50rem)'}}
+								src="/images/atherians1.png"
+								></motion.img> */}
+						
+						<Parallax className={assetsStyles.overlayElement} speed={20} style={{marginLeft: '45%'}}>
 								
 								{/* <motion.img
 								// animate={{

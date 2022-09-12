@@ -102,13 +102,13 @@ const Vision = ({children}: any) => {
                     </motion.div>
                 </Grid>
                 <Grid item xs>
-                        <Box>
+                        {/* <Box>
                             <Image
                                 style={{transform: 'translateY(-100px) translateX(80px)'}}
                                     height={'600px'}
                                     width={'600px'}
                                     src={`/images/atherians2/2.PNG`} />
-                        </Box>
+                        </Box> */}
                 {/* <motion.img
 								// animate={{
 								//     y: 20,
@@ -118,7 +118,7 @@ const Vision = ({children}: any) => {
 								//         yoyo: Infinity,
 								//     }
 								// }}
-								style={{width: '55rem', position: 'absolute', transform: 'translateY(-20rem) translateX(-5rem)'}}
+								style={{width: '53rem', position: 'absolute', transform: 'translateY(-20rem) translateX(-5rem)'}}
 								src="/images/atherians-island.png"
 								></motion.img> */}
                     {/* <Parallax speed={-10} style={{position: 'absolute', right: '7%'}}>
