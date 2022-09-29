@@ -2,8 +2,6 @@ import { NextPage } from 'next'
 
 import Head from 'next/head'
 
-import Box from '@mui/material/Box'
-
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
 
@@ -15,17 +13,35 @@ import StarQuest from '../components/Home/StarQuest'
 import Vision from '../components/Home/Vision'
 
 import { Parallax, ParallaxProvider } from 'react-scroll-parallax'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { motion } from 'framer-motion'
 
 import assetsStyles from '../styles/assets.module.css'
+import StickyFooter from '../components/StickyFooter'
+
+import Lottie from 'react-lottie';
+import scrollDown from '../public/scroll-down.json'
+
+import Scrollbar from "react-smooth-scrollbar";
+import SmoothScrollbar from 'smooth-scrollbar';
 
 const Home: NextPage = () => {
+
+	useEffect(() => {
+		let options = {
+			damping: 0.04,
+			thumbMinSize: 20,
+			renderByPixels: true,
+			continuousScrolling: true,
+		}
+		// SmoothScrollbar.init(document.body, options)
+		SmoothScrollbar.initAll(options)
+	}, [])
 
 	return (
 		<>
 			<Head>
-				<title>Planet Ather | Home</title>
+				<title>Ather</title>
 				<meta name="description" content="idk right now I'll change this later" />
 
 				{/* <!-- Facebook Meta Tags --> */}
@@ -57,118 +73,101 @@ const Home: NextPage = () => {
 			</Head>
 
 			<Navbar />
-			<Box sx={{overflowX: 'hidden'}}>
+
+			<div style={{overflowX: 'hidden'}}>
 				<ParallaxProvider>
-					<Box sx={{overflowX: 'hidden'}}>
+					<div style={{overflowX: 'hidden'}}>
 						{/* Landing page korean text and characters */}
-						<img width={"auto"} height={"1200px"} style={{position: 'absolute', opacity: 0.1, marginLeft: '50%', transform: 'translateY(-200px)'}} src={"/images/logo-outline.png"}></img>
-						{/* <img width={"auto"} height={"600px"} style={{position: 'absolute', opacity: 0.1, marginRight: '50%', transform: 'translateY(200px) translateX(-200px)'}} src={"/images/logo-outline.png"}></img> */}
-						{/* <h1 style={{position: 'absolute', width: 'auto', marginLeft: '45%', opacity: 0.1, transform: 'translateY(-11rem) translateX(0rem)', fontFamily: 'Mandalore', color: '#13141e', fontSize: '13rem', letterSpacing: '3px', textTransform: 'uppercase', textShadow: `-2px -2px 200px #595488, 2px -2px 10px #595488, -2px 2px 10px #595488, 2px 2px 10px #595488`}}>시작시시작시시작시시작시시작시시작시시작시시작시시작시시작시</h1>	 */}
+
 						<motion.img
-							style={{width: '160rem', position: 'absolute', transform: 'translateY(-27rem) translateX(-105rem)', filter: 'blur(0.5px)'}}
-							src="/images/atherians1.png"
+						style={{width: '100%', position: 'absolute', transform: 'translateX(-10rem) translateY(-17rem)', opacity: 1}}
+						src="/images/meshgradient.jpeg"
 						></motion.img>
-						{/* <motion.img style={{position: 'absolute', opacity: 0.4, width: '16rem', transform: 'translateY(-6rem) translateX(27rem)'}} src='/images/smokecig.png'></motion.img> */}
 
-								{/* <motion.img
-								// animate={{
-								//     y: 20,
-								//     // scale: 1.05,
-								//     transition: {
-								//         duration: 4,
-								//         yoyo: Infinity,
-								//     }
-								// }}
-								style={{width: '132rem', position: 'absolute', transform: 'translateY(-5rem) translateX(50rem)'}}
-								src="/images/atherians1.png"
-								></motion.img> */}
+
+						<div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', position: 'absolute', width: '100vw', transform: 'translateY(45rem)'}}>
+							<Lottie
+								style={{opacity: 0.5}}
+								options={{animationData: scrollDown, autoplay: true, loop: true}}
+								height={50}
+								width={50}
+							/>
+							<h1 style={{fontFamily: 'Mono', color: 'silver', fontSize: '0.5625rem', marginBlock: 0, textTransform: 'uppercase', marginTop: '0.5625rem', letterSpacing: '0.5px'}}>Scroll to view more</h1>
+						</div>
 						
-						<Parallax className={assetsStyles.overlayElement} speed={20} style={{marginLeft: '45%'}}>
-								
-								{/* <motion.img
-								// animate={{
-								//     y: 20,
-								//     // scale: 1.05,
-								//     transition: {
-								//         duration: 4,
-								//         yoyo: Infinity,
-								//     }
-								// }}
-								style={{width: '50rem', position: 'absolute', transform: 'translateY(13rem)'}}
-								src="/images/atherians-hero.png"
-								></motion.img> */}
-								
-								{/* <motion.img
-								// animate={{
-								//     y: 20,
-								//     // scale: 1.05,
-								//     transition: {
-								//         duration: 4,
-								//         yoyo: Infinity,
-								//     }
-								// }}
-								style={{width: '29rem', position: 'absolute', transform: 'translateY(13rem) translateX(30rem)'}}
-								src="/images/naruto3.png"
-								></motion.img>
-								<motion.img
-								// animate={{
-								//     y: 20,
-								//     // scale: 1.05,
-								//     transition: {
-								//         duration: 4,
-								//         yoyo: Infinity,
-								//     }
-								// }}
-								style={{width: '21rem', position: 'absolute', transform: 'translateY(13rem) translateX(-2rem)'}}
-								src="/images/naruto2.png"
-								></motion.img>
-								<motion.img
-								// animate={{
-								//     y: 20,
-								//     // scale: 1.05,
-								//     transition: {
-								//         duration: 4,
-								//         yoyo: Infinity,
-								//     }
-								// }}
-								style={{width: '18rem', position: 'absolute', transform: 'translateY(10rem) translateX(12rem)'}}
-								src="/images/naruto.png"
-								></motion.img> */}
-						</Parallax>
+						<motion.img
+						style={{width: '150rem', position: 'absolute', transform: 'translateX(-10rem) translateY(-13rem)', opacity: 0.1}}
+						src="/images/graffitti.png"
+						>
+						</motion.img>
 
-						<Parallax style={{overflow: 'hidden'}}>
+						<Parallax style={{overflow: 'visible'}}>
 							<Landing />
 						</Parallax>
 
-						<Box sx={{marginBottom: '5rem', display: 'flex', flexDirection: 'column'}}>
+						<div style={{marginBottom: '5rem', display: 'flex', flexDirection: 'column'}}>
 							
 							{/* Used clip path to make a shape-cut  */}
 
-							<Box className={assetsStyles.whiteBackground} style={{height: '45rem', position: 'relative'}}>
-								<Prologue />
-							</Box>
-
-							<Box style={{height: '40rem', position: 'relative'}}>
-								<Vision />
-							</Box>
-
-							<Box className={assetsStyles.whiteBackground} style={{height: '57rem', position: 'relative'}}>
-								<StarQuest />
-							</Box>
 							
-							<Box style={{height: '45rem', position: 'relative'}}>
-								<Collection />
-							</Box>
+							<div style={{height: '30rem', marginTop: '30rem', marginBottom: '1rem', position: 'relative', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', zIndex: 3}}>
+								<motion.h1 style={{fontFamily: 'FKScreamer', fontSize: '4.8rem', textTransform: 'uppercase', color: 'silver', textAlign: 'center', letterSpacing: '2px'}}>
+									<span style={{fontSize: '6rem', color: 'transparent', backgroundImage: 'linear-gradient(56deg, #f3a5da 0%, #81cefd 100%)', WebkitBackgroundClip: 'text'}}>Nostalgia meets web3.</span>
+									<br></br>
+									A quest for the survival of<br></br> <span style={{opacity: 0.7}}>10000 Atherians</span> is in your<br></br> hands now.
+								</motion.h1>
+							</div>
+							
+							{/* <div style={{width: '130%', height: '15rem', position: 'absolute', transform: 'translateY(50rem) translateX(-10rem) rotate(-5deg)', background: 'linear-gradient(to bottom, #fff, #fff, transparent)', zIndex: 2}}>
 
-							{/* <Box className={assetsStyles.whiteBackground} style={{height: '45rem', position: 'relative'}}>
-								<Creators />
-							</Box> */}
-						</Box>
+							</div> */}
+							{/* <motion.img
+							style={{width: '140rem', position: 'absolute', transform: 'translateX(-5rem) translateY(25rem) rotate(-6deg)', opacity: 0.05}}
+							src="/images/mystique.png"
+							>
+							</motion.img> */}
 
-						<Footer />
-					</Box>
+							<div style={{display: 'flex', clipPath: 'polygon(100% 0, 100% 93%, 0 100%, 0 7%)', height: '50rem', marginBottom: '15rem', justifyContent: 'center', alignItems: 'center', transform: 'translateY(5rem)', zIndex: 4}}>
+								<div style={{position: 'absolute', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', zIndex: 2}}>
+									<h1 style={{fontFamily: 'Mono', fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.4)', marginBlock: 0}}>THE STORY BEHIND</h1>
+									<h1 style={{fontFamily: 'FKScreamer', fontSize: '10rem', color: '#fff', marginBlock: 0}}>THE ORIGIN</h1>
+
+									<div style={{background: 'rgba(7, 14, 29, 0.6)', color: 'white', width: '10rem', height: '48px', marginTop: '2.5rem', borderRadius: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontFamily: 'FFMark', letterSpacing: '1px'}}>EXPLORE</div>
+								</div>
+								<Parallax translateY={[30, -15]} style={{clipPath: 'polygon(100% 0, 100% 93%, 0 100%, 0 7%)'}}>
+									{/* <motion.img
+									style={{width: '140rem', position: 'absolute', transform: 'translateX(-5rem) translateY(-18rem) rotate(1deg)', opacity: 1, zIndex: 5}}
+									src="/images/papercut.png"
+									>
+									</motion.img> */}
+									<video loop autoPlay muted style={{width: 'auto', height: '150%', position: 'relative'}} src="/videos/spaceship.mp4"></video>
+									{/* <motion.img
+									style={{width: '140rem', position: 'absolute', transform: 'translateX(-125rem) translateY(43rem) rotate(180deg)', opacity: 1, zIndex: 5}}
+									src="/images/papercut.png"
+									>
+									</motion.img> */}
+								</Parallax>
+							</div>
+
+							<Collection />
+
+							{/* <div className={assetsStyles.whiteBackground} style={{height: '45rem', position: 'relative'}}>
+								<Prologue />
+							</div> */}
+
+							<Vision />
+
+							<StarQuest />
+
+							{/* <Creators /> */}
+						</div>
+					</div>
+
+					<Footer />
 				</ParallaxProvider>
-			</Box>
+			</div>
+
+			<StickyFooter />
 		</>
 	)
 }

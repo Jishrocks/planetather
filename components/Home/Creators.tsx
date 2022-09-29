@@ -1,10 +1,8 @@
-import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { motion, useAnimation } from "framer-motion";
 
-import React from "react";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
 const Creators = ({children}: any) => {
@@ -61,56 +59,27 @@ const Creators = ({children}: any) => {
         variants={animationVariants}
         initial={"hidden"}
         animate={animation}
-        style={{display: 'flex', height: '28rem', flexDirection: 'column', alignItems: 'start', marginLeft: '10%', marginRight: '10%', gap: 8}}>
-            <Grid container gap={6}>
-                <Grid item xs>
-                    <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'start', justifyContent: 'start', paddingBottom: '0.9em', borderBottom: '4px solid #282840'}}>
-                        <h1 style={{fontFamily: 'Subheading', color: '#ece8e1', fontSize: isMobile ? '0.4rem' : '0.6rem', letterSpacing: '0.2em', marginBlock: '0', transform: 'rotateY(180deg)', textTransform: 'uppercase'}}>υπάρχουμε</h1>
-                        <h1 style={{fontFamily: 'Subheading', color: '#ece8e1', fontSize: isMobile ? '0.4rem' : '0.6rem', letterSpacing: '0.2em', marginBlock: '0', transform: 'rotateY(180deg)', textTransform: 'uppercase'}}>\\ για αθέρα</h1>
-                    </Box>
-                </Grid>
-                <Grid item xs>
-                    <motion.h1
+        style={{display: 'flex', flexDirection: 'column', marginLeft: '7.5rem', marginRight: '7.5rem', marginTop: '7.5rem', marginBottom: '7.5rem', height: 'auto'}}>
+            <div style={{display: 'flex', justifyContent: 'left', alignItems: 'start'}}>
+                <motion.h1
                     ref={ref}
                     animate={animation}
                     transition={headingTransition}
                     initial={"hidden"}
                     variants={headingAnimationVariants}
-                    style={{fontFamily: 'Mandalore', color: '#ece8e1', fontSize: isMobile ? '3.5rem' : '6rem', letterSpacing: '4px', marginBlock: '0'}}>creators</motion.h1>
-                </Grid>
-            </Grid>
-            {isMobile ?
-            <Box>
-                <motion.div>
-                    <h1 style={{fontFamily: 'Mono', color: '#ece8e1', fontSize: '1rem', letterSpacing: '1px', textTransform: 'uppercase'}}>this is us</h1>
-                    <h1 style={{fontFamily: 'Mono', color: '#c7c3bb', fontSize: '0.8rem', letterSpacing: '1px', marginBlockStart: '2rem'}}>
-                        Before time ever existed, deep into Space, there was an enchanted planet, named Ather. No one knew how it got created, but it had the potent to give birth to a new race, the Atherians. A race rich in power and mystique, with unique yet diverse creatures, living in peace & harmony for a very long time. 
+                    style={{fontFamily: 'FFMark', color: '#212121', fontSize: '5rem', letterSpacing: '4px', textTransform: 'uppercase'}}>
+                        <span style={{fontSize: '3.5rem', color: 'silver'}}>03</span> Creators
+                </motion.h1>
+            </div>
 
-                        With the power of their great mind and body, they created a world rich in tech. But with great power comes the urge to control the uncontrolled. All was fine, until one day, a group set an expedition to explore and extract the core of the Planet to harvest it’s source of energy. The process left imbalances in stability of the core. And this… stroke the beginning of the doom of Ather. 
+            {/* <div style={{display: 'flex', position: 'absolute', height: '27.5rem', width: '10rem', left: '-3.5rem', transform: 'translateY(14.25rem)', border: '1px solid rgba(0, 0, 0, 0.1)', borderRadius: '20px'}}>
+            </div>
 
-                        Slowly, the planet was consumed by death and disaster. Ather was destined to be destroyed.
-                    </h1>
-                </motion.div>
-            </Box>
-            :
-            <Grid container gap={6}>
-                <Grid item xs>
-                </Grid>
-                <Grid item xs>
-                    <motion.div
-                    >
-                        <h1 style={{fontFamily: 'Mono', color: '#ece8e1', fontSize: '1.175rem', letterSpacing: '1px', textTransform: 'uppercase'}}>this is us</h1>
-                        <h1 style={{fontFamily: 'Mono', color: '#c7c3bb', fontSize: '0.875rem', letterSpacing: '1px', marginBlockStart: '1rem'}}>
-                            Before time ever existed, deep into Space, there was an enchanted planet, named Ather. No one knew how it got created, but it had the potent to give birth to a new race, the Atherians. A race rich in power and mystique, with unique yet diverse creatures, living in peace & harmony for a very long time. 
+            <div style={{display: 'flex', position: 'absolute', height: '27.5rem', width: '10rem', right: '-3.5rem', transform: 'translateY(14.25rem)', border: '1px solid rgba(0, 0, 0, 0.1)', borderRadius: '20px'}}>
+            </div> */}
 
-                            With the power of their great mind and body, they created a world rich in tech. But with great power comes the urge to control the uncontrolled. All was fine, until one day, a group set an expedition to explore and extract the core of the Planet to harvest it’s source of energy. The process left imbalances in stability of the core. And this… stroke the beginning of the doom of Ather. 
-
-                            Slowly, the planet was consumed by death and disaster. Ather was destined to be destroyed.
-                        </h1>
-                    </motion.div>
-                </Grid>
-            </Grid>
-            }
+            {/* <div style={{display: 'flex', position: 'absolute', height: '27.5rem', width: '10rem', transform: 'translateY(14.25rem)', border: '1px solid rgba(0, 0, 0, 0.05)', borderRadius: '20px'}}>
+            </div> */}
         </motion.div>
     )
 }

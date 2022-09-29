@@ -1,9 +1,9 @@
-import Box from "@mui/material/Box";
+/* eslint-disable @next/next/no-img-element */
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 
 import { styled } from '@mui/system';
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import React from "react";
 
@@ -16,7 +16,7 @@ const TabItem = styled('p')({
     cursor: 'pointer',
     textTransform: 'uppercase',
     letterSpacing: '1px',
-    color: 'white',
+    color: '#fff',
     transition: '0.15s ease-in-out',
     ":hover": {
         textShadow: "0 0 16px rgb(255, 255, 255, 0.6)"
@@ -36,16 +36,15 @@ const Navbar = () => {
     let isMobile = useMediaQuery('(max-width: 1200px)')
 
     const [lastScrollTop, setScrollTop] = useState(0)
-
-    const animation = useAnimation()
+    const [showNavbar, setShowNavbar] = useState(true)
 
     useEffect(() => {
         let eventListener = () => {
             var scrollTop = document.documentElement.scrollTop
-            if (scrollTop > lastScrollTop) {
-                animation.start('hidden')
+            if (scrollTop > lastScrollTop && scrollTop > 200) {
+                setShowNavbar(false)
             } else {
-                animation.start('visible')
+                setShowNavbar(true)
             }
             setScrollTop(scrollTop)
         }
@@ -56,7 +55,7 @@ const Navbar = () => {
 		<>
 			<motion.div
             transition={{
-                y: { type: "spring", stiffness: 300, damping: 50 },
+                y: { type: "spring", stiffness: 500, damping: 50 },
                 duration: 1.5
             }}
             variants={{
@@ -70,33 +69,19 @@ const Navbar = () => {
             initial={"visible"}
             // animate={animation}
             style={{
-                height: '5rem', 
+                height: '4.5rem', 
                 position: 'sticky',
                 top: 0,
-                background: 'transparent',
+                y: showNavbar ? '0' : '-100px',
+                transition: 'all .25s ease-in-out',
+                // background: 'linear-gradient(to bottom, #21212195, transparent)',
+                background: 'rgb(0, 0, 0, 0.2)',
+                backdropFilter: 'blur(30px)',
+                // borderBottom: '1px solid rgba(255, 255, 255, 0.9)',
                 zIndex: '999'}}>
-                <Box sx={{height: 'inherit', width: 'auto', position: 'sticky', top: 0, marginLeft: '10%', marginRight: '10%', display: 'flex'}}>
-                    {/* Logo */}
-                    <Box style={{display: 'flex', justifyContent: 'left', alignItems: 'center', width: '30%'}}>
-                        <img onClick={() => {
-                            // if (parallaxRef) {
-                            //     (parallaxRef.current as any).scrollTo(0)
-                            // }
-                        }} width={"auto"} height={"40px"} src={"/images/logov2.png"} style={{marginRight: '10px', cursor: 'pointer'}}></img>
-                        <Typography onClick={() => {
-                            // if (parallaxRef) {
-                            //     (parallaxRef.current as any).scrollTo(0)
-                            // }
-                        }} sx={{color: 'white', fontFamily: 'FFMark', fontSize: '1.5rem', cursor: 'pointer'}}>planet</Typography>
-                        <Typography onClick={() => {
-                            // if (parallaxRef) {
-                            //     (parallaxRef.current as any).scrollTo(0)
-                            // }
-                        }} sx={{color: 'white', fontFamily: 'FFMark', fontWeight: 'bold', fontSize: '1.5rem', cursor: 'pointer'}}>ather</Typography>
-                    </Box>
-
+                <div style={{height: 'inherit', width: 'auto', position: 'sticky', top: 0, marginLeft: '4rem', marginRight: '4rem', display: 'grid', gridTemplateColumns: '1fr 1fr 1fr'}}>
                     {/* Navigation */}
-                    <Box style={{display: !isMobile ? 'flex' : 'none', width: '1000%', justifyContent: 'center', alignItems: 'center'}}>
+                    <div style={{display: !isMobile ? 'flex' : 'none', justifyContent: 'left', alignItems: 'center'}}>
                         <Tab>
                             <TabItem onClick={() => {
                                 // if (parallaxRef) {
@@ -119,10 +104,29 @@ const Navbar = () => {
                                 // }
                             }}>Creators</TabItem>
                         </Tab>
-                    </Box>
+                    </div>
+                    
+                    {/* Logo */}
+                    <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                        <img onClick={() => {
+                            // if (parallaxRef) {
+                            //     (parallaxRef.current as any).scrollTo(0)
+                            // }
+                        }} width={"auto"} height={"40px"} src={"/images/logov2.png"} style={{marginRight: '10px', cursor: 'pointer'}}></img>
+                        {/* <Typography onClick={() => {
+                            // if (parallaxRef) {
+                            //     (parallaxRef.current as any).scrollTo(0)
+                            // }
+                        }} style={{color: 'white', fontFamily: 'FFMark', fontSize: '1.5rem', cursor: 'pointer'}}>planet</Typography>
+                        <Typography onClick={() => {
+                            // if (parallaxRef) {
+                            //     (parallaxRef.current as any).scrollTo(0)
+                            // }
+                        }} style={{color: 'white', fontFamily: 'FFMark', fontWeight: 'bold', fontSize: '1.5rem', cursor: 'pointer'}}>ather</Typography> */}
+                    </div>
 
                     {/* Socials */}
-                    <Box sx={{display: !isMobile ? 'flex' : 'none', justifyContent: 'right', alignItems: 'center', gap: 4, width: '30%'}}>
+                    <div style={{display: !isMobile ? 'flex' : 'none', justifyContent: 'right', alignItems: 'center', gap: 4}}>
                         <motion.img onClick={() => {
                             window.open("https://discord.gg/xjETANVKBe")
                         }} whileHover={{scale: 1.1}} src="/images/discord.avif" style={{marginTop: '2px', cursor: 'pointer'}} width={"18px"} height={"auto"} alt="discord" />
@@ -132,15 +136,15 @@ const Navbar = () => {
                         <motion.img onClick={() => {
                             window.open("https://www.instagram.com/planetather/")
                         }} whileHover={{scale: 1.1}} src="/images/instagram.svg" style={{cursor: 'pointer'}} width={"18px"} height={"auto"} alt="instagram" />
-                    </Box>
+                    </div>
 
                     {/* Menu */}
-                    <Box sx={{display: !isMobile ? 'none' : 'flex', alignItems: 'center', justifyContent: 'right', width: '70%'}}>
-                        <Box sx={{display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                            <MenuIcon sx={{color: 'white', fontSize: '32px'}}></MenuIcon>
-                        </Box>
-                    </Box>
-                </Box>
+                    <div style={{display: !isMobile ? 'none' : 'flex', alignItems: 'center', justifyContent: 'right', width: '70%'}}>
+                        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                            <MenuIcon style={{color: 'white', fontSize: '32px'}}></MenuIcon>
+                        </div>
+                    </div>
+                </div>
             </motion.div>
 		</>
 	)

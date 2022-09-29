@@ -1,4 +1,3 @@
-import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { motion, useAnimation } from "framer-motion";
@@ -57,53 +56,47 @@ const StarQuest = ({children}: any) => {
 
     const headingTransition = {duration: 1, type: 'spring'}
 
-    let starquestTopics = ['Inspiration', 'Community', 'Neural', 'Tangibles', 'Collaborations']
+    let starquestTopics = ['Inspiration', 'Community', 'Neural Networks', 'Tangibles', 'Collaborations']
 
     return (
-        <motion.div
+        <motion.div 
         transition={transition}
         ref={ref}
         variants={animationVariants}
         initial={"hidden"}
         animate={animation}
-        style={{display: 'flex', flexDirection: 'column', alignItems: 'start', marginLeft: '10%', marginRight: '10%', gap: 8, marginTop: '8rem', marginBottom: '8rem',
-        }}>
-
-            {/* First part - aesthetic text and heading */}
-            <Grid container gap={6}>
-                <Grid item xs>
-                    <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'start', justifyContent: 'start', paddingBottom: '0.9em', marginTop: isMobile ? '0.9em' : '0', borderBottom: '4px solid #282840'}}>
-                        {!isMobile &&
-                            <>
-                            <h1 style={{fontFamily: 'Subheading', color: '#13141e', fontSize: isMobile ? '0.4rem' : '0.6rem', letterSpacing: '0.2em', marginBlock: '0', transform: 'rotateY(180deg)', textTransform: 'uppercase'}}>προσοχή, αυτό είναι</h1>
-                            <h1 style={{fontFamily: 'Subheading', color: '#13141e', fontSize: isMobile ? '0.4rem' : '0.6rem', letterSpacing: '0.2em', marginBlock: '0', transform: 'rotateY(180deg)', textTransform: 'uppercase'}}>\\ ειδοποίηση επιπέδου 7</h1>
-                            </>
-                        }
-                    </Box>
-                </Grid>
-                <Grid item xs>
-                    <motion.h1
+        style={{display: 'flex', flexDirection: 'column', marginLeft: '7.5rem', marginRight: '7.5rem', marginTop: '7.5rem', marginBottom: '7.5rem', height: 'auto'}}>
+            <div style={{display: 'flex', justifyContent: 'left', alignItems: 'start'}}>
+                <motion.h1
                     ref={ref}
                     animate={animation}
                     transition={headingTransition}
                     initial={"hidden"}
                     variants={headingAnimationVariants}
-                    style={{fontFamily: 'Mandalore', color: '#ece8e1', textShadow: `-2px -2px 0 #111222, 2px -2px 0 #111222, -2px 2px 0 #111222, 2px 2px 0 #111222`, fontSize: isMobile ? '3.5rem' : '6rem', letterSpacing: '4px', marginBlock: '0'}}>StarQuest</motion.h1>
-                </Grid>
-            </Grid>
+                    style={{fontFamily: 'FFMark', color: 'transparent', backgroundImage: 'linear-gradient(56deg, #f3a5da 0%, #81cefd 100%)', WebkitBackgroundClip: 'text', fontSize: '5rem', letterSpacing: '4px', textTransform: 'uppercase'}}>
+                        <span style={{fontSize: '3.5rem', color: 'silver'}}>02</span> StarQuest
+                </motion.h1>
+            </div>
 
-            <Box style={{display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '2rem', gap: 50}}>
-                {starquestTopics.map((topic) => 
-                    <Box key={topic} style={{clipPath: 'polygon(11% 0, 100% 0, 100% 94%, 89% 100%, 0 100%, 0 6%)', width: '16rem', height: '32rem'}}>
-                        <Box style={{width: 'auto', height: 'calc(32rem - 10px)', margin: '5px', background: 'linear-gradient(56deg, rgba(35,38,59,1) 0%, rgba(19,20,30,1) 75%)'}}>
-                            <h1 style={{position: 'relative', fontSize: '2.6rem', fontFamily: 'Hikou', 
-                            textShadow: '0 0 64px rgb(192 219 255 / 48%), 0 0 16px rgb(65 120 255 / 24%)', 
-                            letterSpacing: '4px',
-                            color: '#ece8e1', transform: 'rotate(90deg) translateY(5rem) translateX(8rem)', textTransform: 'uppercase'}}>{topic}</h1>
-                        </Box>
-                    </Box>)
+            <div style={{display: 'grid', gridTemplateColumns: '1fr '.repeat(starquestTopics.length)}}>
+                {
+                    Array.from({length: starquestTopics.length}, (_, i) => 
+                        <div key={i + 1} style={{display: 'flex', flexDirection: 'column', justifyContent: 'end', height: '30rem', width: '20rem', borderRadius: '20px', border: '1px solid rgba(0, 0, 0, 0.1)'}}>
+                            <h1 style={{fontFamily: 'FFMark', color: 'silver', fontSize: '3.5rem', marginLeft: '1.75rem', textTransform: 'uppercase', marginBlock: 0}}>0{i + 1}</h1>
+                            <h1 style={{fontFamily: 'FFMark', color: '#404040', fontSize: '1.2rem', marginLeft: '2rem', marginBottom: '2rem', textTransform: 'uppercase'}}>{starquestTopics[i]} <span style={{color: 'rgb(254, 200, 216)'}}>↗</span></h1>
+                        </div>
+                    )
                 }
-            </Box>
+            </div>
+
+            {/* <div style={{display: 'flex', position: 'absolute', height: '27.5rem', width: '10rem', left: '-3.5rem', transform: 'translateY(14.25rem)', border: '1px solid rgba(0, 0, 0, 0.1)', borderRadius: '20px'}}>
+            </div>
+
+            <div style={{display: 'flex', position: 'absolute', height: '27.5rem', width: '10rem', right: '-3.5rem', transform: 'translateY(14.25rem)', border: '1px solid rgba(0, 0, 0, 0.1)', borderRadius: '20px'}}>
+            </div> */}
+
+            {/* <div style={{display: 'flex', position: 'absolute', height: '27.5rem', width: '10rem', transform: 'translateY(14.25rem)', border: '1px solid rgba(0, 0, 0, 0.05)', borderRadius: '20px'}}>
+            </div> */}
         </motion.div>
     )
 }

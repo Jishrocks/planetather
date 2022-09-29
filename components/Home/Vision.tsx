@@ -1,4 +1,3 @@
-import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { motion, useAnimation } from "framer-motion";
 
@@ -64,69 +63,27 @@ const Vision = ({children}: any) => {
         variants={animationVariants}
         initial={"hidden"}
         animate={animation}
-        style={{display: 'flex', flexDirection: 'column', alignItems: 'start', marginLeft: '10%', marginRight: '10%', gap: 8, marginTop: '8rem', marginBottom: '8rem'}}>
-            <Grid container gap={6}>
-                <Grid item xs style={{display: 'flex', justifyContent: 'end'}}>
-                    <motion.h1
+        style={{display: 'grid', gridTemplateColumns: '1fr 1fr', marginLeft: '7.5rem', marginRight: '7.5rem', marginTop: '7.5rem', marginBottom: '7.5rem', height: 'auto', zIndex: 2}}>
+            <div style={{display: 'flex', justifyContent: 'left', alignItems: 'start'}}>
+                <motion.h1
                     ref={ref}
                     animate={animation}
                     transition={headingTransition}
                     initial={"hidden"}
                     variants={headingAnimationVariants}
-                    style={{fontFamily: 'Mandalore', color: '#ece8e1', fontSize: isMobile ? '3.5rem' : '6rem', letterSpacing: '4px', marginBlock: '0'}}>vision</motion.h1>
-                </Grid>
-                <Grid item xs>
-                    <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'end', justifyContent: 'end', paddingBottom: '0.9em', marginTop: isMobile ? '0.9em' : '0', borderBottom: '4px solid #282840'}}>
-                        <h1 style={{fontFamily: 'Subheading', color: '#ece8e1', fontSize: isMobile ? '0.4rem' : '0.6rem', letterSpacing: '0.2em', marginBlock: '0', transform: 'rotateY(180deg)', textTransform: 'uppercase'}}>αυτό είμαστε</h1>
-                        <h1 style={{fontFamily: 'Subheading', color: '#ece8e1', fontSize: isMobile ? '0.4rem' : '0.6rem', letterSpacing: '0.2em', marginBlock: '0', transform: 'rotateY(180deg)', textTransform: 'uppercase'}}>είμαστε ατhέρ //</h1>
-                    </Box>
-                </Grid>
-            </Grid>
-            {isMobile ?
-            <Box>
-                <motion.div>
-                    <h1 style={{fontFamily: 'Mono', color: '#ece8e1', fontSize: '1rem', letterSpacing: '1px', textAlign: 'right', textTransform: 'uppercase'}}>get. set. ather.</h1>
-                    <h1 style={{fontFamily: 'Mono', color: '#c7c3bb', fontSize: '0.8rem', letterSpacing: '1px', marginBlockStart: '2rem'}}>
-                    Amid the nft heat wave around the world, we are your own decentralized entertainment company, that will take over digital horizons. From community-driven comics, web series, merch, cosplays, and gamification to a super-charged blazing community filled with creativity and zeal, we are here to zip your imaginations and weave a whole new world, hand together.
-                    </h1>
-                </motion.div>
-            </Box>
-            :
-            <Grid container gap={6}>
-                <Grid item xs>
-                    <motion.div>
-                        <h1 style={{fontFamily: 'Roobert-Semibold', color: '#ece8e1', fontSize: '1.2rem', letterSpacing: '1px', textTransform: 'uppercase', textAlign: 'right'}}>get. set. ather.</h1>
-                        <h1 style={{fontFamily: 'Roobert-Regular', color: '#c7c3bb', fontSize: '1rem', letterSpacing: '1px', lineHeight: '1.8rem', marginBlockStart: '1rem', textAlign: 'right'}}>
-                        Amid the nft heat wave around the world, we are your own decentralized entertainment company, that will take over digital horizons. From community-driven comics, web series, merch, cosplays, and gamification to a super-charged blazing community filled with creativity and zeal, we are here to zip your imaginations and weave a whole new world, hand together.
-                        </h1>
-                    </motion.div>
-                </Grid>
-                <Grid item xs>
-                        {/* <Box>
-                            <Image
-                                style={{transform: 'translateY(-100px) translateX(80px)'}}
-                                    height={'600px'}
-                                    width={'600px'}
-                                    src={`/images/atherians2/2.PNG`} />
-                        </Box> */}
-                {/* <motion.img
-								// animate={{
-								//     y: 20,
-								//     // scale: 1.05,
-								//     transition: {
-								//         duration: 4,
-								//         yoyo: Infinity,
-								//     }
-								// }}
-								style={{width: '53rem', position: 'absolute', transform: 'translateY(-20rem) translateX(-5rem)'}}
-								src="/images/atherians-island.png"
-								></motion.img> */}
-                    {/* <Parallax speed={-10} style={{position: 'absolute', right: '7%'}}>
-                        <h1 style={{opacity: 0.1, fontSize: '14rem', fontFamily: 'Mandalore', marginTop: '16rem', marginRight: '0rem', letterSpacing: '4px', color: '#13141e', textShadow: `-1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff`}}>protocol</h1>
-                    </Parallax> */}
-                </Grid>
-            </Grid>
-            }
+                    style={{fontFamily: 'FFMark', color: 'transparent', backgroundImage: 'linear-gradient(56deg, #f3a5da 0%, #81cefd 100%)', WebkitBackgroundClip: 'text', fontSize: '5rem', letterSpacing: '4px', textTransform: 'uppercase', marginBlock: 0}}>
+                        <span style={{fontSize: '3.5rem', color: 'silver'}}>01</span> Manifesto
+                </motion.h1>
+            </div>
+
+            <div style={{display: 'flex', justifyContent: 'left', alignItems: 'start'}}>
+                <motion.h1 style={{fontFamily: 'Roobert-Regular', color: '#262626', fontSize: '1.875rem', letterSpacing: '1px', lineHeight: '1.5', marginBlock: '0.5625rem'}}>
+                Amid the NFT heat wave around the world, we are your own decentralized entertainment company, that will take over digital horizons.
+                <br></br>
+                <br></br>
+                From community-driven comics, web series, merch, cosplays, and gamification to a super-charged blazing community filled with creativity and zeal, we are here to zip your imaginations and weave a whole new world, hand together.
+                </motion.h1>
+            </div>
         </motion.div>
     )
 }

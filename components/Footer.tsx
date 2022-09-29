@@ -1,6 +1,4 @@
-import Box from "@mui/material/Box";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { motion } from "framer-motion";
 
 import React from "react";
 
@@ -9,27 +7,28 @@ const Footer = ({children}: any) => {
     let isMobile = useMediaQuery('(max-width: 1200px)')
 
     return (
-        <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
-            <Box sx={{display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 3, marginTop: '2rem'}}>
-                <motion.img onClick={() => {
-                    window.open("https://discord.gg/xjETANVKBe")
-                }} whileHover={{scale: 1.1}} src="/images/discord.png" style={{marginTop: '2px', cursor: 'pointer'}} width={"18px"} height={"auto"} alt="discord" />
-                <motion.img onClick={() => {
-                    window.open("https://twitter.com/planetather")
-                }} whileHover={{scale: 1.1}} src="/images/twitter.png" style={{cursor: 'pointer'}} width={"18px"} height={"auto"} alt="twitter" />
-                <motion.img onClick={() => {
-                    window.open("https://www.instagram.com/planetather/")
-                }} whileHover={{scale: 1.1}} src="/images/instagram.svg" style={{cursor: 'pointer'}} width={"18px"} height={"auto"} alt="instagram" />
-            </Box>
-            <Box style={{display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '2rem'}}>
-                {/* <img style={{borderRadius: '10px'}} width={"40px"} height={"40px"} src="/images/stratos.webp" alt="stratos" /> */}
-                <span style={{marginLeft: '0.5rem'}}>
-                    <p style={{fontFamily: 'Regular', fontSize: '1rem', color: '#ffffff', lineHeight: 0}}>StratosLabs</p>
-                    {/* <p style={{fontFamily: 'Medium', fontSize: '1rem', color: '#ffffff', lineHeight: '1px'}}>Labs</p> */}
-                </span>
-            </Box>
-            <p style={{ marginTop: '1rem', marginBottom: '2rem', width: isMobile ? '80%' : '50%', color: 'rgb(199, 195, 187, 0.7)', fontSize: '0.9rem', fontFamily: 'Subheading', textAlign: 'center', wordBreak: 'keep-all'}}>© 2022 Stratos Labs Pvt. Ltd. Stratos Labs, PlanetAther, Ather, and any associated logos are trademarks, service marks, and/or registered trademarks of Stratos Labs, Pvt. Ltd.</p>
-        </Box>
+        <div style={{height: '20rem', marginLeft: '2rem', marginRight: '2rem', display: 'grid', gridTemplateRows: '1fr 5rem'}}>
+            <div style={{display: 'grid'}}>
+                <div style={{display: 'flex', height: '2rem', justifyContent: 'center', alignItems: 'center'}}>
+                    <img width={"auto"} height={"28px"} src={"/images/logov2.png"} style={{marginRight: '10px', cursor: 'pointer', mixBlendMode: 'difference'}}></img>
+                    <h1 style={{fontFamily: 'FFMark', fontSize: '1.125rem'}}>Ather</h1>
+                </div>
+
+                
+            </div>
+
+            <div style={{display: 'flex', height: '3rem', gap: '7.5rem', justifyContent: 'center', alignItems: 'center', fontSize: '0.5rem'}}>
+                <h1 style={{fontFamily: 'FFMark'}}>DISCORD</h1>
+                <h1 style={{fontFamily: 'FFMark'}}>TWITTER</h1>
+                <h1 style={{fontFamily: 'FFMark'}}>INSTAGRAM</h1>
+                <h1 style={{fontFamily: 'FFMark'}}>PRIVACY POLICY</h1>
+                <h1 style={{fontFamily: 'FFMark'}}>TERMS AND CONDITIONS</h1>
+            </div>
+
+            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'end'}}>
+                <p style={{ marginTop: '1rem', marginBottom: '3rem', color: 'rgb(199, 195, 187, 0.7)', fontSize: '0.5625rem', fontFamily: 'Mono', wordBreak: 'keep-all'}}>© 2022 Stratos Labs Pvt. Ltd. Stratos Labs, PlanetAther, Ather, and any associated logos are trademarks, service marks, and/or registered trademarks of Stratos Labs, Pvt. Ltd.</p>
+            </div>
+        </div>
     )
 }
 
