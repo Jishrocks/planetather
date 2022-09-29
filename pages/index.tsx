@@ -149,15 +149,46 @@ const Home: NextPage = () => {
 								</Parallax>
 							</div>
 
-							<Collection />
-
 							{/* <div className={assetsStyles.whiteBackground} style={{height: '45rem', position: 'relative'}}>
 								<Prologue />
 							</div> */}
 
 							<Vision />
 
-							<StarQuest />
+							<div style={{display: 'flex', clipPath: 'polygon(100% 0, 100% 93%, 0 100%, 0 7%)', height: '30rem', marginBottom: '15rem', justifyContent: 'center', alignItems: 'center'}}>
+								<div style={{display: 'flex', flexDirection: 'column', justifyContent: 'end', height: 'auto', width: 'auto', overflow: 'hidden'}}>
+									{/* <img src="/images/fire.png" alt="fireee" style={{height: 'auto', width: '25rem', marginBottom: '10%', marginLeft: '10%'}} />
+									<h1 style={{fontFamily: 'FFMark', color: 'silver', fontSize: '3.5rem', marginLeft: '1.75rem', textTransform: 'uppercase', marginBlock: 0}}>0{i + 1}</h1>
+									<h1 style={{fontFamily: 'FFMark', color: '#404040', fontSize: '1.2rem', marginLeft: '2rem', marginBottom: '2rem', textTransform: 'uppercase'}}>{starquestTopics[i]} <span style={{color: 'rgb(254, 200, 216)'}}>↗</span></h1> */}
+									<img src="/images/INSPIRATION.png" alt="" />
+								</div>
+								<div style={{display: 'flex', flexDirection: 'column', justifyContent: 'end', height: 'auto', width: 'auto', overflow: 'hidden'}}>
+									{/* <img src="/images/fire.png" alt="fireee" style={{height: 'auto', width: '25rem', marginBottom: '10%', marginLeft: '10%'}} />
+									<h1 style={{fontFamily: 'FFMark', color: 'silver', fontSize: '3.5rem', marginLeft: '1.75rem', textTransform: 'uppercase', marginBlock: 0}}>0{i + 1}</h1>
+									<h1 style={{fontFamily: 'FFMark', color: '#404040', fontSize: '1.2rem', marginLeft: '2rem', marginBottom: '2rem', textTransform: 'uppercase'}}>{starquestTopics[i]} <span style={{color: 'rgb(254, 200, 216)'}}>↗</span></h1> */}
+									<img src="/images/COMMUNITY.png" alt="" />
+								</div>
+								<div style={{display: 'flex', flexDirection: 'column', justifyContent: 'end', height: 'auto', width: 'auto', overflow: 'hidden'}}>
+									{/* <img src="/images/fire.png" alt="fireee" style={{height: 'auto', width: '25rem', marginBottom: '10%', marginLeft: '10%'}} />
+									<h1 style={{fontFamily: 'FFMark', color: 'silver', fontSize: '3.5rem', marginLeft: '1.75rem', textTransform: 'uppercase', marginBlock: 0}}>0{i + 1}</h1>
+									<h1 style={{fontFamily: 'FFMark', color: '#404040', fontSize: '1.2rem', marginLeft: '2rem', marginBottom: '2rem', textTransform: 'uppercase'}}>{starquestTopics[i]} <span style={{color: 'rgb(254, 200, 216)'}}>↗</span></h1> */}
+									<img src="/images/NEURAL.png" alt="" />
+								</div>
+								<div style={{display: 'flex', flexDirection: 'column', justifyContent: 'end', height: 'auto', width: 'auto', overflow: 'hidden'}}>
+									{/* <img src="/images/fire.png" alt="fireee" style={{height: 'auto', width: '25rem', marginBottom: '10%', marginLeft: '10%'}} />
+									<h1 style={{fontFamily: 'FFMark', color: 'silver', fontSize: '3.5rem', marginLeft: '1.75rem', textTransform: 'uppercase', marginBlock: 0}}>0{i + 1}</h1>
+									<h1 style={{fontFamily: 'FFMark', color: '#404040', fontSize: '1.2rem', marginLeft: '2rem', marginBottom: '2rem', textTransform: 'uppercase'}}>{starquestTopics[i]} <span style={{color: 'rgb(254, 200, 216)'}}>↗</span></h1> */}
+									<img src="/images/TANGIBLE.png" alt="" />
+								</div>
+								<div style={{display: 'flex', flexDirection: 'column', justifyContent: 'end', height: 'auto', width: 'auto', overflow: 'hidden'}}>
+									{/* <img src="/images/fire.png" alt="fireee" style={{height: 'auto', width: '25rem', marginBottom: '10%', marginLeft: '10%'}} />
+									<h1 style={{fontFamily: 'FFMark', color: 'silver', fontSize: '3.5rem', marginLeft: '1.75rem', textTransform: 'uppercase', marginBlock: 0}}>0{i + 1}</h1>
+									<h1 style={{fontFamily: 'FFMark', color: '#404040', fontSize: '1.2rem', marginLeft: '2rem', marginBottom: '2rem', textTransform: 'uppercase'}}>{starquestTopics[i]} <span style={{color: 'rgb(254, 200, 216)'}}>↗</span></h1> */}
+									<img src="/images/COLLABORATION.png" alt="" />
+								</div>
+							</div>
+
+							{/* <StarQuest /> */}
 
 							{/* <Creators /> */}
 						</div>

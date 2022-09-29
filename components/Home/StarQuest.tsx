@@ -78,17 +78,6 @@ const StarQuest = ({children}: any) => {
                 </motion.h1>
             </div>
 
-            <div style={{display: 'grid', gridTemplateColumns: '1fr '.repeat(starquestTopics.length)}}>
-                {
-                    Array.from({length: starquestTopics.length}, (_, i) => 
-                        <div key={i + 1} style={{display: 'flex', flexDirection: 'column', justifyContent: 'end', height: '30rem', width: '20rem', borderRadius: '20px', border: '1px solid rgba(0, 0, 0, 0.1)'}}>
-                            <h1 style={{fontFamily: 'FFMark', color: 'silver', fontSize: '3.5rem', marginLeft: '1.75rem', textTransform: 'uppercase', marginBlock: 0}}>0{i + 1}</h1>
-                            <h1 style={{fontFamily: 'FFMark', color: '#404040', fontSize: '1.2rem', marginLeft: '2rem', marginBottom: '2rem', textTransform: 'uppercase'}}>{starquestTopics[i]} <span style={{color: 'rgb(254, 200, 216)'}}>↗</span></h1>
-                        </div>
-                    )
-                }
-            </div>
-
             {/* <div style={{display: 'flex', position: 'absolute', height: '27.5rem', width: '10rem', left: '-3.5rem', transform: 'translateY(14.25rem)', border: '1px solid rgba(0, 0, 0, 0.1)', borderRadius: '20px'}}>
             </div>
 
