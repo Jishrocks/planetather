@@ -16,27 +16,67 @@ import { Parallax, ParallaxProvider } from 'react-scroll-parallax'
 import React, { useEffect } from 'react'
 import { motion } from 'framer-motion'
 
-import assetsStyles from '../styles/assets.module.css'
+import gsap from 'gsap'
+
 import StickyFooter from '../components/StickyFooter'
-
-import Lottie from 'react-lottie';
-import scrollDown from '../public/scroll-down.json'
-
-import Scrollbar from "react-smooth-scrollbar";
-import SmoothScrollbar from 'smooth-scrollbar';
 
 const Home: NextPage = () => {
 
-	useEffect(() => {
-		let options = {
-			damping: 0.04,
-			thumbMinSize: 20,
-			renderByPixels: true,
-			continuousScrolling: true,
-		}
-		// SmoothScrollbar.init(document.body, options)
-		SmoothScrollbar.initAll(options)
-	}, [])
+	// useEffect(() => {
+	// 	var
+	// 	animRequestID,
+	// 	settingsStr = document.getElementById('smooth-scroll')?.dataset.scrollSettings,
+	// 	settings = parseSettings(settingsStr);
+
+	// 	function parseSettings(str): any {
+	// 	var r = {};
+	// 	str.split(' ').forEach(s => {
+	// 		var t = s.split(':');
+	// 		r[t[0]] = t[1];
+	// 	});
+	// 	return r;
+	// 	};
+
+	// 	function addListeners(element, events, callback) {
+	// 	events.split(' ').forEach(e => element.addEventListener(e, callback, false));
+	// 	};
+
+	// 	function handleResize() {
+	// 	var bodyHeight = document.getElementById('smooth-scroll')?.offsetHeight;
+	// 	gsap.set('body', { height: bodyHeight });
+	// 	cancelAnimationFrame(animRequestID);
+	// 	};
+
+	// 	function handleScroll() {
+	// 	scrollTo(window.scrollY);
+	// 	};
+
+	// 	function scrollTo(y) {
+	// 	cancelAnimationFrame(animRequestID);
+	// 	animRequestID = requestAnimationFrame(function() {
+	// 		gsap.to('#smooth-scroll', {
+	// 		duration: settings.duration,
+	// 		y: -y,
+	// 		ease: settings.ease
+	// 		});
+	// 	});
+	// 	};
+
+	// 	gsap.set('#smooth-scroll', {
+	// 	force3D: true
+	// 	});
+
+	// 	if(settings.smoother == 'on') {
+	// 	// gsap.set('.viewport', { perspective: 1000 });
+	// 	gsap.set('#smooth-scroll', {
+	// 		rotation: .001
+	// 		// z: .01
+	// 	});
+	// 	};
+
+	// 	addListeners(window, 'load resize', handleResize);
+	// 	addListeners(window, 'scroll', handleScroll);
+	// }, [])
 
 	return (
 		<>
@@ -72,35 +112,14 @@ const Home: NextPage = () => {
 
 			</Head>
 
-			<Navbar />
-
-			<div style={{overflowX: 'hidden'}}>
+			<div id="smooth-scroll" data-scroll-settings="duration:.5 ease:power2.out smoother:off" style={{overflowX: 'hidden'}}>
+				<Navbar />
 				<ParallaxProvider>
-					<div style={{overflowX: 'hidden'}}>
-						{/* Landing page korean text and characters */}
-
-						<motion.img
-						style={{width: '100%', position: 'absolute', transform: 'translateX(-10rem) translateY(-17rem)', opacity: 1}}
-						src="/images/meshgradient.jpeg"
-						></motion.img>
-
-
-						<div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', position: 'absolute', width: '100vw', transform: 'translateY(45rem)'}}>
-							<Lottie
-								style={{opacity: 0.5}}
-								options={{animationData: scrollDown, autoplay: true, loop: true}}
-								height={50}
-								width={50}
-							/>
-							<h1 style={{fontFamily: 'Mono', color: 'silver', fontSize: '0.5625rem', marginBlock: 0, textTransform: 'uppercase', marginTop: '0.5625rem', letterSpacing: '0.5px'}}>Scroll to view more</h1>
-						</div>
-						
-						<motion.img
-						style={{width: '150rem', position: 'absolute', transform: 'translateX(-10rem) translateY(-13rem)', opacity: 0.1}}
-						src="/images/graffitti.png"
-						>
-						</motion.img>
-
+					<div style={{overflowX: 'hidden', position: 'relative'}}>
+						{/* <motion.img
+							style={{width: '145%', position: 'absolute', transform: 'translateX(-3rem) translateY(0rem)', filter: 'hue-rotate(-40deg)', opacity: 1}}
+							src="/images/meshgradient.jpeg"
+						></motion.img> */}
 						<Parallax style={{overflow: 'visible'}}>
 							<Landing />
 						</Parallax>
@@ -110,9 +129,13 @@ const Home: NextPage = () => {
 							{/* Used clip path to make a shape-cut  */}
 
 							
-							<div style={{height: '30rem', marginTop: '30rem', marginBottom: '1rem', position: 'relative', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', zIndex: 3}}>
-								<motion.h1 style={{fontFamily: 'FKScreamer', fontSize: '4.8rem', textTransform: 'uppercase', color: 'silver', textAlign: 'center', letterSpacing: '2px'}}>
-									<span style={{fontSize: '6rem', color: 'transparent', backgroundImage: 'linear-gradient(56deg, #f3a5da 0%, #81cefd 100%)', WebkitBackgroundClip: 'text'}}>Nostalgia meets web3.</span>
+							<div style={{height: '30rem', marginTop: '25rem', marginBottom: '1rem', position: 'relative', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', zIndex: 3}}>
+								<motion.img
+									style={{width: '130vw', position: 'absolute', filter: 'invert()', transform: 'translateX(3rem) translateY(3rem)', opacity: 0.07}}
+									src="/images/graffitti.png"
+								></motion.img>
+								<motion.h1 style={{fontFamily: 'FKScreamer', fontSize: '4.5rem', textTransform: 'uppercase', color: '#fbfbfb', textAlign: 'center', letterSpacing: '2px'}}>
+									<span className='text-gradient'>Extraterrestial alert</span>
 									<br></br>
 									A quest for the survival of<br></br> <span style={{opacity: 0.7}}>10000 Atherians</span> is in your<br></br> hands now.
 								</motion.h1>
@@ -127,20 +150,21 @@ const Home: NextPage = () => {
 							>
 							</motion.img> */}
 
-							<div style={{display: 'flex', clipPath: 'polygon(100% 0, 100% 93%, 0 100%, 0 7%)', height: '50rem', marginBottom: '15rem', justifyContent: 'center', alignItems: 'center', transform: 'translateY(5rem)', zIndex: 4}}>
+							<div style={{display: 'flex', height: '40rem', marginBottom: '15rem', justifyContent: 'center', alignItems: 'center', transform: 'translateY(5rem)', WebkitClipPath: 'polygon(100% 0, 100% 93%, 0 100%, 0 7%)', zIndex: 4}}>
 								<div style={{position: 'absolute', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', zIndex: 2}}>
-									<h1 style={{fontFamily: 'Mono', fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.4)', marginBlock: 0}}>THE STORY BEHIND</h1>
-									<h1 style={{fontFamily: 'FKScreamer', fontSize: '10rem', color: '#fff', marginBlock: 0}}>THE ORIGIN</h1>
+									<h1 style={{fontFamily: 'Mono', fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.4)', marginBlock: 0}}>WHERE THE STORY BEGINS</h1>
+									<h1 style={{fontFamily: 'FKScreamer', fontSize: '10rem', color: '#fff', marginBlock: 0}}>THE SUBWAY</h1>
 
-									<div style={{background: 'rgba(7, 14, 29, 0.6)', color: 'white', width: '10rem', height: '48px', marginTop: '2.5rem', borderRadius: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontFamily: 'FFMark', letterSpacing: '1px'}}>EXPLORE</div>
+									<div style={{background: 'rgba(0, 0, 0, 0.1)', fontSize: '0.8rem', color: 'white', backdropFilter: 'blur(1em)', width: 'fit-content', paddingLeft: '15px', paddingRight: '15px', height: '48px', marginTop: '2.5rem', borderRadius: '5px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontFamily: 'Mono'}}>LAUNCHES AT 9 NOV/22</div>
 								</div>
-								<Parallax translateY={[30, -15]} style={{clipPath: 'polygon(100% 0, 100% 93%, 0 100%, 0 7%)'}}>
+								<Parallax translateY={[30, -15]}>
 									{/* <motion.img
 									style={{width: '140rem', position: 'absolute', transform: 'translateX(-5rem) translateY(-18rem) rotate(1deg)', opacity: 1, zIndex: 5}}
 									src="/images/papercut.png"
 									>
 									</motion.img> */}
-									<video loop autoPlay muted style={{width: 'auto', height: '150%', position: 'relative'}} src="/videos/spaceship.mp4"></video>
+									{/* <video loop autoPlay muted style={{width: 'auto', height: '150%', position: 'relative', opacity: 1}} src="/videos/spaceship.mp4"></video> */}
+									<img style={{width: 'auto', height: '150%', position: 'relative', opacity: 1}} src="https://cdn1.epicgames.com/ue/product/Screenshot/5-1920x1080-b89469a8e3ed0a92179002e8ba35b5d7.jpg" alt="" />
 									{/* <motion.img
 									style={{width: '140rem', position: 'absolute', transform: 'translateX(-125rem) translateY(43rem) rotate(180deg)', opacity: 1, zIndex: 5}}
 									src="/images/papercut.png"
@@ -155,42 +179,13 @@ const Home: NextPage = () => {
 
 							<Vision />
 
-							<div style={{display: 'flex', clipPath: 'polygon(100% 0, 100% 93%, 0 100%, 0 7%)', height: '30rem', marginBottom: '15rem', justifyContent: 'center', alignItems: 'center'}}>
-								<div style={{display: 'flex', flexDirection: 'column', justifyContent: 'end', height: 'auto', width: 'auto', overflow: 'hidden'}}>
-									{/* <img src="/images/fire.png" alt="fireee" style={{height: 'auto', width: '25rem', marginBottom: '10%', marginLeft: '10%'}} />
-									<h1 style={{fontFamily: 'FFMark', color: 'silver', fontSize: '3.5rem', marginLeft: '1.75rem', textTransform: 'uppercase', marginBlock: 0}}>0{i + 1}</h1>
-									<h1 style={{fontFamily: 'FFMark', color: '#404040', fontSize: '1.2rem', marginLeft: '2rem', marginBottom: '2rem', textTransform: 'uppercase'}}>{starquestTopics[i]} <span style={{color: 'rgb(254, 200, 216)'}}>↗</span></h1> */}
-									<img src="/images/INSPIRATION.png" alt="" />
-								</div>
-								<div style={{display: 'flex', flexDirection: 'column', justifyContent: 'end', height: 'auto', width: 'auto', overflow: 'hidden'}}>
-									{/* <img src="/images/fire.png" alt="fireee" style={{height: 'auto', width: '25rem', marginBottom: '10%', marginLeft: '10%'}} />
-									<h1 style={{fontFamily: 'FFMark', color: 'silver', fontSize: '3.5rem', marginLeft: '1.75rem', textTransform: 'uppercase', marginBlock: 0}}>0{i + 1}</h1>
-									<h1 style={{fontFamily: 'FFMark', color: '#404040', fontSize: '1.2rem', marginLeft: '2rem', marginBottom: '2rem', textTransform: 'uppercase'}}>{starquestTopics[i]} <span style={{color: 'rgb(254, 200, 216)'}}>↗</span></h1> */}
-									<img src="/images/COMMUNITY.png" alt="" />
-								</div>
-								<div style={{display: 'flex', flexDirection: 'column', justifyContent: 'end', height: 'auto', width: 'auto', overflow: 'hidden'}}>
-									{/* <img src="/images/fire.png" alt="fireee" style={{height: 'auto', width: '25rem', marginBottom: '10%', marginLeft: '10%'}} />
-									<h1 style={{fontFamily: 'FFMark', color: 'silver', fontSize: '3.5rem', marginLeft: '1.75rem', textTransform: 'uppercase', marginBlock: 0}}>0{i + 1}</h1>
-									<h1 style={{fontFamily: 'FFMark', color: '#404040', fontSize: '1.2rem', marginLeft: '2rem', marginBottom: '2rem', textTransform: 'uppercase'}}>{starquestTopics[i]} <span style={{color: 'rgb(254, 200, 216)'}}>↗</span></h1> */}
-									<img src="/images/NEURAL.png" alt="" />
-								</div>
-								<div style={{display: 'flex', flexDirection: 'column', justifyContent: 'end', height: 'auto', width: 'auto', overflow: 'hidden'}}>
-									{/* <img src="/images/fire.png" alt="fireee" style={{height: 'auto', width: '25rem', marginBottom: '10%', marginLeft: '10%'}} />
-									<h1 style={{fontFamily: 'FFMark', color: 'silver', fontSize: '3.5rem', marginLeft: '1.75rem', textTransform: 'uppercase', marginBlock: 0}}>0{i + 1}</h1>
-									<h1 style={{fontFamily: 'FFMark', color: '#404040', fontSize: '1.2rem', marginLeft: '2rem', marginBottom: '2rem', textTransform: 'uppercase'}}>{starquestTopics[i]} <span style={{color: 'rgb(254, 200, 216)'}}>↗</span></h1> */}
-									<img src="/images/TANGIBLE.png" alt="" />
-								</div>
-								<div style={{display: 'flex', flexDirection: 'column', justifyContent: 'end', height: 'auto', width: 'auto', overflow: 'hidden'}}>
-									{/* <img src="/images/fire.png" alt="fireee" style={{height: 'auto', width: '25rem', marginBottom: '10%', marginLeft: '10%'}} />
-									<h1 style={{fontFamily: 'FFMark', color: 'silver', fontSize: '3.5rem', marginLeft: '1.75rem', textTransform: 'uppercase', marginBlock: 0}}>0{i + 1}</h1>
-									<h1 style={{fontFamily: 'FFMark', color: '#404040', fontSize: '1.2rem', marginLeft: '2rem', marginBottom: '2rem', textTransform: 'uppercase'}}>{starquestTopics[i]} <span style={{color: 'rgb(254, 200, 216)'}}>↗</span></h1> */}
-									<img src="/images/COLLABORATION.png" alt="" />
-								</div>
-							</div>
+							<StarQuest />
 
-							{/* <StarQuest /> */}
+							<Collection />
 
-							{/* <Creators /> */}
+							<Creators />
+
+							
 						</div>
 					</div>
 

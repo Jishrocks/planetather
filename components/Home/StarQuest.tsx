@@ -65,27 +65,40 @@ const StarQuest = ({children}: any) => {
         variants={animationVariants}
         initial={"hidden"}
         animate={animation}
-        style={{display: 'flex', flexDirection: 'column', marginLeft: '7.5rem', marginRight: '7.5rem', marginTop: '7.5rem', marginBottom: '7.5rem', height: 'auto'}}>
-            <div style={{display: 'flex', justifyContent: 'left', alignItems: 'start'}}>
+        style={{display: 'grid', gridTemplateColumns: '1fr 1fr', marginLeft: '7.5rem', marginRight: '7.5rem', marginTop: '5rem', marginBottom: '5rem', height: 'auto', zIndex: 2}}>
+
+            <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'left', alignItems: 'left', marginLeft: '5rem'}}>
                 <motion.h1
                     ref={ref}
                     animate={animation}
                     transition={headingTransition}
                     initial={"hidden"}
                     variants={headingAnimationVariants}
-                    style={{fontFamily: 'FFMark', color: 'transparent', backgroundImage: 'linear-gradient(56deg, #f3a5da 0%, #81cefd 100%)', WebkitBackgroundClip: 'text', fontSize: '5rem', letterSpacing: '4px', textTransform: 'uppercase'}}>
-                        <span style={{fontSize: '3.5rem', color: 'silver'}}>02</span> StarQuest
+                    className='text-gradient'
+                    style={{font: '400 0.9rem/80% Mono', letterSpacing: '4px', textTransform: 'uppercase', marginBlock: 0}}>
+                        Around the subway
                 </motion.h1>
+                <motion.h1
+                    ref={ref}
+                    animate={animation}
+                    transition={headingTransition}
+                    initial={"hidden"}
+                    variants={headingAnimationVariants}
+                    className='text-gradient'
+                    style={{font: '400 6rem/80% FKScreamer', letterSpacing: '4px', textTransform: 'uppercase', marginBlock: 0}}>
+                        The Chase
+                </motion.h1>
+
+                <motion.p className="content" style={{fontSize: '16px', color: 'var(--palette-white)', fontFamily: 'Mono', lineHeight: '1.5', marginTop: '2.5rem'}}>
+                Amid the NFT heat wave around the world, we are your own decentralized entertainment company, that will take over digital horizons.
+
+                From community-driven comics, web series, merch, cosplays, and gamification to a super-charged blazing community filled with creativity and zeal, we are here to zip your imaginations and weave a whole new world, hand together.
+                </motion.p>
             </div>
 
-            {/* <div style={{display: 'flex', position: 'absolute', height: '27.5rem', width: '10rem', left: '-3.5rem', transform: 'translateY(14.25rem)', border: '1px solid rgba(0, 0, 0, 0.1)', borderRadius: '20px'}}>
+            <div style={{display: 'flex', flexDirection: 'row', gap: 6, justifyContent: 'center', alignItems: 'center'}}>
+                <img src="https://media.discordapp.net/attachments/934914135613931593/1033139897906774087/Untitled_Artwork.png?width=1880&height=1058" style={{width: '700px', transform: 'translateY(-2.5rem) translateX(-5rem) rotate(-50deg)', opacity: 0.4, filter: 'invert()'}} alt="" />
             </div>
-
-            <div style={{display: 'flex', position: 'absolute', height: '27.5rem', width: '10rem', right: '-3.5rem', transform: 'translateY(14.25rem)', border: '1px solid rgba(0, 0, 0, 0.1)', borderRadius: '20px'}}>
-            </div> */}
-
-            {/* <div style={{display: 'flex', position: 'absolute', height: '27.5rem', width: '10rem', transform: 'translateY(14.25rem)', border: '1px solid rgba(0, 0, 0, 0.05)', borderRadius: '20px'}}>
-            </div> */}
         </motion.div>
     )
 }

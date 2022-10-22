@@ -73,47 +73,45 @@ const Collection = ({children}: any) => {
         variants={animationVariants}
         initial={"hidden"}
         animate={animation}
-        style={{display: 'flex', height: isMobile ? '18rem' : '28rem', marginBottom: '15rem', flexDirection: 'column', alignItems: 'start', gap: 8}}>
-                    <Parallax translateX={[0, -10]} style={{position: 'absolute'}}>
-                        <motion.div initial={{opacity: 0}} animate={{opacity: 1}} style={{display: 'flex', backgroundColor: '#e1ffac', transform: 'rotate(-2deg)'}}>
-                        {shuffle(Array.from({length: 9}, (_, i) => 
-                                <div key={i + 1} style={{borderRight: '7px solid #fff', height: isMobile ? '150px' : '300px', width: isMobile ? '150px' : '300px'}}>
-                                    <Image 
-                                    height={isMobile ? '150px' : '400px'} 
-                                    width={isMobile ? '150px' : '400px'}
-                                    src={`/images/atherians2/${i + 1}.PNG`} />
-                                </div>
-                        ))}
-                        {shuffle(Array.from({length: 3}, (_, i) => 
-                                <div key={i + 1} style={{borderRight: '7px solid #fff', height: isMobile ? '150px' : '300px', width: isMobile ? '150px' : '300px'}}>
-                                    <Image 
-                                    height={isMobile ? '150px' : '300px'} 
-                                    width={isMobile ? '150px' : '300px'}
-                                    src={`/images/atherians2/${i + 1}.PNG`} />
-                                </div>
-                        ))}
-                        </motion.div>
-                    </Parallax>
-                    <Parallax translateX={[-10, 0]} style={{position: 'absolute', marginTop: isMobile ? '10rem' : '20rem'}}>
-                        <motion.div initial={{opacity: 0}} animate={{opacity: 1}} style={{display: 'flex', backgroundColor: '#fec8d8', transform: 'rotate(-2deg)'}}>
-                        {shuffle(Array.from({length: 9}, (_, i) => 
-                                <div key={i + 1} style={{borderRight: '7px solid #fff', height: isMobile ? '150px' : '300px', width: isMobile ? '150px' : '300px'}}>
-                                    <Image
-                                    height={isMobile ? '150px' : '300px'}
-                                    width={isMobile ? '150px' : '300px'}
-                                    src={`/images/atherians2/${i + 1}.PNG`} />
-                                </div>
-                        ))}
-                        {shuffle(Array.from({length: 3}, (_, i) => 
-                                <div key={i + 1} style={{borderRight: '7px solid #fff', height: isMobile ? '150px' : '300px', width: isMobile ? '150px' : '300px'}}>
-                                    <Image
-                                    height={isMobile ? '150px' : '300px'}
-                                    width={isMobile ? '150px' : '300px'}
-                                    src={`/images/atherians2/${i + 1}.PNG`} />
-                                </div>
-                        ))}
-                        </motion.div>
-                    </Parallax>
+        style={{display: 'flex', flexDirection: 'column', marginTop: '7.5rem', marginBottom: '7.5rem', height: 'auto', zIndex: 2}}>
+            
+            <div style={{display: 'flex', flexDirection: 'column', marginLeft: '50%', marginRight: '5rem', justifyContent: 'left', alignItems: 'left'}}>
+                <motion.h1
+                    ref={ref}
+                    animate={animation}
+                    transition={headingTransition}
+                    initial={"hidden"}
+                    variants={headingAnimationVariants}
+                    // className='text-gradient'
+                    style={{font: '400 0.9rem/80% Mono', color: 'var(--palette-white)', marginLeft: '3px', letterSpacing: '4px', textTransform: 'uppercase', marginBlock: 0, zIndex: 10}}>
+                        Atherians
+                </motion.h1>
+                <motion.h1
+                    ref={ref}
+                    animate={animation}
+                    transition={headingTransition}
+                    initial={"hidden"}
+                    variants={headingAnimationVariants}
+                    // className='text-gradient'
+                    style={{font: '400 6rem/80% FKScreamer', color: 'var(--palette-white)', letterSpacing: '4px', textTransform: 'uppercase', marginBlock: 0, zIndex: 10}}>
+                        Collection
+                </motion.h1>
+            </div>
+            <article style={{display: 'flex', width: '100%'}}>
+                <div style={{transform: 'rotate(-2deg) translateY(-4rem)'}}>
+                    <ul style={{display: 'flex', listStyleType: 'none', paddingLeft: 0, animation: 'bannermove 15s linear infinite', gap: 20}}>
+                        <li style={{width: '100%'}}><img style={{width: '28vw', height: '28vw', background: '#4a2d31'}} src="/images/atherians2/1.PNG" alt="" /></li>
+                        <li style={{width: '100%'}}><img style={{width: '28vw', height: '28vw', background: '#e0f9f8'}} src="/images/atherians2/2.PNG" alt="" /></li>
+                        <li style={{width: '100%'}}><img style={{width: '28vw', height: '28vw', background: '#ffdb57'}} src="/images/atherians2/3.PNG" alt="" /></li>
+                        <li style={{width: '100%'}}><img style={{width: '28vw', height: '28vw', background: '#cdcccc'}} src="/images/atherians2/4.PNG" alt="" /></li>
+                        <li style={{width: '100%'}}><img style={{width: '28vw', height: '28vw', background: '#4a2d31'}} src="/images/atherians2/1.PNG" alt="" /></li>
+                        <li style={{width: '100%'}}><img style={{width: '28vw', height: '28vw', background: '#e0f9f8'}} src="/images/atherians2/2.PNG" alt="" /></li>
+                        <li style={{width: '100%'}}><img style={{width: '28vw', height: '28vw', background: '#ffdb57'}} src="/images/atherians2/3.PNG" alt="" /></li>
+                        <li style={{width: '100%'}}><img style={{width: '28vw', height: '28vw', background: '#cdcccc'}} src="/images/atherians2/4.PNG" alt="" /></li>
+                    </ul>
+                </div>
+            </article>
+
         </motion.div>
     )
 }
