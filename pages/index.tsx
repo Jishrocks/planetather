@@ -112,7 +112,7 @@ const Home: NextPage = () => {
 
 			</Head>
 
-			<div id="smooth-scroll" data-scroll-settings="duration:.5 ease:power2.out smoother:off" style={{overflowX: 'hidden'}}>
+			<div id="smooth-scroll" data-scroll-settings="duration:.5 ease:power2.out smoother:on" style={{overflowX: 'hidden'}}>
 				<Navbar />
 				<ParallaxProvider>
 					<div style={{overflowX: 'hidden', position: 'relative'}}>
@@ -131,7 +131,7 @@ const Home: NextPage = () => {
 							
 							<div style={{height: '30rem', marginTop: '25rem', marginBottom: '1rem', position: 'relative', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', zIndex: 3}}>
 								<motion.img
-									style={{width: '130vw', position: 'absolute', filter: 'invert()', transform: 'translateX(3rem) translateY(3rem)', opacity: 0.07}}
+									style={{width: '130vw', position: 'absolute', filter: 'invert()', transform: 'translateX(3rem) translateY(3rem)', opacity: 0.05}}
 									src="/images/graffitti.png"
 								></motion.img>
 								<motion.h1 style={{fontFamily: 'FKScreamer', fontSize: '4.5rem', textTransform: 'uppercase', color: '#fbfbfb', textAlign: 'center', letterSpacing: '2px'}}>
@@ -155,7 +155,7 @@ const Home: NextPage = () => {
 									<h1 style={{fontFamily: 'Mono', fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.4)', marginBlock: 0}}>WHERE THE STORY BEGINS</h1>
 									<h1 style={{fontFamily: 'FKScreamer', fontSize: '10rem', color: '#fff', marginBlock: 0}}>THE SUBWAY</h1>
 
-									<div style={{background: 'rgba(0, 0, 0, 0.1)', fontSize: '0.8rem', color: 'white', backdropFilter: 'blur(1em)', width: 'fit-content', paddingLeft: '15px', paddingRight: '15px', height: '48px', marginTop: '2.5rem', borderRadius: '5px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontFamily: 'Mono'}}>LAUNCHES AT 9 NOV/22</div>
+									<div style={{background: 'rgba(0, 0, 0, 0.1)', fontSize: '0.8rem', color: 'white', backdropFilter: 'blur(1em)', width: 'fit-content', paddingLeft: '15px', paddingRight: '15px', height: '48px', marginTop: '2.5rem', borderRadius: '5px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontFamily: 'Mono'}}>LAUNCHES ON 9 NOV/22</div>
 								</div>
 								<Parallax translateY={[30, -15]}>
 									{/* <motion.img

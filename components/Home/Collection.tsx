@@ -97,17 +97,26 @@ const Collection = ({children}: any) => {
                         Collection
                 </motion.h1>
             </div>
-            <article style={{display: 'flex', width: '100%'}}>
-                <div style={{transform: 'rotate(-2deg) translateY(-4rem)'}}>
-                    <ul style={{display: 'flex', listStyleType: 'none', paddingLeft: 0, animation: 'bannermove 15s linear infinite', gap: 20}}>
+            <article style={{display: 'flex', width: '200%'}}>
+                <div style={{transform: 'rotate(-2deg) translateY(-6rem)'}}>
+                    <ul style={{display: 'flex', listStyleType: 'none', paddingLeft: 0, animation: 'bannermove 30s linear infinite', gap: 20}}>
                         <li style={{width: '100%'}}><img style={{width: '28vw', height: '28vw', background: '#4a2d31'}} src="/images/atherians2/1.PNG" alt="" /></li>
                         <li style={{width: '100%'}}><img style={{width: '28vw', height: '28vw', background: '#e0f9f8'}} src="/images/atherians2/2.PNG" alt="" /></li>
-                        <li style={{width: '100%'}}><img style={{width: '28vw', height: '28vw', background: '#ffdb57'}} src="/images/atherians2/3.PNG" alt="" /></li>
+                        <li style={{width: '100%'}}><img style={{width: '28vw', height: '28vw', background: '#ffdb57'}} src="/images/atherians2/9.PNG" alt="" /></li>
                         <li style={{width: '100%'}}><img style={{width: '28vw', height: '28vw', background: '#cdcccc'}} src="/images/atherians2/4.PNG" alt="" /></li>
+                        <li style={{width: '100%'}}><img style={{width: '28vw', height: '28vw', background: '#4a2d31'}} src="/images/atherians2/5.PNG" alt="" /></li>
+                        <li style={{width: '100%'}}><img style={{width: '28vw', height: '28vw', background: '#e0f9f8'}} src="/images/atherians2/6.PNG" alt="" /></li>
+                        <li style={{width: '100%'}}><img style={{width: '28vw', height: '28vw', background: '#ffdb57'}} src="/images/atherians2/7.PNG" alt="" /></li>
+                        <li style={{width: '100%'}}><img style={{width: '28vw', height: '28vw', background: '#cdcccc'}} src="/images/atherians2/8.PNG" alt="" /></li>
+
                         <li style={{width: '100%'}}><img style={{width: '28vw', height: '28vw', background: '#4a2d31'}} src="/images/atherians2/1.PNG" alt="" /></li>
                         <li style={{width: '100%'}}><img style={{width: '28vw', height: '28vw', background: '#e0f9f8'}} src="/images/atherians2/2.PNG" alt="" /></li>
-                        <li style={{width: '100%'}}><img style={{width: '28vw', height: '28vw', background: '#ffdb57'}} src="/images/atherians2/3.PNG" alt="" /></li>
+                        <li style={{width: '100%'}}><img style={{width: '28vw', height: '28vw', background: '#ffdb57'}} src="/images/atherians2/9.PNG" alt="" /></li>
                         <li style={{width: '100%'}}><img style={{width: '28vw', height: '28vw', background: '#cdcccc'}} src="/images/atherians2/4.PNG" alt="" /></li>
+                        <li style={{width: '100%'}}><img style={{width: '28vw', height: '28vw', background: '#4a2d31'}} src="/images/atherians2/5.PNG" alt="" /></li>
+                        <li style={{width: '100%'}}><img style={{width: '28vw', height: '28vw', background: '#e0f9f8'}} src="/images/atherians2/6.PNG" alt="" /></li>
+                        <li style={{width: '100%'}}><img style={{width: '28vw', height: '28vw', background: '#ffdb57'}} src="/images/atherians2/7.PNG" alt="" /></li>
+                        <li style={{width: '100%'}}><img style={{width: '28vw', height: '28vw', background: '#cdcccc'}} src="/images/atherians2/8.PNG" alt="" /></li>
                     </ul>
                 </div>
             </article>

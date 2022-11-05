@@ -10,7 +10,7 @@ const Landing = ({children}: any) => {
     return (
         <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '80vh', marginLeft: '0rem', overflow: 'visible', background: `radial-gradient(ellipse at bottom, #e5e3cf, transparent), radial-gradient(ellipse at top, #fff, transparent)`}}>
             <motion.img
-            style={{width: '100vw', height: '100vh', position: 'absolute', filter: 'blur(0px)'}}
+            style={{width: '100%', height: '100vh', position: 'absolute', filter: 'blur(1px)'}}
             // src="/images/imageedit_1_3446488580.png"
             src="/images/landing-background2.png"
             ></motion.img>

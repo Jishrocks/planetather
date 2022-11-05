@@ -76,7 +76,7 @@ const Vision = ({children}: any) => {
             
 
             <div style={{display: 'flex', flexDirection: 'row', gap: 6, justifyContent: 'center', alignItems: 'center'}}>
-                <img src="https://cdn.discordapp.com/attachments/934914135613931593/1032295913231757382/Untitled_Artwork.png" style={{width: '512px', transform: 'translateY(-2.5rem)', opacity: 0}} alt="" />
+                <img src="https://www.sneakerheads.xyz/_nuxt/image/ea5510.webp" style={{width: '512px', transform: 'translateY(-4rem)', opacity: 1, borderRadius: '50px'}} alt="" />
             </div>
 
             <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'left', alignItems: 'left', marginLeft: '5rem'}}>

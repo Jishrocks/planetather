@@ -97,7 +97,7 @@ const StarQuest = ({children}: any) => {
             </div>
 
             <div style={{display: 'flex', flexDirection: 'row', gap: 6, justifyContent: 'center', alignItems: 'center'}}>
-                <img src="https://media.discordapp.net/attachments/934914135613931593/1033139897906774087/Untitled_Artwork.png?width=1880&height=1058" style={{width: '700px', transform: 'translateY(-2.5rem) translateX(-5rem) rotate(-50deg)', opacity: 0.4, filter: 'invert()'}} alt="" />
+                <img src="https://cdn.discordapp.com/attachments/1030078160441724979/1035304353122238535/213F0AF7-5C69-4BB3-90EB-8080381D9416-removebg-preview.png" style={{width: '550px', transform: 'translateY(-2.5rem) translateX(-5rem) rotate(0deg)', opacity: 0.7, filter: 'blur(0px)'}} alt="" />
             </div>
         </motion.div>
     )
