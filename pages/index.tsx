@@ -302,6 +302,7 @@ const Home: NextPage = () => {
 						screen_md: '0.7rem',
 						screen_lg: '0.8rem',
 						screen_xl: '0.8rem'
+					// eslint-disable-next-line react/no-unescaped-entities
 					}), color: '#fff', marginBlock: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'}}>Just in case you missed out, there's a new baddie out in the town. </h1>
 					<h1 style={{fontFamily: 'FFMark', fontSize: screenBasedAttribute(screens, {
 						screen_sm: null,

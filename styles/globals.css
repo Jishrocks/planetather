@@ -57,6 +57,7 @@ body {
   color: #c80e2a;
   /* color: transparent; */
   -webkit-background-clip: text;
+  background-clip: text;
 }
 
 .content {
