@@ -1,14 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
-import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
 
 import { styled } from '@mui/system';
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import React from "react";
 
-import useMediaQuery from '@mui/material/useMediaQuery';
 import MenuIcon from '@mui/icons-material/Menu';
+import { useMediaQuery, screenBasedAttribute } from '../lib/mediaQuery';
 
 const TabItem = styled('p')({
     font: '400 0.7rem / 80% FFMark',
@@ -37,7 +35,7 @@ const Tab = styled('div')({
 
 const Navbar = () => {
 
-    let isMobile = useMediaQuery('(max-width: 1200px)')
+    let {screen_sm, screen_md, screen_lg, screen_xl, screens} = useMediaQuery()
 
     const [lastScrollTop, setScrollTop] = useState(0)
     const [showNavbar, setShowNavbar] = useState(true)
@@ -80,41 +78,30 @@ const Navbar = () => {
                 transition: 'all .25s ease-in-out',
                 // background: 'linear-gradient(to bottom, #21212195, transparent)',
                 // background: '#fbfbfb',
-                marginLeft: '35px',
-                marginRight: '35px',
+                marginLeft: '36px',
+                marginRight: '36px',
                 backdropFilter: 'blur(30px)',
-                borderBottom: '1px solid rgba(0, 0, 0, 0.1)',
+                // borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
                 zIndex: 999,
                 }}>
-                <div style={{height: 'inherit', marginLeft: '15px', marginRight: '15px', display: 'grid', gridTemplateColumns: '1fr 1fr 1fr'}}>
-                    {/* Navigation */}
-                    <div style={{display: !isMobile ? 'flex' : 'none', justifyContent: 'left', alignItems: 'center'}}>
-                        <Tab>
-                            <TabItem onClick={() => {
-                                // if (parallaxRef) {
-                                //     (parallaxRef.current as any).scrollTo(1)
-                                // }
-                            }}>Prologue</TabItem>
-                            <TabItem onClick={() => {
-                                // if (parallaxRef) {
-                                //     (parallaxRef.current as any).scrollTo(2)
-                                // }
-                            }}>Vision</TabItem>
-                            <TabItem onClick={() => {
-                                // if (parallaxRef) {
-                                //     (parallaxRef.current as any).scrollTo(3)
-                                // }
-                            }}>Starquest</TabItem>
-                            <TabItem onClick={() => {
-                                // if (parallaxRef) {
-                                //     (parallaxRef.current as any).scrollTo(4)
-                                // }
-                            }}>Creators</TabItem>
-                        </Tab>
+                <div style={{height: 'inherit', width: '100%', marginLeft: '0px', display: 'grid', gridTemplateColumns: screenBasedAttribute(screens, {
+                    screen_sm: '1fr 1fr',
+                    screen_md: '1fr 1fr 1fr',
+                    screen_lg: '1fr 1fr 1fr',
+                    screen_xl: '1fr 1fr 1fr'
+                })}}>
+                    {/* Left Side Text */}
+                    <div style={{display: 'flex', justifyContent: 'left', alignItems: 'center'}}>
+                        <h1 style={{fontFamily: 'Mono', color: 'silver', fontSize: '0.6rem', marginBlock: 0, textTransform: 'uppercase', letterSpacing: '0.5px'}}>× ENTER COLLECTIVE REALITY.</h1>
                     </div>
                     
                     {/* Logo */}
-                    <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                    <div style={{display: screenBasedAttribute(screens, {
+                        screen_sm: 'none',
+                        screen_md: 'flex',
+                        screen_lg: 'flex',
+                        screen_xl: 'flex'
+                    }), justifyContent: 'center', alignItems: 'center'}}>
                         <img onClick={() => {
                             // if (parallaxRef) {
                             //     (parallaxRef.current as any).scrollTo(0)
@@ -133,7 +120,12 @@ const Navbar = () => {
                     </div>
 
                     {/* Socials */}
-                    <div style={{display: !isMobile ? 'flex' : 'none', justifyContent: 'right', alignItems: 'center', gap: 25, marginRight: '15px', opacity: 1}}>
+                    <div style={{display: screenBasedAttribute(screens, {
+                        screen_sm: 'none',
+                        screen_md: 'flex',
+                        screen_lg: 'flex', 
+                        screen_xl: 'flex',
+                    }), justifyContent: 'right', alignItems: 'center', gap: 25, marginRight: '16px', opacity: 1}}>
                         <motion.img onClick={() => {
                             window.open("https://discord.gg/xjETANVKBe")
                         }} whileHover={{scale: 1.1}} src="/images/discord.avif" style={{marginTop: '2px', cursor: 'pointer', filter: ''}} width={"18px"} height={"auto"} alt="discord" />
@@ -146,9 +138,14 @@ const Navbar = () => {
                     </div>
 
                     {/* Menu */}
-                    <div style={{display: !isMobile ? 'none' : 'flex', alignItems: 'center', justifyContent: 'right', width: '70%'}}>
+                    <div style={{display: screenBasedAttribute(screens, {
+                        screen_sm: 'flex',
+                        screen_md: 'none',
+                        screen_lg: 'none',
+                        screen_xl: 'none'
+                    }),  alignItems: 'center', justifyContent: 'right'}}>
                         <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                            <MenuIcon style={{color: 'white', fontSize: '32px'}}></MenuIcon>
+                            <i style={{filter: 'invert()'}} className='gg-menu-right'></i>
                         </div>
                     </div>
                 </div>

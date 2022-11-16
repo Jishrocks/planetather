@@ -1,30 +1,95 @@
 import { TextScramble } from "../ScrambledText";
 import { motion } from "framer-motion";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Lottie from 'react-lottie';
 import scrollDown from '../../public/scroll-down.json'
 
+import { useMediaQuery, screenBasedAttribute } from "../../lib/mediaQuery";
+
 const Landing = ({children}: any) => {
-    
+
+    let {screen_sm, screen_md, screen_lg, screen_xl, screens} = useMediaQuery()
+
+    const [showScrollNotifier, setShowScrollNotifier] = useState(true)
+
+    useEffect(() => {
+        let eventListener = () => {
+            var scrollTop = document.documentElement.scrollTop
+            if (scrollTop > 25) {
+                setShowScrollNotifier(false)
+            } else {
+                setShowScrollNotifier(true)
+            }
+        }
+        window.addEventListener('scroll', eventListener)
+    }, [])
+
     return (
-        <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '80vh', marginLeft: '0rem', overflow: 'visible', background: `radial-gradient(ellipse at bottom, #e5e3cf, transparent), radial-gradient(ellipse at top, #fff, transparent)`}}>
+        <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '80vh', marginLeft: '0rem', overflow: 'visible', background: `#000602`}}>
             <motion.img
-            style={{width: '100%', height: '100vh', position: 'absolute', filter: 'blur(1px)'}}
+            style={{width: '100%', height: '100vh', position: 'absolute', filter: 'blur(1px)', opacity: 0}}
             // src="/images/imageedit_1_3446488580.png"
             src="/images/landing-background2.png"
             ></motion.img>
-            {/* <motion.img
-				style={{width: '130vw', position: 'absolute', transform: 'translateX(3rem) translateY(5rem)', opacity: 0.7}}
+            
+            <motion.video
+            autoPlay
+            loop
+            muted
+            style={{width: 'auto', height: '100vh', position: 'absolute', opacity: 1}}
+            // src="/images/imageedit_1_3446488580.png"
+            src="/videos/landing.mp4"
+            ></motion.video>
+            
+            <motion.img
+				style={{width: '130vw', position: 'absolute', transform: 'translateX(3rem) translateY(5rem)', opacity: 0.8}}
 				src="/images/graffitti.png"
-            ></motion.img> */}
-            <h1 style={{fontFamily: 'FKScreamer', opacity: 0.9, textAlign: 'center', color: '#fff', fontSize: '7.5rem', marginBlock: '0rem', textTransform: 'uppercase', letterSpacing: '2px', textShadow: '0 0 100px rgb(19 23 30 / 18%), 0 50px 32px rgb(19 23 30 / 12%)', lineHeight: 1}}>
-                We are
-            </h1>
-            <h1 style={{fontFamily: 'Mandalore', textAlign: 'center', color: '#fff', fontSize: '15rem', marginBlock: '0rem', textTransform: 'lowercase', lineHeight: 0.78, letterSpacing: '2px', textShadow: '0 0 150px rgb(19 23 30 / 18%), 0 50px 32px rgb(19 23 30 / 12%)', zIndex: 0}}>
-                <TextScramble text="ather"></TextScramble>
-            </h1>
-            <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', position: 'absolute', width: '100vw', transform: 'translateY(17.25rem)'}}>
+            ></motion.img>
+
+            <div style={{
+                transform: screenBasedAttribute(screens, {
+                    screen_sm: 'translateY(20.5rem)',
+                    screen_md: '',
+                    screen_lg: '',
+                    screen_xl: ''
+                }),
+                fontSize: '7.5rem' 
+            }}>
+                <h1 style={{fontFamily: 'FKScreamer', fontSize: screenBasedAttribute(screens, {
+                    screen_sm: '0.6em',
+                    screen_md: '0.8em',
+                    screen_lg: '1em',
+                    screen_xl: '1.125em'
+                }), opacity: 0.7, textAlign: 'center', color: '#fff', marginBlock: '0rem', textTransform: 'uppercase', letterSpacing: '2px', textShadow: '0 0 100px rgb(19 23 30 / 18%), 0 50px 32px rgb(19 23 30 / 12%)', lineHeight: 1}}>
+                    we are
+                </h1>
+            </div>
+            <div style={{
+                transform: screenBasedAttribute(screens, {
+                    screen_sm: 'translateY(20.5rem)',
+                    screen_md: '',
+                    screen_lg: '',
+                    screen_xl: ''
+                }),
+                fontSize: '14rem',
+                zIndex: 0,
+            }}>
+                <h1 style={{fontFamily: 'Mandalore', fontSize: screenBasedAttribute(screens, {
+                    screen_sm: '0.6em',
+                    screen_md: '0.8em',
+                    screen_lg: '1em',
+                    screen_xl: '1.125em'
+                }), textAlign: 'center', color: '#fff', marginBlock: '0rem', textTransform: 'lowercase', lineHeight: 0.78, letterSpacing: '2px', textShadow: '0 0 150px rgb(19 23 30 / 18%), 0 50px 32px rgb(19 23 30 / 12%)', zIndex: 0}}>
+                    <TextScramble text="ather"></TextScramble>
+                </h1>
+            </div>
+            <div style={{display: screenBasedAttribute(screens, {
+                screen_sm: 'none',
+                screen_md: 'flex',
+                screen_lg: 'flex',
+                screen_xl: 'flex'
+            }), opacity: showScrollNotifier ? 1 : 0, transition: 'opacity 0.25s', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', position: 'absolute', width: '100vw', transform: 'translateY(17.25rem)'}}>
 				<Lottie
 					style={{opacity: 1, filter: 'invert()'}}
 					options={{animationData: scrollDown, autoplay: true, loop: true}}
@@ -34,15 +99,47 @@ const Landing = ({children}: any) => {
 				<h1 style={{fontFamily: 'Mono', color: 'silver', fontSize: '0.5625rem', marginBlock: 0, textTransform: 'uppercase', marginTop: '0.5625rem', letterSpacing: '0.5px'}}>Scroll to view more</h1>
 			</div>
             <motion.img
-            style={{width: '20rem', position: 'absolute', marginLeft: '620px', marginTop: '330px', filter: 'drop-shadow(-12px 12px 30px rgba(0, 0, 0, 0.3))'}}
+            style={{
+                width: screenBasedAttribute(screens, {
+                    screen_sm: '15rem',
+                    screen_md: '18rem',
+                    screen_lg: '25rem',
+                    screen_xl: '32rem',
+                }), 
+                position: 'absolute', 
+                marginLeft: screenBasedAttribute(screens, {
+                    screen_sm: '0px',
+                    screen_md: '500px',
+                    screen_lg: '660px',
+                    screen_xl: '790px',
+                }), 
+                marginTop: screenBasedAttribute(screens, {
+                    screen_sm: '0px',
+                    screen_md: '310px',
+                    screen_lg: '440px',
+                    screen_xl: '560px'
+                }),
+                filter: 'drop-shadow(-12px 12px 30px rgba(255, 255, 255, 0.05))',
+                zIndex: 1}}
             src="/images/girl2.png"
             >
             </motion.img>
+            <div style={{position: 'absolute', width: '400px', transform: 'translateY(10rem)'}}>
+                <svg style={{filter: 'blur(300px)'}} viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#F2F4F8" d="M40.4,-52.1C55.3,-44.8,72.4,-36.9,79.5,-23.8C86.5,-10.7,83.5,7.8,75,21.3C66.4,34.9,52.1,43.5,38.7,52.9C25.3,62.2,12.6,72.2,0.1,72C-12.4,71.8,-24.7,61.4,-36,51.4C-47.3,41.4,-57.5,31.7,-62,19.7C-66.4,7.8,-65,-6.4,-60.2,-19.1C-55.5,-31.7,-47.3,-42.7,-36.7,-51.5C-26,-60.2,-13,-66.6,-0.1,-66.4C12.7,-66.2,25.5,-59.4,40.4,-52.1Z" transform="translate(100 100)" />
+                </svg>
+            </div>
             <motion.img
-            style={{width: '15rem', position: 'absolute', marginRight: '660px', marginTop: '270px', filter: 'drop-shadow(12px 12px 30px rgba(0, 0, 0, 0.3))'}}
-            src="/images/salvo3.png"
+            style={{width: '50rem', position: 'absolute', marginLeft: '1020px', marginTop: '250px', filter: 'drop-shadow(-12px 12px 30px rgba(255, 255, 255, 0.7))'}}
+            src="https://cdn.discordapp.com/attachments/934914135613931593/1040649571895873656/1.gif"
             >
             </motion.img>
+
+            {/* <motion.img
+            style={{width: '24rem', position: 'absolute', marginRight: '900px', marginTop: '400px', filter: 'drop-shadow(12px 12px 30px rgba(0, 0, 0, 0.3))'}}
+            src="/images/salvo3.png"
+            >
+            </motion.img> */}
             
         </div>
     )
