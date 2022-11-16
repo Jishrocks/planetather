@@ -37,6 +37,7 @@ const Landing = ({children}: any) => {
             autoPlay
             loop
             muted
+            playsInline
             style={{width: 'auto', height: '100vh', position: 'absolute', opacity: 1}}
             // src="/images/imageedit_1_3446488580.png"
             src="/videos/landing.mp4"
@@ -49,7 +50,7 @@ const Landing = ({children}: any) => {
 
             <div style={{
                 transform: screenBasedAttribute(screens, {
-                    screen_sm: 'translateY(20.5rem)',
+                    screen_sm: 'translateY(10rem)',
                     screen_md: '',
                     screen_lg: '',
                     screen_xl: ''
@@ -57,7 +58,7 @@ const Landing = ({children}: any) => {
                 fontSize: '7.5rem' 
             }}>
                 <h1 style={{fontFamily: 'FKScreamer', fontSize: screenBasedAttribute(screens, {
-                    screen_sm: '0.6em',
+                    screen_sm: '0.5em',
                     screen_md: '0.8em',
                     screen_lg: '1em',
                     screen_xl: '1.125em'
@@ -67,7 +68,7 @@ const Landing = ({children}: any) => {
             </div>
             <div style={{
                 transform: screenBasedAttribute(screens, {
-                    screen_sm: 'translateY(20.5rem)',
+                    screen_sm: 'translateY(10rem)',
                     screen_md: '',
                     screen_lg: '',
                     screen_xl: ''
@@ -76,7 +77,7 @@ const Landing = ({children}: any) => {
                 zIndex: 0,
             }}>
                 <h1 style={{fontFamily: 'Mandalore', fontSize: screenBasedAttribute(screens, {
-                    screen_sm: '0.6em',
+                    screen_sm: '0.5em',
                     screen_md: '0.8em',
                     screen_lg: '1em',
                     screen_xl: '1.125em'
@@ -85,23 +86,43 @@ const Landing = ({children}: any) => {
                 </h1>
             </div>
             <div style={{display: screenBasedAttribute(screens, {
-                screen_sm: 'none',
+                screen_sm: 'flex',
                 screen_md: 'flex',
                 screen_lg: 'flex',
                 screen_xl: 'flex'
-            }), opacity: showScrollNotifier ? 1 : 0, transition: 'opacity 0.25s', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', position: 'absolute', width: '100vw', transform: 'translateY(17.25rem)'}}>
+            }), opacity: showScrollNotifier ? 1 : 0, transition: 'opacity 0.25s', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', position: 'absolute', width: '100vw', transform: screenBasedAttribute(screens, {
+                screen_sm: 'translateY(22rem)',
+                screen_md: 'translateY(17.25rem)',
+                screen_lg: 'translateY(17.25rem)',
+                screen_xl: 'translateY(17.25rem)'
+            })}}>
 				<Lottie
 					style={{opacity: 1, filter: 'invert()'}}
 					options={{animationData: scrollDown, autoplay: true, loop: true}}
-					height={50}
-					width={50}
+					height={screenBasedAttribute(screens, {
+                        screen_sm: 40,
+                        screen_md: 50,
+                        screen_lg: 50,
+                        screen_xl: 50
+                    })}
+					width={screenBasedAttribute(screens, {
+                        screen_sm: 40,
+                        screen_md: 50,
+                        screen_lg: 50,
+                        screen_xl: 50
+                    })}
 				/>
-				<h1 style={{fontFamily: 'Mono', color: 'silver', fontSize: '0.5625rem', marginBlock: 0, textTransform: 'uppercase', marginTop: '0.5625rem', letterSpacing: '0.5px'}}>Scroll to view more</h1>
+				<h1 style={{fontFamily: 'Mono', color: 'silver', fontSize: screenBasedAttribute(screens, {
+                    screen_sm: '0.5rem',
+                    screen_md: '0.5625rem',
+                    screen_lg: '0.5625rem',
+                    screen_xl: '0.5625rem'
+                }), marginBlock: 0, textTransform: 'uppercase', marginTop: '0.5625rem', letterSpacing: '0.5px'}}>Scroll to view more</h1>
 			</div>
             <motion.img
             style={{
                 width: screenBasedAttribute(screens, {
-                    screen_sm: '15rem',
+                    screen_sm: '10rem',
                     screen_md: '18rem',
                     screen_lg: '25rem',
                     screen_xl: '32rem',
@@ -118,6 +139,12 @@ const Landing = ({children}: any) => {
                     screen_md: '310px',
                     screen_lg: '440px',
                     screen_xl: '560px'
+                }),
+                marginBottom: screenBasedAttribute(screens, {
+                    screen_sm: '136px',
+                    screen_md: '0px',
+                    screen_lg: '0px',
+                    screen_xl: '0px'
                 }),
                 filter: 'drop-shadow(-12px 12px 30px rgba(255, 255, 255, 0.05))',
                 zIndex: 1}}

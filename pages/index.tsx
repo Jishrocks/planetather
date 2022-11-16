@@ -34,6 +34,8 @@ const Home: NextPage = () => {
 
 	const [landingScrolled, setLandingScrolled] = useState(true)
 
+	const [clipPath, setClipPath] = useState('')
+
     useEffect(() => {
         let eventListener = () => {
             var scrollTop = document.documentElement.scrollTop
@@ -44,7 +46,11 @@ const Home: NextPage = () => {
             }
         }
         window.addEventListener('scroll', eventListener)
-    }, [])
+    }, [clipPath])
+
+	useEffect(() => {
+		setClipPath('polygon(100% 0, 100% 93%, 0 100%, 0 7%)')
+	}, [])
 
 	// useEffect(() => {
 	// 	var
@@ -155,8 +161,8 @@ const Home: NextPage = () => {
 
 							
 							<div style={{height: '30rem', marginTop: screenBasedAttribute(screens, {
-								screen_sm: '10rem',
-								screen_md: '10srem',
+								screen_sm: '0rem',
+								screen_md: '10rem',
 								screen_lg: '25rem',
 								screen_xl: '25rem'
 							}), marginBottom: '1rem', position: 'relative', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', zIndex: 3}}>
@@ -165,7 +171,7 @@ const Home: NextPage = () => {
 									src="/images/graffitti.png"
 								></motion.img>
 								<motion.h1 style={{fontFamily: 'FKScreamer', fontSize: screenBasedAttribute(screens, {
-									screen_sm: '2.5rem',
+									screen_sm: '2rem',
 									screen_md: '3.5rem',
 									screen_lg: '4.5rem',
 									screen_xl: '4.5rem'
@@ -197,7 +203,7 @@ const Home: NextPage = () => {
 										screen_md: '4rem',
 										screen_lg: '8rem',
 										screen_xl: '8rem'
-									}), marginBottom: '15rem', justifyContent: 'center', alignItems: 'center', WebkitClipPath: 'polygon(100% 0, 100% 93%, 0 100%, 0 7%)', zIndex: 4}}>
+									}), marginBottom: '15rem', justifyContent: 'center', alignItems: 'center', WebkitClipPath: clipPath, clipPath: clipPath, zIndex: 4}}>
 								<div style={{position: 'absolute', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', zIndex: 2}}>
 									<h1 style={{fontFamily: 'Mono', fontSize: screenBasedAttribute(screens, {
 										screen_sm: '0.6rem',

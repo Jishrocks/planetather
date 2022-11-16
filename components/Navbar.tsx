@@ -92,7 +92,12 @@ const Navbar = () => {
                 })}}>
                     {/* Left Side Text */}
                     <div style={{display: 'flex', justifyContent: 'left', alignItems: 'center'}}>
-                        <h1 style={{fontFamily: 'Mono', color: 'silver', fontSize: '0.6rem', marginBlock: 0, textTransform: 'uppercase', letterSpacing: '0.5px'}}>× ENTER COLLECTIVE REALITY.</h1>
+                        <h1 style={{fontFamily: 'Mono', color: 'silver', fontSize: screenBasedAttribute(screens, {
+                            screen_sm: '8px',
+                            screen_md: '10px',
+                            screen_lg: '10px',
+                            screen_xl: '10px'
+                        }), marginBlock: 0, textTransform: 'uppercase', letterSpacing: '0.5px'}}>× ENTER COLLECTIVE REALITY.</h1>
                     </div>
                     
                     {/* Logo */}
