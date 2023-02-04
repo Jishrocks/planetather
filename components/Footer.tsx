@@ -13,7 +13,7 @@ const Footer = ({children}: any) => {
                 <h1 style={{fontFamily: 'FFMark', color: 'var(--palette-white)'}}>DISCORD</h1>
                 <h1 style={{fontFamily: 'FFMark', color: 'var(--palette-white)'}}>TWITTER</h1>
                 <h1 style={{fontFamily: 'FFMark', color: 'var(--palette-white)'}}>INSTAGRAM</h1>
-                <h1 style={{fontFamily: 'FFMark', color: 'var(--palette-white)'}}>PRIVACY POLICY</h1>
+                <h1 style={{fontFamily: 'FFMark', color: 'var(--palette-white)'}}>LICENSE</h1>
                 <h1 style={{fontFamily: 'FFMark', color: 'var(--palette-white)'}}>TERMS AND CONDITIONS</h1>
             </div>
 

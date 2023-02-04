@@ -5,6 +5,8 @@ import { motion, useAnimation } from "framer-motion";
 import React, { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
+import Tilt from 'react-parallax-tilt'
+
 const Creators = ({children}: any) => {
 
     const animation = useAnimation()
@@ -68,8 +70,8 @@ const Creators = ({children}: any) => {
                     transition={headingTransition}
                     initial={"hidden"}
                     variants={headingAnimationVariants}
-                    className='text-gradient'
-                    style={{font: '400 0.9rem/80% Mono', letterSpacing: '4px', textTransform: 'uppercase', marginBlock: 0}}>
+                    className='text-gradient-two'
+                    style={{font: '400 0.9rem/100% Mono', letterSpacing: '2px', textTransform: 'uppercase', marginBlock: 0}}>
                         The makers
                 </motion.h1>
                 <motion.h1
@@ -78,49 +80,49 @@ const Creators = ({children}: any) => {
                     transition={headingTransition}
                     initial={"hidden"}
                     variants={headingAnimationVariants}
-                    className='text-gradient'
-                    style={{font: '400 10rem/80% FKScreamer', letterSpacing: '4px', textTransform: 'uppercase', marginBlock: 0}}>
+                    className='text-gradient-two'
+                    style={{font: '400 5rem/100% GalderGlynn', letterSpacing: '4px', textTransform: 'uppercase', marginBlock: 0}}>
                         Creators
                 </motion.h1>
             </div>
 
             <div style={{display: 'flex', flexDirection: 'row', gap: 20, justifyContent: 'center', alignItems: 'center'}}>
-                <div style={{display: 'flex', justifyContent: 'center', alignItems: 'end', borderRadius: '10px', width: '325px'}}>
-                    <img src="https://cdn.discordapp.com/attachments/934914135613931593/1033142127691055264/unknown.png" style={{filter: 'grayscale(100%)', borderRadius: '10px', width: 'inherit'}} alt=""/>
-                    <h1
-                        style={{font: '400 1rem/80% Mono', position: 'absolute', color: 'var(--palette-white)', textTransform: 'uppercase', transform: 'translateY(-2rem)', marginBlock: 0, zIndex: 10}}>
-                            ThrottleMonk <span style={{opacity: 0.7}}>/ Brain</span>
-                    </h1>
+                <div style={{display: 'flex', justifyContent: 'center', alignItems: 'end', width: '325px'}}>
+                        <img src="https://cdn.discordapp.com/attachments/934914135613931593/1033142127691055264/unknown.png" style={{filter: 'grayscale(100%)', width: 'inherit'}} alt=""/>
+                        <h1
+                            style={{font: '400 1rem/80% Mono', position: 'absolute', color: 'var(--palette-white)', textTransform: 'uppercase', transform: 'translateY(-2rem)', marginBlock: 0, zIndex: 10}}>
+                                ThrottleMonk <span style={{opacity: 0.7}}>/ Brain</span>
+                        </h1>
                 </div>
-                <div style={{display: 'flex', justifyContent: 'center', alignItems: 'end', borderRadius: '10px', width: '325px'}}>
-                    <img src="https://cdn.discordapp.com/attachments/934914135613931593/1033144036569133056/unknown.png" style={{filter: 'grayscale(100%)', borderRadius: '10px', width: 'inherit'}} alt=""/>
-                    <h1
-                        style={{font: '400 1rem/80% Mono', position: 'absolute', color: 'var(--palette-white)', textTransform: 'uppercase', transform: 'translateY(-2rem)', marginBlock: 0, zIndex: 10}}>
-                            Nitro <span style={{opacity: 0.7}}>/ Techie</span>
-                    </h1>
+                <div style={{display: 'flex', justifyContent: 'center', alignItems: 'end', width: '325px'}}>
+                        <img src="https://cdn.discordapp.com/attachments/934914135613931593/1033144036569133056/unknown.png" style={{filter: 'grayscale(100%)', width: 'inherit'}} alt=""/>
+                        <h1
+                            style={{font: '400 1rem/80% Mono', position: 'absolute', color: 'var(--palette-white)', textTransform: 'uppercase', transform: 'translateY(-2rem)', marginBlock: 0, zIndex: 10}}>
+                                Nitro <span style={{opacity: 0.7}}>/ Techie</span>
+                        </h1>
                 </div>
-                <div style={{display: 'flex', justifyContent: 'center', alignItems: 'end', borderRadius: '10px', width: '325px'}}>
-                    <img src="https://cdn.discordapp.com/attachments/934914135613931593/1033145177239466074/IMG_0417.jpg" style={{filter: 'grayscale(100%)', borderRadius: '10px', width: 'inherit'}} alt=""/>
-                    <h1
-                        style={{font: '400 1rem/80% Mono', position: 'absolute', color: 'var(--palette-white)', textTransform: 'uppercase', transform: 'translateY(-2rem)', marginBlock: 0, zIndex: 10}}>
-                            Kraken <span style={{opacity: 0.7}}>/ Picasso</span>
-                    </h1>
+                <div style={{display: 'flex', justifyContent: 'center', alignItems: 'end', width: '325px'}}>
+                        <img src="https://cdn.discordapp.com/attachments/934914135613931593/1033145177239466074/IMG_0417.jpg" style={{filter: 'grayscale(100%)', width: 'inherit'}} alt=""/>
+                        <h1
+                            style={{font: '400 1rem/80% Mono', position: 'absolute', color: 'var(--palette-white)', textTransform: 'uppercase', transform: 'translateY(-2rem)', marginBlock: 0, zIndex: 10}}>
+                                Kraken <span style={{opacity: 0.7}}>/ Picasso</span>
+                        </h1>
                 </div>
             </div>
             <div style={{display: 'flex', flexDirection: 'row', gap: 20, justifyContent: 'center', alignItems: 'center', marginTop: '20px'}}>
-                <div style={{display: 'flex', justifyContent: 'center', alignItems: 'end', borderRadius: '10px', width: '325px'}}>
-                    <img src="https://cdn.discordapp.com/attachments/934914135613931593/1033396677408731268/aman_Cropped.jpg" style={{filter: 'grayscale(100%)', borderRadius: '10px', width: 'inherit'}} alt=""/>
-                    <h1
-                        style={{font: '400 1rem/80% Mono', position: 'absolute', color: 'var(--palette-white)', textTransform: 'uppercase', transform: 'translateY(-2rem)', marginBlock: 0, zIndex: 10}}>
-                            Hades <span style={{opacity: 0.7}}>/ Author</span>
-                    </h1>
+                <div style={{display: 'flex', justifyContent: 'center', alignItems: 'end', width: '325px'}}>
+                        <img src="https://cdn.discordapp.com/attachments/934914135613931593/1033396677408731268/aman_Cropped.jpg" style={{filter: 'grayscale(100%)', width: 'inherit'}} alt=""/>
+                        <h1
+                            style={{font: '400 1rem/80% Mono', position: 'absolute', color: 'var(--palette-white)', textTransform: 'uppercase', transform: 'translateY(-2rem)', marginBlock: 0, zIndex: 10}}>
+                                Hades <span style={{opacity: 0.7}}>/ Author</span>
+                        </h1>
                 </div>
-                <div style={{display: 'flex', justifyContent: 'center', alignItems: 'end', borderRadius: '10px', width: '325px'}}>
-                    <img src="https://cdn.discordapp.com/attachments/934914135613931593/1033395131493142559/Moo_Cropped.png" style={{filter: 'grayscale(100%)', borderRadius: '10px', width: 'inherit'}} alt=""/>
-                    <h1
-                        style={{font: '400 1rem/80% Mono', position: 'absolute', color: 'var(--palette-white)', textTransform: 'uppercase', transform: 'translateY(-2rem)', marginBlock: 0, zIndex: 10}}>
-                            Moo <span style={{opacity: 0.7}}>/ Animator</span>
-                    </h1>
+                <div style={{display: 'flex', justifyContent: 'center', alignItems: 'end', width: '325px'}}>
+                        <img src="https://cdn.discordapp.com/attachments/934914135613931593/1033395131493142559/Moo_Cropped.png" style={{filter: 'grayscale(100%)', width: 'inherit'}} alt=""/>
+                        <h1
+                            style={{font: '400 1rem/80% Mono', position: 'absolute', color: 'var(--palette-white)', textTransform: 'uppercase', transform: 'translateY(-2rem)', marginBlock: 0, zIndex: 10}}>
+                                Moo <span style={{opacity: 0.7}}>/ Animator</span>
+                        </h1>
                 </div>
             </div>
         </motion.div>

@@ -17,22 +17,28 @@ import { Parallax, ParallaxProvider } from 'react-scroll-parallax'
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 
-import gsap from 'gsap'
-
 import twitterAnimationData from '../public/twitter.json'
 
 import StickyFooter from '../components/StickyFooter'
 import Sidebar from '../components/Sidebar'
 
-import Lottie from 'react-lottie';
 import {useMediaQuery, screenBasedAttribute} from '../lib/mediaQuery'
 import Article from '../components/Article'
+
+import Tilt from 'react-parallax-tilt'
+
+import Fade from 'react-reveal/Fade';
+
+import { TextScramble } from '../components/ScrambledText'
+import { useInView } from 'react-spring'
+
 
 const Home: NextPage = () => {
 
 	let {screen_sm, screen_md, screen_lg, screen_xl, screens} = useMediaQuery()
 
-	const [landingScrolled, setLandingScrolled] = useState(true)
+	const [landingScrolled, setLandingScrolled] = useState(false)
+	const [navbarOverflow, setNavbarOverflow] = useState(true)
 
 	const [clipPath, setClipPath] = useState('')
 
@@ -44,69 +50,42 @@ const Home: NextPage = () => {
             } else {
                 setLandingScrolled(false)
             }
+
+			if (scrollTop > 100) {
+				setNavbarOverflow(false)
+			} else {
+				setNavbarOverflow(true)
+			}
         }
         window.addEventListener('scroll', eventListener)
     }, [clipPath])
 
 	useEffect(() => {
-		setClipPath('polygon(100% 0, 100% 93%, 0 100%, 0 7%)')
+		setClipPath('polygon(100% 0, 100% 88%, 0 100%, 0 12%)')
 	}, [])
 
-	// useEffect(() => {
-	// 	var
-	// 	animRequestID,
-	// 	settingsStr = document.getElementById('smooth-scroll')?.dataset.scrollSettings,
-	// 	settings = parseSettings(settingsStr);
+	let [transitionInViewRef, transitionInView] = useInView()
+	let [transitionScale, setTransitionScale] = useState(1)
+	let [transitionOffset, setTransitionOffset] = useState(undefined)
+	let transitionRange = 1600
+	
+	useEffect(() => {
+		let eventListener = () => {
+			if(!transitionOffset) {
+				setTransitionOffset(transitionInViewRef.current.offsetTop)
+			} else {
+				var scrollTop = document.documentElement.scrollTop
+				let i = scrollTop - 1040 - transitionOffset
+				let scale = Math.min(Math.max((i / transitionRange) * 100, 1), 100)
+				setTransitionScale(scale)
+			}
+		}
 
-	// 	function parseSettings(str): any {
-	// 	var r = {};
-	// 	str.split(' ').forEach(s => {
-	// 		var t = s.split(':');
-	// 		r[t[0]] = t[1];
-	// 	});
-	// 	return r;
-	// 	};
-
-	// 	function addListeners(element, events, callback) {
-	// 	events.split(' ').forEach(e => element.addEventListener(e, callback, false));
-	// 	};
-
-	// 	function handleResize() {
-	// 	var bodyHeight = document.getElementById('smooth-scroll')?.offsetHeight;
-	// 	gsap.set('body', { height: bodyHeight });
-	// 	cancelAnimationFrame(animRequestID);
-	// 	};
-
-	// 	function handleScroll() {
-	// 	scrollTo(window.scrollY);
-	// 	};
-
-	// 	function scrollTo(y) {
-	// 	cancelAnimationFrame(animRequestID);
-	// 	animRequestID = requestAnimationFrame(function() {
-	// 		gsap.to('#smooth-scroll', {
-	// 		duration: settings.duration,
-	// 		y: -y,
-	// 		ease: settings.ease
-	// 		});
-	// 	});
-	// 	};
-
-	// 	gsap.set('#smooth-scroll', {
-	// 	force3D: true
-	// 	});
-
-	// 	if(settings.smoother == 'on') {
-	// 	// gsap.set('.viewport', { perspective: 1000 });
-	// 	gsap.set('#smooth-scroll', {
-	// 		rotation: .001
-	// 		// z: .01
-	// 	});
-	// 	};
-
-	// 	addListeners(window, 'load resize', handleResize);
-	// 	addListeners(window, 'scroll', handleScroll);
-	// }, [])
+		window.addEventListener('scroll', eventListener)
+		return () => {
+			window.removeEventListener('scroll', eventListener)
+		}
+	})
 
 	return (
 		<>
@@ -142,11 +121,21 @@ const Home: NextPage = () => {
 
 			</Head>
 
-			<div id="smooth-scroll" data-scroll-settings="duration:.5 ease:power2.out smoother:on" style={{overflowX: 'hidden'}}>
+			<div>
+
+				{/* Landing background */}
+
+				<div style={{position: 'absolute', opacity: 1, backgroundColor: '#ca2135', height: '300vh', width: '100vw', clipPath: 'polygon(100% 0, 100% 95%, 0 100%, 0 0%)'}}></div>
+				<div style={{position: 'absolute', background: 'linear-gradient(1turn, #8d1725 55%,transparent)', height: '300vh', width: '100vw', clipPath: 'polygon(100% 0, 100% 95%, 0 100%, 0 0%)'}}></div>
+				{/* <div style={{position: 'absolute', background: '#8d1725', height: '20vh', width: '100vw', marginTop: '190vh', filter: 'blur(300px)', opacity: 0.8, transform: 'rotate(-4deg)'}}></div> */}
+
 				<Navbar />
 				<Sidebar />
+
+				<iframe style={{borderRadius: '12px', opacity: landingScrolled ? 0 : 1, transition: '0.25s all', position: 'fixed', width: '450px', zIndex: '1000', right: '28px', bottom: '-30px'}} src="https://open.spotify.com/embed/album/30WNa86MJsrzTlki1YHI6A?utm_source=generator" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
 				<ParallaxProvider>
-					<div style={{overflowX: 'hidden', position: 'relative'}}>
+					<div style={{overflowX: navbarOverflow ? 'hidden' : 'visible', position: 'relative'}}>
 						{/* <motion.img
 							style={{width: '145%', position: 'absolute', transform: 'translateX(-3rem) translateY(0rem)', filter: 'hue-rotate(-40deg)', opacity: 1}}
 							src="/images/meshgradient.jpeg"
@@ -164,81 +153,129 @@ const Home: NextPage = () => {
 								screen_sm: '0rem',
 								screen_md: '10rem',
 								screen_lg: '25rem',
-								screen_xl: '25rem'
+								screen_xl: '15rem'
 							}), marginBottom: '1rem', position: 'relative', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', zIndex: 3}}>
 								<motion.img
 									style={{width: '130vw', position: 'absolute', filter: 'invert()', transform: 'translateX(3rem) translateY(3rem)', opacity: 0.05}}
 									src="/images/graffitti.png"
 								></motion.img>
-								<motion.h1 style={{fontFamily: 'FKScreamer', fontSize: screenBasedAttribute(screens, {
-									screen_sm: '2rem',
-									screen_md: '3.5rem',
-									screen_lg: '4.5rem',
-									screen_xl: '4.5rem'
-								}), textTransform: 'uppercase', color: '#fbfbfb', textAlign: 'center', letterSpacing: '2px'}}>
-									<span className='text-gradient'>Enter collective reality</span>
-									<br></br>
-									A quest for the survival of<br></br> <span style={{opacity: 0.7}}>10000 Atherians</span> is in your<br></br> hands now.
-								</motion.h1>
+								<Parallax translateY={['100px', '-100px']} style={{fontFamily: 'GalderGlynn', fontSize: screenBasedAttribute(screens, {
+											screen_sm: '2rem',
+											screen_md: '3.5rem',
+											screen_lg: '4.5rem',
+											screen_xl: '3rem'
+									}), textTransform: 'uppercase', color: '#f7f7f7', textAlign: 'center', letterSpacing: '2px', lineHeight: 0.5}}>
+									<Fade bottom opposite cascade>
+										Your digital gateway<br></br>
+										To comics pop culture<br></br>
+										Created & owned by many
+									</Fade>
+								</Parallax>
 							</div>
-							
-							{/* <div style={{width: '130%', height: '15rem', position: 'absolute', transform: 'translateY(50rem) translateX(-10rem) rotate(-5deg)', background: 'linear-gradient(to bottom, #fff, #fff, transparent)', zIndex: 2}}>
 
+							<div style={{height: '120vh', marginTop: '-5rem', display: 'flex', justifyContent: 'center', alignItems: 'start'}}>
+								<div style={{height: `100vh`, width: `100vw`, position: 'sticky', bottom: 0, top: 0, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+									<div ref={transitionInViewRef} style={{width: `${transitionScale * 100}px`, height: `${transitionScale * 100}px`, display: 'flex', justifyContent: 'center', alignItems: 'center', background: 'black', clipPath: 'polygon(0 0, 0 88%, 12% 100%, 100% 100%, 100% 12%, 88% 0)'}}>
+										<div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+											<div style={{borderTop: '1px solid rgba(255, 255, 255, 0.15)', width: `${transitionScale * 100}px`}}></div>
+											<div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100px', height: '100px', backgroundColor: 'rgba(255, 255, 255, 0.15)', clipPath: 'polygon(0 0, 0 88%, 12% 100%, 100% 100%, 100% 12%, 88% 0)'}}>
+												<div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', width: '98.5px', height: '98.5px', backgroundColor: '#000', clipPath: 'polygon(0 0, 0 88%, 12% 100%, 100% 100%, 100% 12%, 88% 0)'}}>
+													<img style={{width: '48px', height: 'auto', position: 'absolute'}} src="/images/logov2.png" alt="" />
+												</div>
+											</div>
+											<div style={{borderTop: '1px solid rgba(255, 255, 255, 0.15)', width: `${transitionScale * 100}px`}}></div>
+											<Parallax translateY={['400px', '200px']} style={{position: 'absolute', fontFamily: 'GalderGlynn', fontSize: screenBasedAttribute(screens, {
+														screen_sm: '2rem',
+														screen_md: '3.5rem',
+														screen_lg: '4.5rem',
+														screen_xl: '5rem'
+												}), textTransform: 'uppercase', color: '#f7f7f7', textAlign: 'center', letterSpacing: '2px', lineHeight: 0.4}}>
+												<Fade bottom opposite cascade>
+													Welcome to the Hideouts.
+													<span style={{fontFamily: 'Mono', marginTop: '-2rem', fontSize: screenBasedAttribute(screens, {
+														screen_sm: '0.6rem',
+														screen_md: '0.8rem',
+														screen_lg: '0.8rem',
+														screen_xl: '0.8rem'
+													}), color: 'rgba(255, 255, 255, 0.4)', marginBlock: 0}}>Ever thought you could be a part of a different reality?</span>
+												</Fade>
+											</Parallax>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div>
+								<Article align={"left"} image={"/images/manifestoHand.pn"} imageStyle={{position: 'absolute', left: '-350px', top: '-350px', width: '800px'}} heading={"The Lore"} subheading={"01"} description={
+									`The Atherians, a powerful and mystical race, lived in harmony on the enchanted planet Ather.
+									However, a group attempted to extract the planet's core for energy, causing instability and the eventual doom of Ather.
+										In race to save their species, masterminds set out to find a new home and eventually discovered Earth.
+									The Atherians set out on a journey in search of a new home and after facing many atrocities of space, they finally landed on the surface of the mysterious planet Earth in the year 2017.
+									It's been 5 years since their arrival and they are still trying to explore and understand the new planet.`}
+								></Article>
+
+								
+								<img style={{position: 'absolute', width: '30rem', filter: 'saturate(0%)', right: 0, borderRadius: '3px', transform: 'translateY(-47rem) translateX(-15rem)'}} src="https://media.comicbook.com/wp-content/uploads/2012/07/legion-of-superheroes-11-page-3.jpg" alt="" />
+							</div>
+
+							{/* Starquest Ambience */}
+							{/* <div> 
+								<video loop autoPlay muted style={{width: '120rem', height: 'auto', position: 'absolute', filter: 'blur(100px)', opacity: 0.3}} src="/videos/nyc.mp4"></video>
 							</div> */}
-							{/* <motion.img
-							style={{width: '140rem', position: 'absolute', transform: 'translateX(-5rem) translateY(25rem) rotate(-6deg)', opacity: 0.05}}
-							src="/images/mystique.png"
-							>
-							</motion.img> */}
-
-							<div style={{display: 'flex', 
+							{/* Starquest Landing */}
+							<div style={{display: 'flex',
 									height: screenBasedAttribute(screens, {
 										screen_sm: '30rem',
 										screen_md: '40rem',
 										screen_lg: '40rem',
-										screen_xl: '40rem'
+										screen_xl: '50rem'
 									}), 
 									marginTop: screenBasedAttribute(screens, {
 										screen_sm: '0rem',
 										screen_md: '4rem',
 										screen_lg: '8rem',
 										screen_xl: '8rem'
-									}), marginBottom: '15rem', justifyContent: 'center', alignItems: 'center', WebkitClipPath: clipPath, clipPath: clipPath, zIndex: 4}}>
+									}), marginBottom: '8rem', justifyContent: 'center', alignItems: 'center', WebkitClipPath: clipPath, clipPath: clipPath, zIndex: 4}}>
 								<div style={{position: 'absolute', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', zIndex: 2}}>
 									<h1 style={{fontFamily: 'Mono', fontSize: screenBasedAttribute(screens, {
 										screen_sm: '0.6rem',
 										screen_md: '0.8rem',
 										screen_lg: '0.8rem',
 										screen_xl: '0.8rem'
-									}), color: 'rgba(255, 255, 255, 0.4)', marginBlock: 0}}>WHERE THE STORY BEGINS</h1>
-									<h1 style={{fontFamily: 'FKScreamer', fontSize: screenBasedAttribute(screens, {
+									}), color: 'rgba(255, 255, 255, 0.4)', marginBlock: 0}}>THY COLLECTIVE BELIEF OF ROADMAPS BEING PRIMITIVE</h1>
+									<h1 style={{fontFamily: 'GalderGlynn', fontSize: screenBasedAttribute(screens, {
 										screen_sm: '6rem',
 										screen_md: '8.5rem',
 										screen_lg: '10rem',
-										screen_xl: '10rem'
-									}), color: '#fff', marginBlock: 0}}>THE SUBWAY</h1>
+										screen_xl: '7rem'
+									}), color: '#fff', marginBlock: 0}}>
+										STARQUEST
+									</h1>
 
-									<div style={{background: 'rgba(0, 0, 0, 0.1)', fontSize: screenBasedAttribute(screens, {
+									<div onClick={() => {
+										window.open('https://twitter.com/PlanetAtherNFT/status/1618843872108347392')
+									}} style={{background: 'rgba(0, 0, 0, 0.1)', fontSize: screenBasedAttribute(screens, {
 										screen_sm: '0.6rem',
 										screen_md: '0.8rem',
 										screen_lg: '0.8rem',
 										screen_xl: '0.8rem'
-									}), color: 'white', backdropFilter: 'blur(1em)', width: 'fit-content', paddingLeft: '15px', paddingRight: '15px',
+									}), cursor: 'pointer', color: 'white', backdropFilter: 'blur(1em)', width: 'fit-content', paddingLeft: '15px', paddingRight: '15px',
 										height: screenBasedAttribute(screens, {
 											screen_sm: '40px',
 											screen_md: '48px',
 											screen_lg: '48px',
 											screen_xl: '48px'
-										}), marginTop: '2.5rem', borderRadius: '5px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontFamily: 'Mono'}}>LAUNCHES ON 9 NOV/22</div>
+										}), marginTop: '2.5rem', borderRadius: '5px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontFamily: 'Mono'}}>EXPLORE NOW</div>
 								</div>
-								<Parallax translateY={[30, -15]}>
+								<Parallax translateY={[15, -15]}>
 									{/* <motion.img
 									style={{width: '140rem', position: 'absolute', transform: 'translateX(-5rem) translateY(-18rem) rotate(1deg)', opacity: 1, zIndex: 5}}
 									src="/images/papercut.png"
 									>
 									</motion.img> */}
-									{/* <video loop autoPlay muted style={{width: 'auto', height: '150%', position: 'relative', opacity: 1}} src="/videos/spaceship.mp4"></video> */}
-									<img style={{width: 'auto', height: '150%', position: 'relative', opacity: 1}} src="https://cdn1.epicgames.com/ue/product/Screenshot/5-1920x1080-b89469a8e3ed0a92179002e8ba35b5d7.jpg" alt="" />
+									<video loop autoPlay muted style={{width: '150rem', height: 'auto', position: 'relative', filter: 'brightness(70%)', opacity: 1}} src="/videos/nyc.mp4"></video>
+									{/* <img style={{width: 'auto', height: '150%', position: 'relative', filter: 'blur(5px)', transform: 'scale(-1)', opacity: 1}} src="/images/TheBeginnings.jpeg" alt="" /> */}
+									{/* <img style={{width: 'auto', height: '100rem', position: 'relative', filter: 'blur(2px) saturate(70%)', opacity: 1}} src="/images/alley-red.png" alt="" /> */}
 									{/* <motion.img
 									style={{width: '140rem', position: 'absolute', transform: 'translateX(-125rem) translateY(43rem) rotate(180deg)', opacity: 1, zIndex: 5}}
 									src="/images/papercut.png"
@@ -247,20 +284,84 @@ const Home: NextPage = () => {
 								</Parallax>
 							</div>
 
-							{/* <div className={assetsStyles.whiteBackground} style={{height: '45rem', position: 'relative'}}>
-								<Prologue />
+
+							<div>
+								<Article align={"left"} image={"/images/manifestoHand.png"} imageStyle={{position: 'absolute', left: '-350px', top: '-220px', width: '800px'}} heading={"Vision"} subheading={"02"} description={
+								`Amidst NFT's bright and dazzling light, A firm doth rise with might and might.
+									Decentralized, it brings a show, in digital realms, its fame doth grow.
+									Comics, series, and merchandise bold, Cosplays, games, a tale untold.
+									With community's zeal and spirit rare, its mission to bring forth a world fair.
+									To weave a tapestry, with hands entwine, and zip the bounds of thy imagination's vine.
+									In this new world, our spirits shall converge, and creativity, passion, and zeal shall surge.`}></Article>
+							</div>
+
+							{/* Spreading the word Ambience */}
+							{/* <div> 
+								<video loop autoPlay muted style={{width: '120rem', height: 'auto', position: 'absolute', filter: 'blur(100px)', opacity: 0.3}} src="/videos/spread.mp4"></video>
 							</div> */}
+							{/* Spreading the word landing */}
+							<div style={{display: 'flex',
+									height: screenBasedAttribute(screens, {
+										screen_sm: '30rem',
+										screen_md: '40rem',
+										screen_lg: '40rem',
+										screen_xl: '50rem'
+									}), 
+									marginTop: screenBasedAttribute(screens, {
+										screen_sm: '0rem',
+										screen_md: '4rem',
+										screen_lg: '8rem',
+										screen_xl: '8rem'
+									}), marginBottom: '8rem', justifyContent: 'center', alignItems: 'center', WebkitClipPath: clipPath, clipPath: clipPath, zIndex: 4}}>
+								<div style={{position: 'absolute', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', zIndex: 2}}>
+									<h1 style={{fontFamily: 'Mono', fontSize: screenBasedAttribute(screens, {
+										screen_sm: '0.6rem',
+										screen_md: '0.8rem',
+										screen_lg: '0.8rem',
+										screen_xl: '0.8rem'
+									}), color: 'rgba(255, 255, 255, 0.4)', marginBlock: 0}}>NO RULES FOLLOWED</h1>
+									<h1 style={{fontFamily: 'GalderGlynn', fontSize: screenBasedAttribute(screens, {
+										screen_sm: '6rem',
+										screen_md: '8.5rem',
+										screen_lg: '10rem',
+										screen_xl: '7rem'
+									}), color: '#fff', marginBlock: 0}}>SPREADING THE WORD</h1>
 
-							<Article align={"right"} image={"https://cdn.discordapp.com/attachments/934914135613931593/1042068056702189568/Untitled_Artwork.png"} imageStyle={{}} heading={"Lorem ipsum"} subheading={"dolor sit amet"} description={"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis ligula nulla. Aliquam sit amet maximus sapien. Phasellus sagittis fringilla justo non ultricies. Integer pulvinar ultricies erat quis lacinia. Duis sed finibus velit. Praesent gravida, diam quis blandit lacinia, neque nunc fringilla justo, vel molestie sem libero ut neque. Aenean vehicula, nisi in fermentum facilisis, urna lorem accumsan augue, vitae imperdiet arcu metus vel ipsum."}></Article>
-
-							{/* <Vision />
-
-							<StarQuest />
+									<div onClick={() => {
+										window.open('https://twitter.com/PlanetAtherNFT/status/1618843872108347392')
+									}} style={{background: 'rgba(0, 0, 0, 0.1)', fontSize: screenBasedAttribute(screens, {
+										screen_sm: '0.6rem',
+										screen_md: '0.8rem',
+										screen_lg: '0.8rem',
+										screen_xl: '0.8rem'
+									}), cursor: 'pointer', color: 'white', backdropFilter: 'blur(1em)', width: 'fit-content', paddingLeft: '15px', paddingRight: '15px',
+										height: screenBasedAttribute(screens, {
+											screen_sm: '40px',
+											screen_md: '48px',
+											screen_lg: '48px',
+											screen_xl: '48px'
+										}), marginTop: '2.5rem', borderRadius: '5px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontFamily: 'Mono'}}>WATCH NOW</div>
+								</div>
+								<Parallax translateY={[15, -15]}>
+									{/* <motion.img
+									style={{width: '140rem', position: 'absolute', transform: 'translateX(-5rem) translateY(-18rem) rotate(1deg)', opacity: 1, zIndex: 5}}
+									src="/images/papercut.png"
+									>
+									</motion.img> */}
+									<video loop autoPlay muted style={{width: '150rem', height: 'auto', position: 'relative', filter: 'brightness(50%) contrast(110%)', opacity: 1}} src="/videos/spread.mp4"></video>
+									{/* <img style={{width: 'auto', height: '150%', position: 'relative', filter: 'blur(5px)', transform: 'scale(-1)', opacity: 1}} src="/images/TheBeginnings.jpeg" alt="" /> */}
+									{/* <img style={{width: 'auto', height: '100rem', position: 'relative', filter: 'blur(2px) saturate(70%)', opacity: 1}} src="/images/alley-red.png" alt="" /> */}
+									{/* <motion.img
+									style={{width: '140rem', position: 'absolute', transform: 'translateX(-125rem) translateY(43rem) rotate(180deg)', opacity: 1, zIndex: 5}}
+									src="/images/papercut.png"
+									>
+									</motion.img> */}
+								</Parallax>
+							</div>
 
 							<Collection />
 
-							<Creators /> */}
-
+							<Creators />
 							
 						</div>
 					</div>
@@ -268,7 +369,7 @@ const Home: NextPage = () => {
 					<Footer />
 				</ParallaxProvider>
 			</div>
-			<div style={{display: screenBasedAttribute(screens, {
+			{/* <div style={{display: screenBasedAttribute(screens, {
                     screen_sm: 'none',
                     screen_md: 'flex',
                     screen_lg: 'flex',
@@ -317,7 +418,7 @@ const Home: NextPage = () => {
 						screen_xl: '0.8rem'
 					}), color: '#fff', marginBlock: 0, opacity: 0.5}}>Keep an eye out for her.</h1>
 				</div>
-			</div>
+			</div> */}
 			<StickyFooter />
 		</>
 	)

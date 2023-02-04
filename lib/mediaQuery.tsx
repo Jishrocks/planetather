@@ -1,4 +1,5 @@
-import { useMediaQuery as _ } from 'react-responsive'
+// import { useMediaQuery as _ } from 'react-responsive'
+import { useMediaQuery as _ } from "@mui/material"
 
 type ScreenBasedAttributes = {
     screen_sm: any
@@ -19,10 +20,16 @@ function screenBasedAttribute(screens: Array<boolean>, attributes: ScreenBasedAt
 }
 
 export default function useMediaQuery() {
-    let screen_sm = _({query: '(min-width: 640px) and (max-width: 767px)'})
-    let screen_md = _({query: '(min-width: 768px) and (max-width: 1023px)'})
-    let screen_lg = _({query: '(min-width: 1024px) and (max-width: 1279px)'})
-    let screen_xl = _({query: '(min-width: 1280px)'})
+    
+    let screen_sm = _('(min-width: 640px) and (max-width: 767px)')
+    let screen_md = _('(min-width: 768px) and (max-width: 1023px)')
+    let screen_lg = _('(min-width: 1024px) and (max-width: 1279px)')
+    let screen_xl = _('(min-width: 1280px)')
+
+    // let screen_sm = _({query: '(min-width: 640px) and (max-width: 767px)'})
+    // let screen_md = _({query: '(min-width: 768px) and (max-width: 1023px)'})
+    // let screen_lg = _({query: '(min-width: 1024px) and (max-width: 1279px)'})
+    // let screen_xl = _({query: '(min-width: 1280px)'})
 
     return {
         screen_sm,

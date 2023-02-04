@@ -38,11 +38,11 @@ const StickyFooter = () => {
             }}>
 
                 <div style={{display: 'flex', justifyContent: 'left', alignItems: 'center'}}>
-                    <h1 style={{fontFamily: 'Mono', color: 'var(--palette-white)', fontSize: '0.5625rem', letterSpacing: '1px', textTransform: 'uppercase'}}>NOSTALGIA MEETS WEB3.</h1>
+                    <h1 style={{fontFamily: 'Mono', color: 'var(--palette-white)', fontSize: '0.5625rem', letterSpacing: '1px', textTransform: 'uppercase'}}>Enter collective reality.</h1>
                 </div>
 
                 <div style={{display: 'flex', justifyContent: 'right', alignItems: 'center'}}>
-                    <h1 style={{fontFamily: 'Mono', color: 'var(--palette-white)', fontSize: '0.5625rem', letterSpacing: '1px', textTransform: 'uppercase'}}>Terms and Conditions ↗</h1>
+                    <h1 style={{fontFamily: 'Mono', color: 'var(--palette-white)', fontSize: '0.5625rem', letterSpacing: '1px', textTransform: 'uppercase'}}>Only on Planetather.io</h1>
                 </div>
             </motion.div>
         </>

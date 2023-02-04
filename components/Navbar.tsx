@@ -92,7 +92,7 @@ const Navbar = () => {
                 })}}>
                     {/* Left Side Text */}
                     <div style={{display: 'flex', justifyContent: 'left', alignItems: 'center'}}>
-                        <h1 style={{fontFamily: 'Mono', color: 'silver', fontSize: screenBasedAttribute(screens, {
+                        <h1 style={{fontFamily: 'Mono', color: '#f7f7f7', fontSize: screenBasedAttribute(screens, {
                             screen_sm: '8px',
                             screen_md: '10px',
                             screen_lg: '10px',
@@ -132,13 +132,13 @@ const Navbar = () => {
                         screen_xl: 'flex',
                     }), justifyContent: 'right', alignItems: 'center', gap: 25, marginRight: '16px', opacity: 1}}>
                         <motion.img onClick={() => {
-                            window.open("https://discord.gg/xjETANVKBe")
+                            window.open("https://discord.gg/ather")
                         }} whileHover={{scale: 1.1}} src="/images/discord.avif" style={{marginTop: '2px', cursor: 'pointer', filter: ''}} width={"18px"} height={"auto"} alt="discord" />
                         <motion.img onClick={() => {
-                            window.open("https://twitter.com/planetather")
+                            window.open("https://twitter.com/PlanetAtherNFT")
                         }} whileHover={{scale: 1.1}} src="/images/twitter.avif" style={{cursor: 'pointer', filter: ''}} width={"18px"} height={"auto"} alt="twitter" />
                         <motion.img onClick={() => {
-                            window.open("https://www.instagram.com/planetather/")
+                            window.open("https://www.instagram.com/planetathernft/")
                         }} whileHover={{scale: 1.1}} src="/images/instagram.svg" style={{cursor: 'pointer', filter: ''}} width={"18px"} height={"auto"} alt="instagram" />
                     </div>
 
