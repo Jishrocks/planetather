@@ -1,12 +1,14 @@
 import '../styles/globals.css'
-import '../styles/responsive-font-sizes.css'
 import 'css.gg/icons/all.css'
 
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 
 function MyApp({ Component, pageProps }) {
+
 	return (
-		<Component {...pageProps} />
+		<>
+			<Component {...pageProps} />
+		</>
 	)
 }
 

@@ -1,42 +1,35 @@
 import React from "react";
-import {useMediaQuery, screenBasedAttribute} from "../lib/mediaQuery";
+import useSidebarStore from "../lib/stores/sidebarStore";
 
 const Sidebar = ({children}: any) => {
 
-    let {screen_sm, screen_md, screen_lg, screen_xl, screens} = useMediaQuery()
-
     return (
-        <div style={{display: screenBasedAttribute(screens, {
-            screen_sm: 'none',
-            screen_md: 'flex',
-            screen_lg: 'flex',
-            screen_xl: 'flex'
-        }), gap: '18px', transform: 'rotate(-90deg) translateY(-950%)', position: 'fixed', top: '50%', zIndex: 99999}}>
-            <h1 style={{fontFamily: 'Mandalore', textAlign: 'center', color: '#fff', fontSize: '1.8rem', marginBlock: '0rem', textTransform: 'lowercase', lineHeight: 0.78, letterSpacing: '2px', textShadow: '0 0 150px rgb(19 23 30 / 18%), 0 50px 32px rgb(19 23 30 / 12%)', opacity: 0.2}}>
+        <div className="hidden fixed md:flex gap-2 z-50 rotate-180 ml-10 items-center justify-center" style={{writingMode: 'vertical-lr', height: 'calc(100% - 140px)'}}>
+            <h1 className="font-display text-center text-white uppercase tracking-widest text-md" style={{opacity: 0.2}}>
                 creators
             </h1>
 
-            <h1 style={{fontFamily: 'Mandalore', textAlign: 'center', color: '#fff', fontSize: '1rem', marginBlock: '0rem', textTransform: 'lowercase', lineHeight: 0.78, letterSpacing: '2px', textShadow: '0 0 150px rgb(19 23 30 / 18%), 0 50px 32px rgb(19 23 30 / 12%)', opacity: 0.2}}>
+            <h1 className="font-display text-center text-white uppercase tracking-widest text-xs lg:text-sm" style={{opacity: 0.2}}>
             ◦
             </h1>
 
-            <h1 style={{fontFamily: 'Mandalore', textAlign: 'center', color: '#fff', fontSize: '1.8rem', marginBlock: '0rem', textTransform: 'lowercase', lineHeight: 0.78, letterSpacing: '2px', textShadow: '0 0 150px rgb(19 23 30 / 18%), 0 50px 32px rgb(19 23 30 / 12%)', opacity: 0.2}}>
+            <h1 className="font-display text-center text-white uppercase tracking-widest text-md" style={{opacity: 0.2}}>
                 collection
             </h1>
 
-            <h1 style={{fontFamily: 'Mandalore', textAlign: 'center', color: '#fff', fontSize: '1rem', marginBlock: '0rem', textTransform: 'lowercase', lineHeight: 0.78, letterSpacing: '2px', textShadow: '0 0 150px rgb(19 23 30 / 18%), 0 50px 32px rgb(19 23 30 / 12%)', opacity: 0.2}}>
+            <h1 className="font-display text-center text-white uppercase tracking-widest text-xs lg:text-sm" style={{opacity: 0.2}}>
             ◦
             </h1>
             
-            <h1 style={{fontFamily: 'Mandalore', textAlign: 'center', color: '#fff', fontSize: '1.8rem', marginBlock: '0rem', textTransform: 'lowercase', lineHeight: 0.78, letterSpacing: '2px', textShadow: '0 0 150px rgb(19 23 30 / 18%), 0 50px 32px rgb(19 23 30 / 12%)', opacity: 0.2}}>
+            <h1 className="font-display text-center text-white uppercase tracking-widest text-md" style={{opacity: 0.2}}>
                 starquest
             </h1>
 
-            <h1 style={{fontFamily: 'Mandalore', textAlign: 'center', color: '#fff', fontSize: '1rem', marginBlock: '0rem', textTransform: 'lowercase', lineHeight: 0.78, letterSpacing: '2px', textShadow: '0 0 150px rgb(19 23 30 / 18%), 0 50px 32px rgb(19 23 30 / 12%)', opacity: 0.2}}>
+            <h1 className="font-display text-center text-white uppercase tracking-widest text-xs lg:text-sm" style={{opacity: 0.2}}>
             ◦
             </h1>
             
-            <h1 style={{fontFamily: 'Mandalore', textAlign: 'center', color: '#fff', fontSize: '1.8rem', marginBlock: '0rem', textTransform: 'lowercase', lineHeight: 0.78, letterSpacing: '2px', textShadow: '0 0 150px rgb(19 23 30 / 18%), 0 50px 32px rgb(19 23 30 / 12%)', opacity: 1}}>
+            <h1 className="font-display text-center text-white uppercase tracking-widest text-md" style={{opacity: 1}}>
                 the lore
             </h1>
         </div>

@@ -21,7 +21,8 @@ const StickyFooter = () => {
     
     return (
         <>
-            <motion.div 
+            <motion.div
+            className="hidden md:grid"
             style={{
                 height: '1.875rem', 
                 width: 'auto', 
@@ -29,7 +30,6 @@ const StickyFooter = () => {
                 opacity: showFooter ? 1 : 0,
                 position: 'sticky',
                 borderTop: '1px solid rgba(255, 255, 255, 0.1)',
-                display: 'grid',
                 gridTemplateColumns: '1fr 1fr',
                 marginLeft: '2.1875rem',
                 marginRight: '2.1875rem',

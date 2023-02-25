@@ -50,55 +50,25 @@ const Article = (props: ArticleProps) => {
 
     return (
         <motion.div
-        style={{display: 'grid', gridTemplateColumns: '1fr 1fr', marginLeft: screenBasedAttribute(screens, {
-            screen_sm: '0rem',
-            screen_md: '4rem',
-            screen_lg: '4rem',
-            screen_xl: '5rem'
-        }), marginRight: '5rem', marginTop: '5rem', marginBottom: '5rem', height: 'auto', zIndex: 2}}>
-            
+        className="grid grid-cols-1 xl:grid-cols-2 md:ml-16 mr-20 mt-20 mb-20 h-auto">
 
-            <div style={{display: screenBasedAttribute(screens, {
-                screen_sm: 'none', 
-                screen_md: 'flex',
-                screen_lg: 'flex',
-                screen_xl: 'flex'
-            }), order: props.align == 'left' ? 1 : 'unset', flexDirection: 'row', gap: 6, justifyContent: 'center', alignItems: 'center'}}>
-                <Parallax translateY={['200px', '0px']}>
+            <div className="flex flex-row gap-1 justify-center items-center" style={{order: props.align == 'left' ? 1 : 'unset'}}>
+                <Parallax translateY={['150px', '0px']}>
                     <Fade>
-                        <motion.img
-                        src={props.image} width={screenBasedAttribute(screens, {
-                            screen_sm: '200px',
-                            screen_md: '200px',
-                            screen_lg: '300px',
-                            screen_xl: '400px'
-                        })} style={props.imageStyle} alt="" />
+                        <img src={props.image} className="w-[60%] h-auto ml-auto mr-auto" style={props.imageStyle} alt="comics1" />
                     </Fade>
                 </Parallax>
             </div>
 
             <Parallax translateY={['75px', '0px']}>
-                <div style={{display: 'flex', flexDirection: 'column', alignItems: props.align == 'left' ? 'start' : 'start', marginLeft: '5rem'}}>
+                <div className="flex flex-col ml-20" style={{alignItems: props.align == 'left' ? 'start' : 'start'}}>
                         <motion.h1
                             ref={ref}
                             animate={animation}
                             variants={animationVariants}
                             transition={transition}
                             initial={"hidden"}
-                            className='text-gradient-two'
-                            style={{font: screenBasedAttribute(screens, {
-                                screen_sm: '400 0.65rem/100% Antonio',
-                                screen_md: '400 0.75rem/100% Antonio',
-                                screen_lg: '400 0.8rem/100% Antonio',
-                                screen_xl: '400 2rem/100% Antonio'
-                            }), 
-                            width: screenBasedAttribute(screens, {
-                                screen_sm: '300px',
-                                screen_md: '300px',
-                                screen_lg: '480px',
-                                screen_xl: '640px'
-                            }),
-                            letterSpacing: '2px', opacity: 0.7, textTransform: 'uppercase', marginBlock: 0}}>
+                            className='text-white w-[300px] lg:w-[480px] xl:w-[640px] opacity-70 uppercase font-subheading text-3xl'>
                                 {props.subheading}
                         </motion.h1>
                         <div>
@@ -108,39 +78,14 @@ const Article = (props: ArticleProps) => {
                                 variants={animationVariants}
                                 transition={transition}
                                 initial={"hidden"}
-                                className='text-gradient-two'
-                                style={{font: screenBasedAttribute(screens, {
-                                    screen_sm: '400 4rem/100% FKScreamer',
-                                    screen_md: '400 4rem/100% FKScreamer',
-                                    screen_lg: '400 5rem/100% FKScreamer',
-                                    screen_xl: '400 4rem/100% GalderGlynn'
-                                }), 
-                                width: screenBasedAttribute(screens, {
-                                    screen_sm: '300px',
-                                    screen_md: '300px',
-                                    screen_lg: '480px',
-                                    screen_xl: '640px'
-                                }),
-                                letterSpacing: '4px', textTransform: 'uppercase', marginBlock: 0}}>
+                                className='text-white font-display text-6xl uppercase'>
                                     {props.heading}
                             </motion.h1>
                         </div>
 
-                        <motion.p className="content" style={{fontSize: screenBasedAttribute(screens, {
-                            screen_sm: '14px',
-                            screen_md: '14px',
-                            screen_lg: '15px',
-                            screen_xl: '18px'
-                        }), color: 'var(--palette-white)', 
-                        width: screenBasedAttribute(screens, {
-                            screen_sm: '300px',
-                            screen_md: '300px',
-                            screen_lg: '480px',
-                            screen_xl: '640px'
-                        }),
-                        fontFamily: 'Mono', lineHeight: '2', marginTop: '2.5rem'}}>
+                        <p className="content text-white font-body mt-10 leading-7 w-[480px] xl:w-[640px]">
                         {props.children ? props.children : props.description}
-                        </motion.p>
+                        </p>
                 </div>
 
             </Parallax>

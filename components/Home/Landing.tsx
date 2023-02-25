@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable @next/next/no-img-element */
 import { TextScramble } from "../ScrambledText";
 import { motion, useAnimation } from "framer-motion";
 
@@ -16,9 +18,11 @@ const Landing = ({children}: any) => {
     let {screen_sm, screen_md, screen_lg, screen_xl, screens} = useMediaQuery()
 
     let logoAnimation = useAnimation()
-    let logoInView = useInView()
+    let [logoRef, logoInView] = useInView()
 
     const [showScrollNotifier, setShowScrollNotifier] = useState(true)
+
+    const [logoRotatation, setLogoRotation] = useState(20)
 
     useEffect(() => {
         let eventListener = () => {
@@ -28,6 +32,7 @@ const Landing = ({children}: any) => {
             } else {
                 setShowScrollNotifier(true)
             }
+            setLogoRotation(20 + (scrollTop / 10))
         }
         window.addEventListener('scroll', eventListener)
     }, [])
@@ -50,96 +55,41 @@ const Landing = ({children}: any) => {
         }
     }
 
-    const logoTransition = {duration: 1.5, type: 'spring'}
-
-    let [logoTiltScale, setLogoTiltScale] = useState(1)
+    const logoTransition = {duration: 1, type: 'spring'}
 
     return (
-        <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '80vh', marginLeft: '0rem', overflow: 'visible'}}>
-            <Parallax translateY={['0px', '-400px']} opacity={[2, 0]} scale={[0.7, 1.4]} style={{position: 'absolute', opacity: 1}}>
-                <div style={{transform: 'perspective(500px) rotateX(20deg)'}}>
+        <div className="flex flex-col justify-center items-center h-screen md:h-[80vh] overflow-hidden md:overflow-visible">
+            <Parallax className="absolute invisible md:visible" translateY={['0px', '-400px']} opacity={[2, 0]} scale={[0.7, 1.4]}>
+                <div style={{transform: `perspective(500px) rotateX(${logoRotatation}deg)`}}>
                     <motion.img
+                        ref={logoRef}
                         initial={"hidden"}
                         animate={logoAnimation}
                         variants={logoAnimationVariants}
                         transition={logoTransition}
-                        style={{width: 'auto', height: '60rem'}}
+                        className={`w-auto h-[40rem] xl:h-[50rem] md:transition-all md:duration-500`}
                         src="/images/ATHER_white_logo.png"
                     ></motion.img>
+                    {/* lg:h-[50rem] xl:h-[60rem] */}
                 </div>
             </Parallax>
 
-            <Parallax translateY={['0px', '100px']} style={{position: 'absolute', opacity: 1}}>
+            <Parallax className="absolute invisible md:visible" translateY={['0px', '100px']}>
                 <motion.img
-                style={{width: 'auto', height: '30rem'}}
+                className="w-auto h-[25rem] mb-24 md:transition-all md:duration-500"
                 src="/images/Atherians_Grouped.png"
                 ></motion.img>
+                {/* lg:h-[30rem]  */}
             </Parallax>
-            
-            
-            {/* <motion.video
-            autoPlay
-            loop
-            muted
-            playsInline
-            style={{width: 'auto', height: '100vh', position: 'absolute', opacity: 0.1}}
-            // src="/images/imageedit_1_3446488580.png"
-            src="/videos/landing.mp4"
-            ></motion.video> */}
-            
-            {/* <motion.img
-				style={{width: '130vw', position: 'absolute', transform: 'translateX(3rem) translateY(5rem)', opacity: 0.8}}
-				src="/images/graffitti.png"
-            ></motion.img> */}
 
-            {/* <div style={{
-                transform: screenBasedAttribute(screens, {
-                    screen_sm: 'translateY(10rem)',
-                    screen_md: '',
-                    screen_lg: '',
-                    screen_xl: ''
-                }),
-                fontSize: '7.5rem' 
-            }}>
-                <h1 style={{fontFamily: 'FKScreamer', fontSize: screenBasedAttribute(screens, {
-                    screen_sm: '0.5em',
-                    screen_md: '0.8em',
-                    screen_lg: '1em',
-                    screen_xl: '1.125em'
-                }), opacity: 0.7, textAlign: 'center', color: '#fff', marginBlock: '0rem', textTransform: 'uppercase', letterSpacing: '2px', textShadow: '0 0 100px rgb(19 23 30 / 18%), 0 50px 32px rgb(19 23 30 / 12%)', lineHeight: 1}}>
-                    we are
-                </h1>
+            <div className="flex flex-col items-center md:hidden">
+                <img
+                className="w-auto max-w-none h-[130vh] mt-80"
+                src="/images/sentinels/kayne.png"
+                />
             </div>
-            <div style={{
-                transform: screenBasedAttribute(screens, {
-                    screen_sm: 'translateY(10rem)',
-                    screen_md: '',
-                    screen_lg: '',
-                    screen_xl: ''
-                }),
-                fontSize: '14rem',
-                zIndex: 0,
-            }}>
-                <h1 style={{fontFamily: 'Mandalore', fontSize: screenBasedAttribute(screens, {
-                    screen_sm: '0.5em',
-                    screen_md: '0.8em',
-                    screen_lg: '1em',
-                    screen_xl: '1.125em'
-                }), textAlign: 'center', color: '#fff', marginBlock: '0rem', textTransform: 'lowercase', lineHeight: 0.78, letterSpacing: '2px', textShadow: '0 0 150px rgb(19 23 30 / 18%), 0 50px 32px rgb(19 23 30 / 12%)', zIndex: 0}}>
-                    <TextScramble text="ather"></TextScramble>
-                </h1>
-            </div> */}
-            <div style={{display: screenBasedAttribute(screens, {
-                screen_sm: 'flex',
-                screen_md: 'flex',
-                screen_lg: 'flex',
-                screen_xl: 'flex'
-            }), opacity: showScrollNotifier ? 1 : 0, transition: 'opacity 0.25s', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', position: 'absolute', width: '100vw', transform: screenBasedAttribute(screens, {
-                screen_sm: 'translateY(22rem)',
-                screen_md: 'translateY(23rem)',
-                screen_lg: 'translateY(23rem)',
-                screen_xl: 'translateY(23rem)'
-            })}}>
+            
+            <div className="hidden md:flex flex-col absolute justify-center items-center w-[100vw] mt-[36rem]">
 				<Lottie
 					style={{opacity: 1, filter: 'invert()'}}
 					options={{animationData: scrollDown, autoplay: true, loop: true}}

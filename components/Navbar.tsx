@@ -8,34 +8,7 @@ import React from "react";
 import MenuIcon from '@mui/icons-material/Menu';
 import { useMediaQuery, screenBasedAttribute } from '../lib/mediaQuery';
 
-const TabItem = styled('p')({
-    font: '400 0.7rem / 80% FFMark',
-    fontFamily: 'FFMark',
-    cursor: 'pointer',
-    textTransform: 'uppercase',
-    letterSpacing: '1px',
-    marginLeft: '21px',
-    marginRight: '21px',
-    // background: 'linear-gradient(56deg, #f3a5da 0%, #c0baeb 100%)',
-    // WebkitBackgroundClip: 'text',
-    // color: 'transparent',
-    color: '#fbfbfb',
-    transition: '0.15s ease-in-out',
-    ":hover": {
-        textShadow: "0 0 16px rgb(255, 255, 255, 0.6)"
-    }
-})
-
-const Tab = styled('div')({
-    display: 'flex', 
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '100%',
-})
-
 const Navbar = () => {
-
-    let {screen_sm, screen_md, screen_lg, screen_xl, screens} = useMediaQuery()
 
     const [lastScrollTop, setScrollTop] = useState(0)
     const [showNavbar, setShowNavbar] = useState(true)
@@ -69,88 +42,40 @@ const Navbar = () => {
                 }
             }}
             initial={"visible"}
-            // animate={animation}
+            className="h-[70px] ml-5 mr-5 md:ml-10 md:mr-10 z-50 backdrop-blur-sm"
             style={{
-                height: '70px', 
-                // position: 'sticky',
-                // top: 0,
                 y: showNavbar ? '0' : '-100px',
                 transition: 'all .25s ease-in-out',
-                // background: 'linear-gradient(to bottom, #21212195, transparent)',
-                // background: '#fbfbfb',
-                marginLeft: '36px',
-                marginRight: '36px',
-                backdropFilter: 'blur(30px)',
-                // borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-                zIndex: 999,
                 }}>
-                <div style={{height: 'inherit', width: '100%', marginLeft: '0px', display: 'grid', gridTemplateColumns: screenBasedAttribute(screens, {
-                    screen_sm: '1fr 1fr',
-                    screen_md: '1fr 1fr 1fr',
-                    screen_lg: '1fr 1fr 1fr',
-                    screen_xl: '1fr 1fr 1fr'
-                })}}>
+                <div className='h-[70px] w-full grid grid-cols-2 md:grid-cols-3'>
                     {/* Left Side Text */}
-                    <div style={{display: 'flex', justifyContent: 'left', alignItems: 'center'}}>
-                        <h1 style={{fontFamily: 'Mono', color: '#f7f7f7', fontSize: screenBasedAttribute(screens, {
-                            screen_sm: '8px',
-                            screen_md: '10px',
-                            screen_lg: '10px',
-                            screen_xl: '10px'
-                        }), marginBlock: 0, textTransform: 'uppercase', letterSpacing: '0.5px'}}>× ENTER COLLECTIVE REALITY.</h1>
+                    <div className='hidden md:flex items-center'>
+                        <h1 className='font-body font-extralight text-white uppercase text-xs tracking-wide md:tracking-wider'><span className='font-display opacity-100'>×</span> ENTER THE HIDEOUTS</h1>
                     </div>
                     
                     {/* Logo */}
-                    <div style={{display: screenBasedAttribute(screens, {
-                        screen_sm: 'none',
-                        screen_md: 'flex',
-                        screen_lg: 'flex',
-                        screen_xl: 'flex'
-                    }), justifyContent: 'center', alignItems: 'center'}}>
-                        <img onClick={() => {
-                            // if (parallaxRef) {
-                            //     (parallaxRef.current as any).scrollTo(0)
-                            // }
-                        }} width={"auto"} height={"36px"} src={"/images/logov2.png"} style={{cursor: 'pointer', filter: '', opacity: 0.7}}></img>
-                        {/* <Typography onClick={() => {
-                            // if (parallaxRef) {
-                            //     (parallaxRef.current as any).scrollTo(0)
-                            // }
-                        }} style={{color: 'white', fontFamily: 'FFMark', fontSize: '1.5rem', cursor: 'pointer'}}>planet</Typography>
-                        <Typography onClick={() => {
-                            // if (parallaxRef) {
-                            //     (parallaxRef.current as any).scrollTo(0)
-                            // }
-                        }} style={{color: 'white', fontFamily: 'FFMark', fontWeight: 'bold', fontSize: '1.5rem', cursor: 'pointer'}}>ather</Typography> */}
+                    <div className='flex items-center md:justify-center'>
+                        <img alt='logo' className='hidden md:block w-auto h-8 cursor-pointer opacity-70' src={"/images/logov2.png"}></img>
+                        <img alt='logo-mobile' className='block md:hidden w-auto h-20 cursor-pointer' src={"/images/ATHER_white_logo.png"}></img>
                     </div>
 
                     {/* Socials */}
-                    <div style={{display: screenBasedAttribute(screens, {
-                        screen_sm: 'none',
-                        screen_md: 'flex',
-                        screen_lg: 'flex', 
-                        screen_xl: 'flex',
-                    }), justifyContent: 'right', alignItems: 'center', gap: 25, marginRight: '16px', opacity: 1}}>
-                        <motion.img onClick={() => {
+                    <div className='hidden md:flex justify-end items-center mr-4 gap-5'>
+                        <img className='hover:scale-110 mt-[2px] cursor-pointer h-auto w-4' onClick={() => {
                             window.open("https://discord.gg/ather")
-                        }} whileHover={{scale: 1.1}} src="/images/discord.avif" style={{marginTop: '2px', cursor: 'pointer', filter: ''}} width={"18px"} height={"auto"} alt="discord" />
-                        <motion.img onClick={() => {
+                        }} src="/images/discord.avif" alt="discord" />
+                        <img className='hover:scale-110 mt-[2px] cursor-pointer h-auto w-4' onClick={() => {
                             window.open("https://twitter.com/PlanetAtherNFT")
-                        }} whileHover={{scale: 1.1}} src="/images/twitter.avif" style={{cursor: 'pointer', filter: ''}} width={"18px"} height={"auto"} alt="twitter" />
-                        <motion.img onClick={() => {
+                        }} src="/images/twitter.avif" alt="twitter" />
+                        <img className='hover:scale-110 mt-[2px] cursor-pointer h-auto w-4' onClick={() => {
                             window.open("https://www.instagram.com/planetathernft/")
-                        }} whileHover={{scale: 1.1}} src="/images/instagram.svg" style={{cursor: 'pointer', filter: ''}} width={"18px"} height={"auto"} alt="instagram" />
+                        }} src="/images/instagram.svg" alt="instagram" />
                     </div>
 
                     {/* Menu */}
-                    <div style={{display: screenBasedAttribute(screens, {
-                        screen_sm: 'flex',
-                        screen_md: 'none',
-                        screen_lg: 'none',
-                        screen_xl: 'none'
-                    }),  alignItems: 'center', justifyContent: 'right'}}>
-                        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                            <i style={{filter: 'invert()'}} className='gg-menu-right'></i>
+                    <div className='flex md:hidden items-center justify-end'>
+                        <div className='flex items-center justify-center'>
+                            <i className='gg-menu-right invert'></i>
                         </div>
                     </div>
                 </div>

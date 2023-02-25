@@ -1,31 +1,48 @@
+import styled from "@emotion/styled";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 import React from "react";
 
+function FooterLink({children, ...props}: any) {
+    return (
+        <h1 className="font-display text-white text-xs cursor-pointer transition-all hover:opacity-60" onClick={() => {
+            if (children === "DISCORD") {
+                window.open("https://discord.gg/ather", "_blank")
+            } else if (children === "TWITTER") {
+                window.open("https://twitter.com/PlanetAtherNFT", "_blank")
+            } else if (children === "INSTAGRAM") {
+                window.open("https://www.instagram.com/planetathernft", "_blank")
+            } else if (children === "LICENSE") {
+                window.open("https://planetather.io/license", "_blank")
+            } else if (children === "TERMS AND CONDITIONS") {
+                window.open("https://planetather.io/terms", "_blank")
+            }
+        }}>{children}</h1>
+    )
+}
+
 const Footer = ({children}: any) => {
 
-    let isMobile = useMediaQuery('(max-width: 1200px)')
-
     return (
-        <div style={{height: '15rem', marginLeft: '2rem', marginRight: '2rem', display: 'grid', gridTemplateRows: '1fr 4.5rem'}}>
+        <div className="hidden md:grid h-[15rem] mx-8">
 
-            <div style={{display: 'flex', height: '3rem', gap: '7.5rem', justifyContent: 'center', alignItems: 'center', fontSize: '0.5rem'}}>
-                <h1 style={{fontFamily: 'FFMark', color: 'var(--palette-white)'}}>DISCORD</h1>
-                <h1 style={{fontFamily: 'FFMark', color: 'var(--palette-white)'}}>TWITTER</h1>
-                <h1 style={{fontFamily: 'FFMark', color: 'var(--palette-white)'}}>INSTAGRAM</h1>
-                <h1 style={{fontFamily: 'FFMark', color: 'var(--palette-white)'}}>LICENSE</h1>
-                <h1 style={{fontFamily: 'FFMark', color: 'var(--palette-white)'}}>TERMS AND CONDITIONS</h1>
+            <div className="flex h-12 gap-16 justify-center items-center">
+                <FooterLink>DISCORD</FooterLink>
+                <FooterLink>TWITTER</FooterLink>
+                <FooterLink>INSTAGRAM</FooterLink>
+                <FooterLink>LICENSE</FooterLink>
+                <FooterLink>TERMS AND CONDITIONS</FooterLink>
             </div>
 
-            <div style={{display: 'grid'}}>
-                <div style={{display: 'flex', flexDirection: 'column', height: '2rem', justifyContent: 'center', alignItems: 'center', opacity: 0.5}}>
-                    <img width={"auto"} height={"36px"} src={"/images/logov2.png"} style={{mixBlendMode: 'difference'}}></img>
-                    <h1 style={{fontFamily: 'Mono', fontSize: '1.2rem', marginBlock: 0, color: 'var(--palette-white)'}}>ATHER</h1>
+            <div className="grid mt-10">
+                <div className="flex flex-col h-8 justify-center items-center opacity-50">
+                    <img className="w-auto h-9 mix-blend-difference" src={"/images/logov2.png"}></img>
+                    <h1 className="font-body text-white text-lg">ATHER</h1>
                 </div>
             </div>
 
-            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'end'}}>
-                <p style={{ marginBottom: '3rem', color: 'rgb(199, 195, 187, 0.7)', fontSize: '0.5625rem', fontFamily: 'Mono', wordBreak: 'keep-all'}}>© 2022 Stratos Labs Pvt. Ltd. Stratos Labs, PlanetAther, Ather, and any associated logos are trademarks, service marks, and/or registered trademarks of Stratos Labs, Pvt. Ltd.</p>
+            <div className="flex flex-col items-center justify-end mx-4">
+                <p className="mb-12 font-body text-xs text-center" style={{color: 'rgb(199, 195, 187, 0.7)'}}>© 2022 Stratos Labs Pvt. Ltd. Stratos Labs, PlanetAther, Ather, and any associated logos are trademarks, service marks, and/or registered trademarks of Stratos Labs, Pvt. Ltd.</p>
             </div>
         </div>
     )
