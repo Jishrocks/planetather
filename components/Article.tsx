@@ -9,8 +9,8 @@ import Fade from 'react-reveal/Fade';
 
 type ArticleProps = {
     align: 'left' | 'right',
-    image: string,
-    imageStyle?: React.CSSProperties,
+    image?: string,
+    imageClass?: string,
     heading: string,
     subheading: string,
     description?: string,
@@ -54,14 +54,16 @@ const Article = (props: ArticleProps) => {
 
             <div className="flex flex-row gap-1 justify-center items-center" style={{order: props.align == 'left' ? 1 : 'unset'}}>
                 <Parallax translateY={['150px', '0px']}>
+                    {props.image && 
                     <Fade>
-                        <img src={props.image} className="w-[60%] h-auto ml-auto mr-auto" style={props.imageStyle} alt="comics1" />
+                        <img src={props.image} className={props.imageClass ? props.imageClass : `w-[60%] h-auto ml-auto mr-auto`} alt="comics1" />
                     </Fade>
+                    }
                 </Parallax>
             </div>
 
             <Parallax translateY={['75px', '0px']}>
-                <div className="flex flex-col ml-20" style={{alignItems: props.align == 'left' ? 'start' : 'start'}}>
+                <div className="flex flex-col ml-10 lg:ml-20" style={{alignItems: props.align == 'left' ? 'start' : 'start'}}>
                         <motion.h1
                             ref={ref}
                             animate={animation}
@@ -78,12 +80,12 @@ const Article = (props: ArticleProps) => {
                                 variants={animationVariants}
                                 transition={transition}
                                 initial={"hidden"}
-                                className='text-white font-display text-6xl uppercase'>
+                                className='text-white font-display text-5xl lg:text-6xl uppercase'>
                                     {props.heading}
                             </motion.h1>
                         </div>
 
-                        <p className="content text-white font-body mt-10 leading-7 w-[480px] xl:w-[640px]">
+                        <p className="content text-white text-sm lg:text-md font-body mt-10 leading-7 w-[480px] xl:w-[640px]">
                         {props.children ? props.children : props.description}
                         </p>
                 </div>

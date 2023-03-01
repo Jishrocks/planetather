@@ -14,8 +14,6 @@ function FooterLink({children, ...props}: any) {
                 window.open("https://www.instagram.com/planetathernft", "_blank")
             } else if (children === "LICENSE") {
                 window.open("https://planetather.io/license", "_blank")
-            } else if (children === "TERMS AND CONDITIONS") {
-                window.open("https://planetather.io/terms", "_blank")
             }
         }}>{children}</h1>
     )
@@ -31,7 +29,6 @@ const Footer = ({children}: any) => {
                 <FooterLink>TWITTER</FooterLink>
                 <FooterLink>INSTAGRAM</FooterLink>
                 <FooterLink>LICENSE</FooterLink>
-                <FooterLink>TERMS AND CONDITIONS</FooterLink>
             </div>
 
             <div className="grid mt-10">
@@ -41,8 +38,8 @@ const Footer = ({children}: any) => {
                 </div>
             </div>
 
-            <div className="flex flex-col items-center justify-end mx-4">
-                <p className="mb-12 font-body text-xs text-center" style={{color: 'rgb(199, 195, 187, 0.7)'}}>© 2022 Stratos Labs Pvt. Ltd. Stratos Labs, PlanetAther, Ather, and any associated logos are trademarks, service marks, and/or registered trademarks of Stratos Labs, Pvt. Ltd.</p>
+            <div className="flex flex-col items-center justify-end mx-8">
+                <p className="mb-12 font-body text-xs text-center uppercase" style={{color: 'rgb(199, 195, 187, 0.7)'}}>© {new Date().getFullYear()} Stratos Labs Pvt. Ltd. All rights reserved.</p>
             </div>
         </div>
     )

@@ -10,7 +10,7 @@ enum Tab {
 const useSidebarStore = create((set) => ({
     visible: false,
     currentTab: Tab.LORE,
-    setCurrentTab: (tab: Tab) => set({ currentTab: tab }),
+    setCurrentTab: (tab: Tab) => set((state) => ({ currentTab: state.tab })),
     toggleSidebar: () => set((state) => ({ visible: !state.visible })),
 }))
 

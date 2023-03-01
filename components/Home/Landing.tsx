@@ -85,7 +85,7 @@ const Landing = ({children}: any) => {
             <div className="flex flex-col items-center md:hidden">
                 <img
                 className="w-auto max-w-none h-[130vh] mt-80"
-                src="/images/sentinels/kayne.png"
+                src="https://cdn.discordapp.com/attachments/934914135613931593/1079063818505830410/Untitled_Artwork.png"
                 />
             </div>
             

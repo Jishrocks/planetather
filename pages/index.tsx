@@ -22,7 +22,6 @@ import twitterAnimationData from '../public/twitter.json'
 import StickyFooter from '../components/StickyFooter'
 import Sidebar from '../components/Sidebar'
 
-import {useMediaQuery, screenBasedAttribute} from '../lib/mediaQuery'
 import Article from '../components/Article'
 
 import Tilt from 'react-parallax-tilt'
@@ -32,10 +31,27 @@ import Fade from 'react-reveal/Fade';
 import { TextScramble } from '../components/ScrambledText'
 import { useInView, useSpring, useSpringValue } from 'react-spring'
 import useSmoothScroll from '../lib/smoothScroll'
+import useMediaQuery from '@mui/material/useMediaQuery'
+
+import Stories from 'react-insta-stories';
+
+function UnresponsiveHandler() {
+	let isSupported = useMediaQuery('(min-width: 500px) and (min-height: 500px)')
+	
+	if (!isSupported) {
+		return (
+			<div className='z-[99999] fixed w-screen h-screen backdrop-blur-3xl bg-[#00000070] flex flex-col items-center justify-center'>
+				<h1 className='text-6xl'>😔</h1>
+				<h1 className='text-sm mt-5 text-white font-body uppercase'>Please resize your screen</h1>
+			</div>
+		)
+	}
+	return (
+		<div></div>
+	)
+}
 
 const Home: NextPage = () => {
-
-	let {screen_sm, screen_md, screen_lg, screen_xl, screens} = useMediaQuery()
 
 	const [landingScrolled, setLandingScrolled] = useState(false)
 	const [navbarOverflow, setNavbarOverflow] = useState(true)
@@ -72,6 +88,8 @@ const Home: NextPage = () => {
 	let [transitionScale, setTransitionScale] = useState(1)
 	let [transitionOffset, setTransitionOffset] = useState(undefined)
 	let transitionRange = 1600
+
+	let [starquestStoriesVisible, setStarquestStoriesVisible] = useState(false)
 	
 	useEffect(() => {
 		let eventListener = () => {
@@ -128,7 +146,20 @@ const Home: NextPage = () => {
 			</Head>
 
 			<div>
-
+				<UnresponsiveHandler />
+				<div className={`${!starquestStoriesVisible && 'hidden'} z-[9999] fixed backdrop-blur-3xl w-screen h-screen flex items-center justify-center`}>
+					<Stories  defaultInterval={5000} storyContainerStyles={{borderRadius: '20px'}} width={'95vw'} height={'90vh'} stories={[
+						{
+							url: '/images/starquest/1.png',
+						},
+						{
+							url: '/images/starquest/2.png',
+						},
+						{
+							url: '/images/starquest/3.png',
+						},
+					]}></Stories>
+				</div>
 				{/* Landing background */}
 
 				<div className='absolute bg-red-100 h-[300vh] w-[100vw]' style={{clipPath: 'polygon(100% 0, 100% 95%, 0 100%, 0 0%)'}}></div>
@@ -179,7 +210,7 @@ const Home: NextPage = () => {
 											<Parallax className='absolute font-display text-4xl lg:text-5xl uppercase text-white text-center tracking-wide' translateY={['400px', '200px']}>
 												<Fade bottom opposite cascade>
 													Welcome to the Hideouts.
-													<span className='font-body -mt-8 text-sm text-gray'>Ever thought you could be a part of a different reality?</span>
+													<span className='font-body -mt-8 text-xs lg:text-sm text-gray'>WHERE REALITY IS BROKEN AND NEW RULES ARE MADE.</span>
 												</Fade>
 											</Parallax>
 										</div>
@@ -188,7 +219,7 @@ const Home: NextPage = () => {
 							</div>
 
 							<div>
-								<Article align={"left"} image={"https://cdn.discordapp.com/attachments/934914135613931593/1077323147143020594/Untitled_Artwork.png"} imageStyle={{}} heading={"The Lore"} subheading={"01"} description={
+								<Article align={"left"} image={"https://media.discordapp.net/attachments/934914135613931593/1079144814077038812/Untitled_Artwork.png"} heading={"The Lore"} subheading={"01"} description={
 									`The Atherians, a powerful and mystical race, lived in harmony on the enchanted planet Ather.\n\n` +
 									`However, a group attempted to extract the planet's core for energy, causing instability and the eventual doom of Ather.\n\n` +
 									`In race to save their species, masterminds set out to find a new home and eventually discovered Earth.\n\n` +
@@ -202,31 +233,35 @@ const Home: NextPage = () => {
 								<video loop autoPlay muted style={{width: '120rem', height: 'auto', position: 'absolute', filter: 'blur(100px)', opacity: 0.3}} src="/videos/nyc.mp4"></video>
 							</div> */}
 							{/* Starquest Landing */}
-							<div className='flex h-[40rem] mt-16 lg:mt-32 mb-32 justify-center items-center z-40' style={{WebkitClipPath: clipPath, clipPath}}>
+							{/* <div className='flex h-[40rem] mt-16 lg:mt-32 mb-32 justify-center items-center z-40' style={{WebkitClipPath: clipPath, clipPath}}>
 								<div className='absolute flex flex-col justify-center items-center z-20'>
-									<h1 className='font-body text-gray text-sm'>THY COLLECTIVE BELIEF OF ROADMAPS BEING PRIMITIVE</h1>
-									<h1 className='font-display text-white text-8xl'>
+									<h1 className='font-body text-gray text-xs lg:text-sm'>THY COLLECTIVE BELIEF OF ROADMAPS BEING PRIMITIVE</h1>
+									<h1 className='font-display text-white text-6xl lg:text-8xl'>
 										STARQUEST
 									</h1>
 
 									<div onClick={() => {
 										setStarquestOpen(true)
 									}}
-									className="cursor-pointer text-sm text-white backdrop-blur-lg w-fit px-4 h-12 mt-10 rounded-md flex justify-center items-center font-body"
+									className="cursor-pointer text-xs lg:text-sm text-white backdrop-blur-lg w-fit px-4 h-12 mt-10 rounded-md flex justify-center items-center font-body"
 									>EXPLORE NOW</div>
 								</div>
 								<Parallax translateY={[15, -15]}>
-									<video loop autoPlay muted style={{width: '150rem', height: 'auto', position: 'relative', filter: 'brightness(70%)', opacity: 1}} src="/videos/nyc.mp4"></video>
+									<video loop autoPlay muted className='max-w-none' style={{width: '150rem', height: 'auto', position: 'relative', filter: 'brightness(70%)', opacity: 1}} src="/videos/nyc.mp4"></video>
 								</Parallax>
-							</div>
+							</div> */}
+
+							<StarQuest />
 
 
-							<div>
-								<Article align={"left"} image={"/images/manifestoHand.png"} imageStyle={{position: 'absolute', left: '-350px', top: '-220px', width: '800px'}} heading={"Vision"} subheading={"02"} description={
+							<div className='mb-[25rem] xl:mb-0 flex'>
+								<Article align={"left"} imageClass="w-96 scale-150" heading={"Manifesto"} subheading={"02"} description={
 								`Amidst NFT's bright and dazzling light, A firm doth rise with might and might. Decentralized, it brings a show, in digital realms, its fame doth grow.\n\n` +
 								`Comics, series, and merchandise bold, Cosplays, games, a tale untold. With community's zeal and spirit rare, its mission to bring forth a world fair.\n\n` +
 								`To weave a tapestry, with hands entwine, and zip the bounds of thy imagination's vine.\n\n` +
 								`In this new world, our spirits shall converge, and creativity, passion, and zeal shall surge.`}></Article>
+
+								<img className='absolute mt-[35rem] xl:mt-[13rem] left-[10%] xl:left-auto xl:-right-10 xl:w-[40rem] w-[80%]' src="/images/manifestoHand.png" alt="" />
 							</div>
 
 							{/* Spreading the word Ambience */}
@@ -236,19 +271,19 @@ const Home: NextPage = () => {
 							{/* Spreading the word landing */}
 							<div className='flex h-[40rem] mt-16 lg:mt-32 mb-32 justify-center items-center z-40' style={{WebkitClipPath: clipPath, clipPath}}>
 								<div className='absolute flex flex-col justify-center items-center z-20'>
-									<h1 className='font-body text-gray text-sm'>WE FEAR NO RULES</h1>
-									<h1 className='font-display text-white text-8xl'>
+									<h1 className='font-body text-gray text-xs lg:text-sm'>WE FEAR NO RULES</h1>
+									<h1 className='font-display text-white text-6xl lg:text-8xl'>
 										REVELATION
 									</h1>
 
 									<div onClick={() => {
 										setStarquestOpen(true)
 									}}
-									className="cursor-pointer text-sm text-white backdrop-blur-lg w-fit px-4 h-12 mt-10 rounded-md flex justify-center items-center font-body"
+									className="cursor-pointer text-xs lg:text-sm text-white backdrop-blur-lg w-fit px-4 h-12 mt-10 rounded-md flex justify-center items-center font-body"
 									>WATCH NOW</div>
 								</div>
 								<Parallax translateY={[15, -15]}>
-									<video className='scale-150' loop autoPlay muted style={{width: '250rem', height: 'auto', position: 'relative', filter: 'brightness(50%)', opacity: 1}} src="/videos/revelation.mp4"></video>
+									<video className='max-w-none w-[300vw] h-auto relative brightness-50' loop autoPlay muted src="/videos/revelation.mp4"></video>
 								</Parallax>
 							</div>
 

@@ -82,7 +82,7 @@ const Collection = ({children}: any) => {
                     transition={headingTransition}
                     initial={"hidden"}
                     variants={headingAnimationVariants}
-                    className='text-white font-body text-sm tracking-widest uppercase'>
+                    className='text-white font-body tracking-widest uppercase text-xs lg:text-sm'>
                         10000 Atherians
                 </motion.h1>
                 <motion.h1
@@ -91,7 +91,7 @@ const Collection = ({children}: any) => {
                     transition={headingTransition}
                     initial={"hidden"}
                     variants={headingAnimationVariants}
-                    className='text-white font-display tracking-wide uppercase text-7xl'>
+                    className='text-white font-display tracking-wide uppercase text-6xl lg:text-7xl'>
                         COLLECTION
                 </motion.h1>
             </div>
