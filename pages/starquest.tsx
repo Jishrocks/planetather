@@ -12,6 +12,7 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Navbar, { Page } from "../components/Navbar";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 type SlideProps = {
     className?: string;
@@ -101,6 +102,31 @@ const Starquest: NextPage = () => {
 
     return (
         <>
+            <Head>
+                <title>Ather • StarQuest</title>
+                <meta
+                    name='description'
+                    content="idk right now I'll change this later"
+                />
+
+                {/* <!-- Facebook Meta Tags --> */}
+                <meta property='og:url' content='https://example.com' />
+                <meta property='og:type' content='website' />
+                <meta property='og:title' content='Ather' />
+                <meta property='og:description' content='undefined' />
+                <meta property='og:image' content='' />
+
+                {/* <!-- Twitter Meta Tags --> */}
+                <meta name='twitter:card' content='summary_large_image' />
+                <meta property='twitter:domain' content='example.com' />
+                <meta property='twitter:url' content='https://example.com' />
+                <meta name='twitter:title' content='Ather' />
+                <meta name='twitter:description' content='undefined' />
+                <meta name='twitter:image' content='' />
+
+                <link rel='icon' href='/favicon.ico' />
+            </Head>
+
             <ParallaxProvider>
                 <Navbar currentPage={Page.STARQUEST} fixed={true} />
                 <div className='w-screen h-screen flex bg-[#000]'>
@@ -327,7 +353,7 @@ const Starquest: NextPage = () => {
                             "fixed w-[35rem] h-auto bottom-0 right-0 z-50 transition-all " +
                             (activeIndex == 3 ? "opacity-100" : "opacity-0")
                         }
-                        src='https://cdn.discordapp.com/attachments/934914135613931593/1085304584907534406/Untitled_Artwork.png'
+                        src='https://cdn.discordapp.com/attachments/934914135613931593/1086367978070749204/Untitled_Artwork.png'
                         alt='atherian'
                     />
                     <img
@@ -335,7 +361,7 @@ const Starquest: NextPage = () => {
                             "fixed w-[35rem] h-auto bottom-0 right-0 z-50 transition-all " +
                             (activeIndex == 4 ? "opacity-100" : "opacity-0")
                         }
-                        src='https://cdn.discordapp.com/attachments/934914135613931593/1085304584907534406/Untitled_Artwork.png'
+                        src='https://cdn.discordapp.com/attachments/934914135613931593/1086235770051899443/Untitled_Artwork.png'
                         alt='atherian'
                     />
                     <img
@@ -347,7 +373,7 @@ const Starquest: NextPage = () => {
                         alt='atherian'
                     />
 
-                    <div className='fixed w-[2rem] left-0 h-screen flex flex-col gap-2 items-center justify-center ml-4'>
+                    <div className='fixed w-[2rem] left-0 h-screen flex flex-col gap-2 items-center justify-center ml-9'>
                         {Array(6)
                             .fill(0)
                             .map((_, i) => (

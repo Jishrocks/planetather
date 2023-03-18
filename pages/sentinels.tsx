@@ -11,6 +11,7 @@ import { ParallaxProvider } from "react-scroll-parallax";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Navbar, { Page } from "../components/Navbar";
+import Head from "next/head";
 
 type SlideProps = {
     className?: string;
@@ -100,6 +101,31 @@ const Sentinels: NextPage = () => {
 
     return (
         <>
+            <Head>
+                <title>Ather • Sentinels</title>
+                <meta
+                    name='description'
+                    content="idk right now I'll change this later"
+                />
+
+                {/* <!-- Facebook Meta Tags --> */}
+                <meta property='og:url' content='https://example.com' />
+                <meta property='og:type' content='website' />
+                <meta property='og:title' content='Ather' />
+                <meta property='og:description' content='undefined' />
+                <meta property='og:image' content='' />
+
+                {/* <!-- Twitter Meta Tags --> */}
+                <meta name='twitter:card' content='summary_large_image' />
+                <meta property='twitter:domain' content='example.com' />
+                <meta property='twitter:url' content='https://example.com' />
+                <meta name='twitter:title' content='Ather' />
+                <meta name='twitter:description' content='undefined' />
+                <meta name='twitter:image' content='' />
+
+                <link rel='icon' href='/favicon.ico' />
+            </Head>
+
             <ParallaxProvider>
                 <Navbar currentPage={Page.SENTINELS} fixed={true} />
                 <div className='w-screen h-screen flex bg-[#000]'>
@@ -254,7 +280,7 @@ const Sentinels: NextPage = () => {
                         alt='atherian'
                     />
 
-                    <div className='fixed w-[2rem] left-0 h-screen flex flex-col gap-2 items-center justify-center ml-4'>
+                    <div className='fixed w-[2rem] left-0 h-screen flex flex-col gap-2 items-center justify-center ml-9'>
                         {Array(3)
                             .fill(0)
                             .map((_, i) => (

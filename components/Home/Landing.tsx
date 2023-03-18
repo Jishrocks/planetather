@@ -34,7 +34,7 @@ const Landing = ({ children }: any) => {
                 } else {
                     setShowStickyFooter(false);
                 }
-                setLogoRotation(20 + scrollTop / 10);
+                setLogoRotation(24 + scrollTop / 10);
             };
 
             scroll.on("scroll", eventListener);
@@ -50,11 +50,13 @@ const Landing = ({ children }: any) => {
     return (
         <section
             data-scroll-section
+            // data-scroll-sticky
+            // data-scroll-target='#scroll-container'
             className='flex flex-col justify-center items-center h-screen md:h-[80vh] overflow-hidden md:overflow-visible'
         >
-            {/* <div
+            <div
                 data-scroll
-                data-scroll-speed='2'
+                data-scroll-speed='3'
                 className='absolute invisible md:visible'
             >
                 <div
@@ -63,45 +65,18 @@ const Landing = ({ children }: any) => {
                     }}
                 >
                     <img
-                        className={`w-auto h-[40rem] xl:h-[50rem] md:transition-all md:duration-500`}
+                        className={`w-auto h-[40rem] xl:h-[50rem] md:transition-all md:duration-500 mb-96`}
                         src='/images/ATHER_white_logo.png'
                     ></img>
                 </div>
-            </div> */}
-
-            <div
-                className='flex h-[40rem] mt-40 mb-32 justify-center items-center'
-                style={{ WebkitClipPath: clipPath, clipPath }}
-            >
-                <div className='absolute mb-24 flex flex-col justify-center items-center z-50'>
-                    <div
-                        style={{
-                            transform: `perspective(500px) rotateX(24deg)`,
-                        }}
-                    >
-                        <img
-                            className={`w-auto h-[40rem] xl:h-[50rem] md:transition-all md:duration-500`}
-                            src='/images/ATHER_white_logo.png'
-                        ></img>
-                    </div>
-                </div>
-                <div>
-                    <video
-                        className='max-w-none w-[190vw] lg:w-[150vw] xl:w-[125vw] h-auto relative brightness-50'
-                        loop
-                        autoPlay
-                        muted
-                        src='/videos/spread.mp4'
-                    ></video>
-                </div>
             </div>
 
-            {/* <div className='absolute invisible md:visible'>
+            <div className='absolute invisible md:visible mt-24'>
                 <motion.img
                     className='w-auto h-[25rem] mb-24 md:transition-all md:duration-500'
                     src='/images/Atherians_Grouped.png'
                 ></motion.img>
-            </div> */}
+            </div>
 
             <div className='flex flex-col items-center md:hidden'>
                 <img
@@ -111,7 +86,7 @@ const Landing = ({ children }: any) => {
             </div>
 
             <div
-                className='hidden md:flex flex-col absolute justify-center items-center w-[100vw] mt-[22rem] transition-all duration-150'
+                className='hidden md:flex flex-col absolute justify-center items-center w-[100vw] mt-[34rem] transition-all duration-150'
                 style={{
                     opacity: showScrollNotifier ? 1 : 0,
                 }}

@@ -77,21 +77,24 @@ const Home: NextPage = () => {
         setClipPath("polygon(100% 0, 100% 88%, 0 100%, 0 12%)");
     }, []);
 
-    let [transitionInViewRef, transitionInView] = useInView();
-    let [transitionScale, setTransitionScale] = useState(1);
-    let [transitionOffset, setTransitionOffset] = useState(undefined);
-    let transitionRange = 1600;
-
     let router = useRouter();
 
     let containerRef = useRef(null);
 
-    let [loreViewRef, loreInView] = useInView();
-    let [starquestViewRef, starquestInView] = useInView();
-    let [collectionViewRef, collectionInView] = useInView();
-    let [creatorsViewRef, creatorsInView] = useInView();
+    const [loreViewRef, loreInView] = useInView();
+    const [starquestViewRef, starquestInView] = useInView();
+    const [collectionViewRef, collectionInView] = useInView();
+    const [creatorsViewRef, creatorsInView] = useInView();
+
+    const [stickyAnimationRef, stickyAnimationLoaded] = useInView();
+    const [stickyAnimationOffset, setStickyAnimationOffset] =
+        useState<any>(null);
+    const [stickyAnimated, setStickyAnimated] = useState(false);
 
     let config = useConfigStore();
+
+    const [forcedTransparentNavbar, setForcedTransparentNavbar] =
+        useState(true);
 
     useEffect(() => {
         if (loreInView) {
@@ -106,6 +109,25 @@ const Home: NextPage = () => {
             config.setCurrentSidebarTab(Tab.NONE);
         }
     }, [loreInView, starquestInView, collectionInView, creatorsInView]);
+
+    const [offsetTop, setOffsetTop] = useState(0);
+    useEffect(() => {
+        if (stickyAnimationLoaded && !stickyAnimationOffset) {
+            setStickyAnimationOffset(offsetTop);
+        }
+
+        if (offsetTop >= stickyAnimationOffset && stickyAnimationOffset) {
+            setStickyAnimated(true);
+        } else {
+            setStickyAnimated(false);
+        }
+
+        if (offsetTop >= stickyAnimationOffset + 500 && stickyAnimationOffset) {
+            setForcedTransparentNavbar(false);
+        } else {
+            setForcedTransparentNavbar(true);
+        }
+    }, [offsetTop, stickyAnimationLoaded, stickyAnimationOffset]);
 
     return (
         <>
@@ -150,18 +172,64 @@ const Home: NextPage = () => {
                 <UnresponsiveHandler />
                 {/* Landing background */}
 
-                {/* <div className='absolute bg-red-100 h-[300vh] w-[100vw]' style={{clipPath: 'polygon(100% 0, 100% 95%, 0 100%, 0 0%)'}}></div>
-				<div className='absolute h-[300vh] w-[100vw]' style={{background: 'linear-gradient(1turn, #8d1725 55%,transparent)', clipPath: 'polygon(100% 0, 100% 95%, 0 100%, 0 0%)'}}></div> */}
-                {/* <div style={{position: 'absolute', background: '#8d1725', height: '20vh', width: '100vw', marginTop: '190vh', filter: 'blur(300px)', opacity: 0.8, transform: 'rotate(-4deg)'}}></div> */}
+                <div
+                    className={
+                        "absolute h-[300vh] w-[100vw] transition-colors duration-500 " +
+                        (stickyAnimated ? "bg-black" : "bg-red-100")
+                    }
+                    style={{
+                        clipPath: "polygon(100% 0, 100% 95%, 0 100%, 0 0%)",
+                    }}
+                ></div>
+                <div
+                    className={
+                        "absolute h-[200vh] w-[100vw] duration-500 transition-opacity " +
+                        (stickyAnimated ? "opacity-0" : "opacity-100")
+                    }
+                    style={{
+                        background:
+                            "linear-gradient(1turn, #8d1725 55%,transparent)",
+                        clipPath: "polygon(100% 0, 100% 95%, 0 100%, 0 0%)",
+                    }}
+                ></div>
+                {/* <div
+                    style={{
+                        position: "absolute",
+                        background: "#8d1725",
+                        height: "20vh",
+                        width: "100vw",
+                        marginTop: "190vh",
+                        filter: "blur(300px)",
+                        opacity: 0.8,
+                        transform: "rotate(-4deg)",
+                    }}
+                ></div> */}
 
                 <StickyFooter />
 
                 <Sidebar />
 
+                <Navbar
+                    currentPage={Page.HOME}
+                    fixed={true}
+                    invisible={stickyAnimated ? false : true}
+                    forcedTransparent={forcedTransparentNavbar}
+                />
                 {/* <iframe style={{borderRadius: '12px', opacity: landingScrolled ? 0 : 1, transition: '0.25s all', position: 'fixed', width: '450px', zIndex: '1000', right: '28px', bottom: '-30px'}} src="https://open.spotify.com/embed/album/30WNa86MJsrzTlki1YHI6A?utm_source=generator" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> */}
 
                 <LocomotiveScrollProvider
-                    options={{ smooth: true }}
+                    onUpdate={(scroll) => {
+                        scroll.on("scroll", ({ limit, scroll }) => {
+                            var scrollTop = scroll.y;
+                            setOffsetTop(scrollTop);
+                        });
+                    }}
+                    watch={[stickyAnimated]}
+                    options={{
+                        smooth: true,
+                        tablet: { smooth: true },
+                        smartphone: { smooth: true },
+                    }}
                     containerRef={containerRef}
                     location={router.asPath}
                 >
@@ -173,6 +241,113 @@ const Home: NextPage = () => {
                         <Navbar currentPage={Page.HOME} fixed={false} />
 
                         <Landing />
+
+                        <div data-scroll-section>
+                            <div
+                                id='scroll-animation-container'
+                                className='w-screen h-[150vh] flex justify-center align-center'
+                            >
+                                <div
+                                    data-scroll
+                                    data-scroll-sticky
+                                    data-scroll-target='#scroll-animation-container'
+                                    className='h-screen relative'
+                                    style={{
+                                        display: "flex",
+                                        justifyContent: "center",
+                                        alignItems: "center",
+                                    }}
+                                >
+                                    <div
+                                        id='sticky-animation-tracker'
+                                        ref={stickyAnimationRef}
+                                        className='absolute mt-[90vh]'
+                                    ></div>
+
+                                    <div
+                                        style={{
+                                            transform:
+                                                "perspective(500px) rotateX(24deg)",
+                                        }}
+                                        className='absolute mt-[90vh] w-screen'
+                                    >
+                                        <h1
+                                            data-scroll
+                                            data-scroll-speed='2'
+                                            style={{
+                                                opacity: loreInView ? 1 : 0,
+                                            }}
+                                            className='text-white uppercase font-display text-3xl lg:text-5xl text-center transition-opacity duration-500'
+                                        >
+                                            Welcome to the hideouts.
+                                        </h1>
+                                    </div>
+
+                                    <div
+                                        className='transition-all duration-500 delay-300'
+                                        style={{
+                                            borderTop:
+                                                "1px solid rgba(255, 255, 255, 0.15)",
+                                            width: stickyAnimated
+                                                ? "36vw"
+                                                : "0vw",
+                                        }}
+                                    ></div>
+                                    <div
+                                        className='transition-all duration-500'
+                                        style={{
+                                            display: "flex",
+                                            justifyContent: "center",
+                                            alignItems: "center",
+                                            width: "100px",
+                                            height: "100px",
+                                            scale: stickyAnimated ? "1" : "0",
+                                            backgroundColor:
+                                                "rgba(255, 255, 255, 0.15)",
+                                            clipPath:
+                                                "polygon(0 0, 0 88%, 12% 100%, 100% 100%, 100% 12%, 88% 0)",
+                                        }}
+                                    >
+                                        <div
+                                            className='duration-500 transition-colors'
+                                            style={{
+                                                display: "flex",
+                                                justifyContent: "center",
+                                                alignItems: "center",
+                                                width: "98.5px",
+                                                height: "98.5px",
+                                                backgroundColor: stickyAnimated
+                                                    ? "#050505"
+                                                    : "",
+                                                clipPath:
+                                                    "polygon(0 0, 0 88%, 12% 100%, 100% 100%, 100% 12%, 88% 0)",
+                                            }}
+                                        >
+                                            <img
+                                                style={{
+                                                    width: "48px",
+                                                    height: "auto",
+                                                    position: "absolute",
+                                                    overflow: "visible",
+                                                }}
+                                                src='/images/logov2.png'
+                                                alt=''
+                                            />
+                                        </div>
+                                    </div>
+                                    <div
+                                        className='transition-all duration-500 delay-300'
+                                        style={{
+                                            borderTop:
+                                                "1px solid rgba(255, 255, 255, 0.15)",
+                                            width: stickyAnimated
+                                                ? "36vw"
+                                                : "0vw",
+                                        }}
+                                    ></div>
+                                </div>
+                            </div>
+                        </div>
 
                         <div ref={loreViewRef} data-scroll-section>
                             <Article

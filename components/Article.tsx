@@ -36,7 +36,7 @@ const Article = (props: ArticleProps) => {
                 className='flex flex-row gap-1 justify-center items-center'
                 style={{ order: props.align == "left" ? 1 : "unset" }}
             >
-                <div>
+                <div data-scroll data-scroll-speed='-1'>
                     {props.image && (
                         <Fade>
                             <img
@@ -53,7 +53,7 @@ const Article = (props: ArticleProps) => {
                 </div>
             </div>
 
-            <div>
+            <div data-scroll data-scroll-speed='2'>
                 <div
                     className='flex flex-col ml-10 lg:ml-20'
                     style={{

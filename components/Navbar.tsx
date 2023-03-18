@@ -19,6 +19,8 @@ enum Page {
 type Props = {
     fixed: boolean;
     currentPage: Page;
+    invisible?: boolean;
+    forcedTransparent?: boolean;
 };
 
 const Navbar = (props: Props) => {
@@ -28,22 +30,32 @@ const Navbar = (props: Props) => {
         <>
             <section
                 data-scroll-section
+                style={{
+                    transform: props.invisible
+                        ? "translateY(-5rem)"
+                        : "translateY(0rem)",
+                }}
                 className={
-                    "h-[70px] px-5 md:px-10 z-50 backdrop-blur-sm " +
-                    (props.fixed ? "fixed top-0 w-full" : "")
+                    "h-[70px] px-5 md:px-10 z-50 " +
+                    (props.fixed
+                        ? "fixed top-0 w-full transition-all duration-500 delay-100 "
+                        : " ") +
+                    (!props.forcedTransparent && props.forcedTransparent != null
+                        ? "bg-black backdrop-blur-md bg-opacity-80"
+                        : "bg-opacity-0")
                 }
             >
-                <div className='h-[70px] w-full grid grid-cols-2 md:grid-cols-3'>
+                <div className='h-[70px] w-full flex'>
                     {/* Left Side Text */}
-                    <div className='hidden md:flex items-center'>
+                    {/* <div className='hidden md:flex items-center'>
                         <h1 className='font-body font-extralight text-white uppercase text-xs tracking-wide md:tracking-wider'>
                             <span className='font-display opacity-100'>×</span>{" "}
                             ENTER THE HIDEOUTS
                         </h1>
-                    </div>
+                    </div> */}
 
                     {/* Logo */}
-                    <div className='flex items-center md:justify-center'>
+                    <div className='flex items-center w-[6rem]'>
                         <img
                             alt='logo'
                             className='hidden md:block w-auto h-8 cursor-pointer opacity-70'
@@ -56,7 +68,7 @@ const Navbar = (props: Props) => {
                         ></img>
                     </div>
 
-                    <div className='hidden md:flex justify-end items-center mr-4 gap-10'>
+                    <div className='hidden md:flex justify-end items-center xl:mr-4 gap-10 w-full'>
                         {/* Menu */}
                         <div className='flex gap-4 text-white font-body text-xs tracking-wide md:tracking-wider'>
                             <p
@@ -150,7 +162,7 @@ const Navbar = (props: Props) => {
                     </div>
 
                     {/* Menu */}
-                    <div className='flex md:hidden items-center justify-end'>
+                    <div className='flex md:hidden items-center justify-end w-full'>
                         <div className='flex items-center justify-center'>
                             <i className='gg-menu-right invert'></i>
                         </div>
