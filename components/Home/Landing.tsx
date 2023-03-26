@@ -17,33 +17,27 @@ const Landing = ({ children }: any) => {
     const [heroOpacity, setHeroOpacity] = useState(1);
     const [heroZoom, setHeroZoom] = useState(1);
 
-    const { scroll, isReady } = useLocomotiveScroll();
+    let config = useConfigStore();
 
     let { setShowStickyFooter } = useConfigStore();
 
     useEffect(() => {
-        if (isReady) {
-            let eventListener = ({ limit, scroll }) => {
-                var scrollTop = scroll.y;
-                if (scrollTop > 25) {
-                    setShowScrollNotifier(false);
-                } else {
-                    setShowScrollNotifier(true);
-                }
-                if (scrollTop > 300) {
-                    setShowStickyFooter(true);
-                } else {
-                    setShowStickyFooter(false);
-                }
-                setLogoRotation(24 + scrollTop / 10);
-                setHeroOpacity(1 - scrollTop / 600);
-                setLogoZoom(1 + scrollTop / 1000);
-                setHeroZoom(1 + scrollTop / 1500);
-            };
-
-            scroll.on("scroll", eventListener);
+        var scrollTop = config.offsetTop;
+        if (scrollTop > 25) {
+            setShowScrollNotifier(false);
+        } else {
+            setShowScrollNotifier(true);
         }
-    }, [scroll, isReady, setShowStickyFooter]);
+        if (scrollTop > 300) {
+            setShowStickyFooter(true);
+        } else {
+            setShowStickyFooter(false);
+        }
+        setLogoRotation(24 + scrollTop / 10);
+        setHeroOpacity(1 - scrollTop / 600);
+        setLogoZoom(1 + scrollTop / 1000);
+        setHeroZoom(1 + scrollTop / 1500);
+    }, [config.offsetTop, setShowStickyFooter]);
 
     const [clipPath, setClipPath] = useState("");
 
@@ -65,11 +59,10 @@ const Landing = ({ children }: any) => {
             >
                 <div
                     style={{
-                        transform: `perspective(500px) rotateX(${logoRotatation}deg)`,
+                        transform: `perspective(500px) rotateX(${logoRotatation}deg) scale(${logoZoom})`,
                     }}
                 >
                     <img
-                        style={{ transform: `scale(${logoZoom})` }}
                         className={`w-auto h-[50rem] xl:h-[70rem] mb-96`}
                         src='/images/ATHER_white_logo.png'
                     ></img>
@@ -87,10 +80,12 @@ const Landing = ({ children }: any) => {
                 data-scroll
                 data-scroll-speed='-14'
                 className='flex flex-col items-center bottom-0'
+                style={{
+                    opacity: heroOpacity,
+                }}
             >
                 <img
                     style={{
-                        opacity: heroOpacity,
                         transform: `scale(${heroZoom})`,
                     }}
                     className='w-auto max-w-none h-[90vh] xl:h-[110vh] mt-56 xl:mt-20 z-10'

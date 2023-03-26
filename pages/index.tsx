@@ -87,24 +87,29 @@ const Home: NextPage = () => {
         }
     }, [loreInView, starquestInView, collectionInView, creatorsInView]);
 
-    const [offsetTop, setOffsetTop] = useState(0);
     useEffect(() => {
         if (stickyAnimationLoaded && !stickyAnimationOffset) {
-            setStickyAnimationOffset(offsetTop);
+            setStickyAnimationOffset(config.offsetTop);
         }
 
-        if (offsetTop >= stickyAnimationOffset && stickyAnimationOffset) {
+        if (
+            config.offsetTop >= stickyAnimationOffset &&
+            stickyAnimationOffset
+        ) {
             setStickyAnimated(true);
         } else {
             setStickyAnimated(false);
         }
 
-        if (offsetTop >= stickyAnimationOffset + 500 && stickyAnimationOffset) {
+        if (
+            config.offsetTop >= stickyAnimationOffset + 500 &&
+            stickyAnimationOffset
+        ) {
             setForcedTransparentNavbar(false);
         } else {
             setForcedTransparentNavbar(true);
         }
-    }, [offsetTop, stickyAnimationLoaded, stickyAnimationOffset]);
+    }, [config.offsetTop, stickyAnimationLoaded, stickyAnimationOffset]);
 
     return (
         <>
@@ -214,7 +219,7 @@ const Home: NextPage = () => {
                     onUpdate={(scroll) => {
                         scroll.on("scroll", ({ limit, scroll }) => {
                             var scrollTop = scroll.y;
-                            setOffsetTop(scrollTop);
+                            config.setOffsetTop(scrollTop);
                         });
                     }}
                     watch={[stickyAnimated]}
@@ -383,7 +388,7 @@ const Home: NextPage = () => {
                             ></Article>
 
                             <img
-                                className='absolute mt-[38rem] lg:mt-[30rem] xl:mt-[13rem] left-0 right-0 m-auto xl:left-auto xl:-right-10 xl:w-[40rem] w-[60%]'
+                                className='absolute mt-[38rem] lg:mt-[30rem] xl:mt-[17rem] left-0 right-0 m-auto xl:left-auto xl:-right-10 xl:w-[40rem] w-[60%]'
                                 src='/images/manifestoHand.png'
                                 alt=''
                             />
