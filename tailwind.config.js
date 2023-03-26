@@ -2,6 +2,9 @@
 module.exports = {
     content: ["./src/**/*.{html,js}"],
     purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+    variants: {
+        display: ['group-hover']
+    },
     theme: {
         screens: {
             sm: "575px",

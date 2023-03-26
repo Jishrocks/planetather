@@ -369,7 +369,7 @@ const Starquest: NextPage = () => {
                             "fixed w-[35rem] h-auto bottom-0 right-0 z-50 transition-all " +
                             (activeIndex == 5 ? "opacity-100" : "opacity-0")
                         }
-                        src='https://cdn.discordapp.com/attachments/934914135613931593/1085304584907534406/Untitled_Artwork.png'
+                        src='https://media.discordapp.net/attachments/934914135613931593/1086664724583825418/Untitled_Artwork.png'
                         alt='atherian'
                     />
 

@@ -48,30 +48,7 @@ function UnresponsiveHandler() {
 }
 
 const Home: NextPage = () => {
-    const [landingScrolled, setLandingScrolled] = useState(false);
-    const [navbarOverflow, setNavbarOverflow] = useState(true);
-
-    const [starquestOpen, setStarquestOpen] = useState(false);
-
     const [clipPath, setClipPath] = useState("");
-
-    useEffect(() => {
-        let eventListener = () => {
-            var scrollTop = document.documentElement.scrollTop;
-            if (scrollTop > 25) {
-                setLandingScrolled(true);
-            } else {
-                setLandingScrolled(false);
-            }
-
-            if (scrollTop > 100) {
-                setNavbarOverflow(false);
-            } else {
-                setNavbarOverflow(true);
-            }
-        };
-        window.addEventListener("scroll", eventListener);
-    }, [clipPath]);
 
     useEffect(() => {
         setClipPath("polygon(100% 0, 100% 88%, 0 100%, 0 12%)");
@@ -215,7 +192,23 @@ const Home: NextPage = () => {
                     invisible={stickyAnimated ? false : true}
                     forcedTransparent={forcedTransparentNavbar}
                 />
-                {/* <iframe style={{borderRadius: '12px', opacity: landingScrolled ? 0 : 1, transition: '0.25s all', position: 'fixed', width: '450px', zIndex: '1000', right: '28px', bottom: '-30px'}} src="https://open.spotify.com/embed/album/30WNa86MJsrzTlki1YHI6A?utm_source=generator" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> */}
+                {/* <iframe
+                    style={{
+                        borderRadius: "12px",
+                        opacity: 1,
+                        transition: "0.25s all",
+                        position: "fixed",
+                        width: "400px",
+                        // height: "200px",
+                        zIndex: "1000",
+                        right: "28px",
+                        bottom: "-30px",
+                    }}
+                    src='https://open.spotify.com/embed/album/30WNa86MJsrzTlki1YHI6A?utm_source=generator'
+                    frameBorder='0'
+                    allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
+                    loading='lazy'
+                ></iframe> */}
 
                 <LocomotiveScrollProvider
                     onUpdate={(scroll) => {
@@ -403,21 +396,23 @@ const Home: NextPage = () => {
                             style={{ WebkitClipPath: clipPath, clipPath }}
                         >
                             <div className='absolute flex flex-col justify-center items-center z-50'>
-                                <h1 className='font-body text-gray text-xs lg:text-sm'>
-                                    WE FEAR NO RULES
-                                </h1>
-                                <h1 className='font-display text-white text-6xl lg:text-8xl'>
-                                    REVELATION
-                                </h1>
+                                <Fade bottom>
+                                    <h1 className='font-body text-gray text-xs lg:text-sm'>
+                                        WE FEAR NO RULES
+                                    </h1>
+                                    <h1 className='font-display text-white text-6xl lg:text-8xl'>
+                                        REVELATION
+                                    </h1>
 
-                                <div
-                                    onClick={() => {
-                                        setStarquestOpen(true);
-                                    }}
-                                    className='cursor-pointer text-xs lg:text-sm text-white backdrop-blur-lg w-fit px-4 h-12 mt-10 rounded-md flex justify-center items-center font-body'
-                                >
-                                    WATCH NOW
-                                </div>
+                                    <div
+                                        onClick={() => {
+                                            // setStarquestOpen(true);
+                                        }}
+                                        className='cursor-pointer text-xs lg:text-sm text-white backdrop-blur-lg w-fit px-4 h-12 mt-10 rounded-md flex justify-center items-center font-body'
+                                    >
+                                        WATCH NOW
+                                    </div>
+                                </Fade>
                             </div>
                             <div>
                                 <video

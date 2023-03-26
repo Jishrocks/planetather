@@ -6,6 +6,7 @@ import { useInView } from "react-intersection-observer";
 import { Parallax } from "react-scroll-parallax";
 import { useMediaQuery, screenBasedAttribute } from "../lib/mediaQuery";
 import Fade from "react-reveal/Fade";
+import TextScramble from "../lib/TextScramble";
 
 type ArticleProps = {
     align: "left" | "right";
@@ -19,7 +20,9 @@ type ArticleProps = {
 };
 
 const Article = (props: ArticleProps) => {
-    let [content, setContent] = useState<any>(null);
+    const [content, setContent] = useState<any>(null);
+
+    const [headingRef, headingInView] = useInView();
 
     useEffect(() => {
         return setContent(props.children ? props.children : props.description);
@@ -38,7 +41,7 @@ const Article = (props: ArticleProps) => {
             >
                 <div data-scroll data-scroll-speed='-1'>
                     {props.image && (
-                        <Fade>
+                        <Fade bottom>
                             <img
                                 src={props.image}
                                 className={
@@ -53,26 +56,31 @@ const Article = (props: ArticleProps) => {
                 </div>
             </div>
 
-            <div data-scroll data-scroll-speed='2'>
-                <div
-                    className='flex flex-col ml-10 lg:ml-20'
-                    style={{
-                        alignItems: props.align == "left" ? "start" : "start",
-                    }}
-                >
-                    <h1 className='text-white w-[300px] lg:w-[480px] xl:w-[640px] opacity-70 uppercase font-subheading text-3xl'>
-                        {props.subheading}
-                    </h1>
-                    <div>
-                        <h1 className='text-white font-display text-5xl lg:text-6xl uppercase'>
-                            {props.heading}
+            <div ref={headingRef} data-scroll data-scroll-speed='2'>
+                <Fade bottom>
+                    <div
+                        className='flex flex-col ml-10 lg:ml-20'
+                        style={{
+                            alignItems:
+                                props.align == "left" ? "start" : "start",
+                        }}
+                    >
+                        <h1 className='text-white w-[300px] lg:w-[480px] xl:w-[640px] opacity-70 uppercase font-subheading text-3xl'>
+                            {props.subheading}
                         </h1>
-                    </div>
+                        <Fade bottom>
+                            <h1 className='text-white font-display text-5xl lg:text-6xl uppercase'>
+                                <TextScramble
+                                    texts={[props.heading]}
+                                ></TextScramble>
+                            </h1>
+                        </Fade>
 
-                    <p className='content text-white text-sm lg:text-md font-body mt-10 leading-7 w-[480px] xl:w-[640px]'>
-                        {content}
-                    </p>
-                </div>
+                        <p className='content text-white text-sm lg:text-md font-body mt-10 leading-7 w-[480px] xl:w-[640px]'>
+                            {content}
+                        </p>
+                    </div>
+                </Fade>
             </div>
         </section>
     );

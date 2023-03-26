@@ -1,7 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
-import { TextScramble } from "../ScrambledText";
-import { motion, useAnimation } from "framer-motion";
 
 import React, { useEffect, useState } from "react";
 import Lottie from "react-lottie";
@@ -15,6 +13,9 @@ const Landing = ({ children }: any) => {
     const [showScrollNotifier, setShowScrollNotifier] = useState(true);
 
     const [logoRotatation, setLogoRotation] = useState(20);
+    const [logoZoom, setLogoZoom] = useState(1);
+    const [heroOpacity, setHeroOpacity] = useState(1);
+    const [heroZoom, setHeroZoom] = useState(1);
 
     const { scroll, isReady } = useLocomotiveScroll();
 
@@ -35,6 +36,9 @@ const Landing = ({ children }: any) => {
                     setShowStickyFooter(false);
                 }
                 setLogoRotation(24 + scrollTop / 10);
+                setHeroOpacity(1 - scrollTop / 600);
+                setLogoZoom(1 + scrollTop / 1000);
+                setHeroZoom(1 + scrollTop / 1500);
             };
 
             scroll.on("scroll", eventListener);
@@ -65,23 +69,32 @@ const Landing = ({ children }: any) => {
                     }}
                 >
                     <img
-                        className={`w-auto h-[40rem] xl:h-[50rem] md:transition-all md:duration-500 mb-96`}
+                        style={{ transform: `scale(${logoZoom})` }}
+                        className={`w-auto h-[50rem] xl:h-[70rem] mb-96`}
                         src='/images/ATHER_white_logo.png'
                     ></img>
                 </div>
             </div>
 
-            <div className='absolute invisible md:visible mt-24'>
+            {/* <div className='absolute invisible md:visible mt-24'>
                 <motion.img
                     className='w-auto h-[25rem] mb-24 md:transition-all md:duration-500'
                     src='/images/Atherians_Grouped.png'
                 ></motion.img>
-            </div>
+            </div> */}
 
-            <div className='flex flex-col items-center md:hidden'>
+            <div
+                data-scroll
+                data-scroll-speed='-14'
+                className='flex flex-col items-center bottom-0'
+            >
                 <img
-                    className='w-auto max-w-none h-[130vh] mt-80'
-                    src='https://cdn.discordapp.com/attachments/934914135613931593/1079063818505830410/Untitled_Artwork.png'
+                    style={{
+                        opacity: heroOpacity,
+                        transform: `scale(${heroZoom})`,
+                    }}
+                    className='w-auto max-w-none h-[90vh] xl:h-[110vh] mt-56 xl:mt-20 z-10'
+                    src='/images/sentinels/cascade2.png'
                 />
             </div>
 
