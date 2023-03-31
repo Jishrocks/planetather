@@ -31,7 +31,6 @@ import useConfigStore from "../lib/stores/configStore";
 import { Tab } from "../lib/stores/configStore";
 
 import Image from "next/image";
-import AnimatedGradient from "../lib/animatedGradient";
 
 function UnresponsiveHandler() {
     let isSupported = useMediaQuery(

@@ -13,7 +13,6 @@ import { useInView } from "react-intersection-observer";
 import Navbar, { Page } from "../components/Navbar";
 import Head from "next/head";
 import { makeCollection } from "../components/Home/Collection";
-import AnimatedGradient from "../lib/animatedGradient";
 
 import Image from "next/image";
 
