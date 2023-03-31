@@ -12,6 +12,7 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Navbar, { Page } from "../components/Navbar";
 import Head from "next/head";
+import AnimatedGradient from "../lib/animatedGradient";
 
 type SlideProps = {
     className?: string;
@@ -128,7 +129,8 @@ const Sentinels: NextPage = () => {
 
             <ParallaxProvider>
                 <Navbar currentPage={Page.ORIGINALS} fixed={true} />
-                <div className='w-screen h-screen flex bg-[#000]'>
+                <div className='w-screen h-screen flex relative bg-[#000]'>
+                    {/* <AnimatedGradient animationDirection='left' /> */}
                     <Swiper
                         speed={700}
                         mousewheel={{ releaseOnEdges: true }}
@@ -280,14 +282,14 @@ const Sentinels: NextPage = () => {
                         alt='atherian'
                     />
 
-                    <div className='fixed w-[2rem] left-0 h-screen flex flex-col gap-2 items-center justify-center ml-9'>
+                    <div className='fixed w-screen h-[2rem] lg:w-[2rem] lg:h-screen top-0 lg:left-0 flex flex-row lg:flex-col gap-2 items-center justify-center lg:ml-9 mt-16 px-10 lg:mt-0 lg:px-0'>
                         {Array(3)
                             .fill(0)
                             .map((_, i) => (
                                 <div
                                     key={i}
                                     className={
-                                        "rounded-md bg-white transition-opacity w-1 h-20 " +
+                                        "rounded-md bg-white transition-opacity w-full h-1 lg:w-1 lg:h-20 " +
                                         (activeIndex == i
                                             ? "opacity-100"
                                             : "opacity-20")

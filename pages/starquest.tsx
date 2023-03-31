@@ -13,6 +13,10 @@ import { useInView } from "react-intersection-observer";
 import Navbar, { Page } from "../components/Navbar";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import { makeCollection } from "../components/Home/Collection";
+import AnimatedGradient from "../lib/animatedGradient";
+
+import Image from "next/image";
 
 type SlideProps = {
     className?: string;
@@ -129,7 +133,8 @@ const Starquest: NextPage = () => {
 
             <ParallaxProvider>
                 <Navbar currentPage={Page.STARQUEST} fixed={true} />
-                <div className='w-screen h-screen flex bg-[#000]'>
+                <div className='w-screen h-screen flex relative bg-[#000]'>
+                    {/* <AnimatedGradient animationDirection='left' /> */}
                     <Swiper
                         onInit={(swiper) => {
                             let slideIndexes = {
@@ -165,8 +170,8 @@ const Starquest: NextPage = () => {
                                 return "";
                             },
                         }}
-                        direction={"vertical"}
-                        effect={"coverflow"}
+                        direction={"horizontal"}
+                        // effect={"coverflow"}
                         style={{ width: "100%" }}
                         modules={[Pagination, EffectCoverflow, Mousewheel]}
                         className='starquest'
@@ -177,11 +182,11 @@ const Starquest: NextPage = () => {
                                 subheading={"01"}
                                 description={[
                                     `Team Ather strives to create a space`,
-                                    `for all the Web3 Comic-heads to vibe, interact and share`,
+                                    `for all the internet comic-heads to vibe, interact and share`,
                                     `their imaginations in creating a ComicVerse of their own.\n`,
                                     `This is powered by "Collective Reality", where`,
                                     `the community shapes everything.`,
-                                    `We plan to ignite the Comics Pop culture across the globe,`,
+                                    `We plan to ignite the Comics Pop culture across the internet,`,
                                     `hands together.`,
                                 ].join("\n")}
                             ></Slide>
@@ -195,8 +200,8 @@ const Starquest: NextPage = () => {
                                         </div>
                                         <p className='mt-4'>
                                             We at Ather believe in greatness
-                                            through "Collective Creativity". It
-                                            is you, who has the power to decide
+                                            through collective creativity. It is
+                                            you, who has the power to decide
                                             what happens next. This is where
                                             your characters and fan theories
                                             turn out to be in the actual story.
@@ -324,7 +329,28 @@ const Starquest: NextPage = () => {
                             ></Slide>
                         </SwiperSlide>
                     </Swiper>
-                    <img
+                    <div className='fixed'>
+                        <div className='relative w-[100vw] h-[100vh]'>
+                            <video
+                                style={{ objectFit: "cover" }}
+                                className='brightness-50 w-[100vw] h-[100vh]'
+                                loop
+                                autoPlay
+                                muted
+                                src='/videos/spaceship.mp4'
+                            ></video>
+                        </div>
+                    </div>
+                    <div className='fixed'>
+                        <div
+                            style={{
+                                background:
+                                    "linear-gradient(to right, #000 30%, transparent 100%)",
+                            }}
+                            className='w-[100vw] h-[100vh] opacity-80'
+                        ></div>
+                    </div>
+                    {/* <img
                         className={
                             "fixed w-[35rem] h-auto bottom-0 right-0 z-50 transition-all " +
                             (activeIndex == 0 ? "opacity-100" : "opacity-0")
@@ -371,16 +397,16 @@ const Starquest: NextPage = () => {
                         }
                         src='https://media.discordapp.net/attachments/934914135613931593/1086664724583825418/Untitled_Artwork.png'
                         alt='atherian'
-                    />
+                    /> */}
 
-                    <div className='fixed w-[2rem] left-0 h-screen flex flex-col gap-2 items-center justify-center ml-9'>
+                    <div className='fixed w-screen h-[2rem] lg:w-[2rem] lg:h-screen top-0 lg:left-0 flex flex-row lg:flex-col gap-2 items-center justify-center lg:ml-9 mt-16 px-10 lg:mt-0 lg:px-0'>
                         {Array(6)
                             .fill(0)
                             .map((_, i) => (
                                 <div
                                     key={i}
                                     className={
-                                        "rounded-md bg-white transition-opacity w-1 h-20 " +
+                                        "rounded-md bg-white transition-opacity w-full h-1 lg:w-1 lg:h-20 " +
                                         (activeIndex == i
                                             ? "opacity-100"
                                             : "opacity-20")

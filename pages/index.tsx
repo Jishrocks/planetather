@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @next/next/no-img-element */
 import { NextPage } from "next";
 
@@ -7,7 +8,7 @@ import Navbar, { Page } from "../components/Navbar";
 import Footer from "../components/Footer";
 
 import Landing from "../components/Home/Landing";
-import Collection from "../components/Home/Collection";
+import Collection, { makeCollection } from "../components/Home/Collection";
 import Creators from "../components/Home/Creators";
 import StarQuest from "../components/Home/StarQuest";
 
@@ -28,6 +29,9 @@ import { useRouter } from "next/router";
 import { useInView } from "react-intersection-observer";
 import useConfigStore from "../lib/stores/configStore";
 import { Tab } from "../lib/stores/configStore";
+
+import Image from "next/image";
+import AnimatedGradient from "../lib/animatedGradient";
 
 function UnresponsiveHandler() {
     let isSupported = useMediaQuery(
@@ -87,29 +91,28 @@ const Home: NextPage = () => {
         }
     }, [loreInView, starquestInView, collectionInView, creatorsInView]);
 
+    const [offsetTop, setOffsetTop] = useState(0);
+
     useEffect(() => {
         if (stickyAnimationLoaded && !stickyAnimationOffset) {
-            setStickyAnimationOffset(config.offsetTop);
+            setStickyAnimationOffset(offsetTop);
         }
 
-        if (
-            config.offsetTop >= stickyAnimationOffset &&
+        if (offsetTop >= stickyAnimationOffset && stickyAnimationOffset) {
+            setStickyAnimated(true);
+        } else if (
+            offsetTop <= stickyAnimationOffset &&
             stickyAnimationOffset
         ) {
-            setStickyAnimated(true);
-        } else {
             setStickyAnimated(false);
         }
 
-        if (
-            config.offsetTop >= stickyAnimationOffset + 500 &&
-            stickyAnimationOffset
-        ) {
+        if (offsetTop >= stickyAnimationOffset + 500 && stickyAnimationOffset) {
             setForcedTransparentNavbar(false);
         } else {
             setForcedTransparentNavbar(true);
         }
-    }, [config.offsetTop, stickyAnimationLoaded, stickyAnimationOffset]);
+    }, [offsetTop, stickyAnimationLoaded, stickyAnimationOffset]);
 
     return (
         <>
@@ -219,7 +222,7 @@ const Home: NextPage = () => {
                     onUpdate={(scroll) => {
                         scroll.on("scroll", ({ limit, scroll }) => {
                             var scrollTop = scroll.y;
-                            config.setOffsetTop(scrollTop);
+                            setOffsetTop(scrollTop);
                         });
                     }}
                     watch={[stickyAnimated]}
@@ -240,6 +243,7 @@ const Home: NextPage = () => {
 
                         <Landing />
 
+                        {/* Transition section */}
                         <div data-scroll-section>
                             <div
                                 id='scroll-animation-container'
@@ -264,8 +268,7 @@ const Home: NextPage = () => {
 
                                     <div
                                         style={{
-                                            transform:
-                                                "perspective(500px) rotateX(24deg)",
+                                            transform: `perspective(500px) rotateX(24deg)`,
                                         }}
                                         className='absolute mt-[90vh] w-screen'
                                     >
@@ -321,16 +324,14 @@ const Home: NextPage = () => {
                                                     "polygon(0 0, 0 88%, 12% 100%, 100% 100%, 100% 12%, 88% 0)",
                                             }}
                                         >
-                                            <img
-                                                style={{
-                                                    width: "48px",
-                                                    height: "auto",
-                                                    position: "absolute",
-                                                    overflow: "visible",
-                                                }}
-                                                src='/images/logov2.png'
-                                                alt=''
-                                            />
+                                            <div className='w-[48px] h-[48px] absolute overflow-visible'>
+                                                <Image
+                                                    layout='fill'
+                                                    objectFit='contain'
+                                                    src='/images/logov2.png'
+                                                    alt=''
+                                                />
+                                            </div>
                                         </div>
                                     </div>
                                     <div
@@ -347,22 +348,71 @@ const Home: NextPage = () => {
                             </div>
                         </div>
 
-                        <div ref={loreViewRef} data-scroll-section>
+                        <div
+                            className='z-10'
+                            ref={loreViewRef}
+                            data-scroll-section
+                        >
+                            <div className='absolute mt-40 transition-opacity opacity-40'>
+                                <div
+                                    style={{ transform: "translateX(-10rem)" }}
+                                    className='absolute z-10 opacity-30'
+                                >
+                                    <div className='relative w-[100vh] h-[80vh]'>
+                                        <Image
+                                            layout='fill'
+                                            objectFit='contain'
+                                            src={"/images/sentinels/syke-h.png"}
+                                        />
+                                        <div
+                                            style={{
+                                                background:
+                                                    "linear-gradient(to bottom, transparent, #000 90%)",
+                                            }}
+                                            className='absolute w-[300vh] h-[40vh] bottom-0'
+                                        ></div>
+                                    </div>
+                                </div>
+                                <div
+                                    style={{ transform: "translateX(58vw)" }}
+                                    className='absolute opacity-0 lg:opacity-80 transition-opacity duration-300'
+                                >
+                                    <div className='relative w-[100vh] h-[80vh]'>
+                                        <Image
+                                            layout='fill'
+                                            objectFit='contain'
+                                            src={
+                                                "/images/sentinels/kayne-h.png"
+                                            }
+                                        />
+                                        <div
+                                            style={{
+                                                background:
+                                                    "linear-gradient(to bottom, transparent, #050505 90%)",
+                                            }}
+                                            className='absolute w-[100vh] h-[80vh]'
+                                        ></div>
+                                    </div>
+                                </div>
+                                <div className='opacity-70'>
+                                    <AnimatedGradient animationDirection='left' />
+                                </div>
+                            </div>
                             <Article
                                 className='pt-40'
-                                align={"left"}
+                                align={"center"}
                                 image={
-                                    "https://media.discordapp.net/attachments/934914135613931593/1079144814077038812/Untitled_Artwork.png"
+                                    ""
+                                    // "https://media.discordapp.net/attachments/1088084007041900586/1089632009309143101/Brushevil_Mysterious_planet_named_ather_wakanda_magical_technol_a605a605-0e92-4104-bf7b-1785244517b3.png"
                                 }
                                 imageClass='pt-40 xl:pt-0'
                                 heading={"The Lore"}
-                                subheading={"01"}
+                                subheading={"Around the Atherverse"}
                                 description={
-                                    `The Atherians, a powerful and mystical race, lived in harmony on the enchanted planet Ather.\n\n` +
-                                    `However, a group attempted to extract the planet's core for energy, causing instability and the eventual doom of Ather.\n\n` +
-                                    `In race to save their species, masterminds set out to find a new home and eventually discovered Earth.\n\n` +
-                                    `The Atherians set out on a journey in search of a new home and after facing many atrocities of space, they finally landed on the surface of the mysterious planet Earth in the year 2017.\n\n` +
-                                    `It's been 5 years since their arrival and they are still trying to explore and understand the new planet.`
+                                    `The Atherians, a powerful and mystical race, lived on an enchanted planet called Ather.\n\n` +
+                                    `However, a faction attempted to extract the planet's core for energy, causing instability to the core and the eventual doom of Ather.\n\n` +
+                                    `In a race to save their species, sentinels disbanded across the universe in search of a new home.\n\n` +
+                                    `And just as all hopes had died, messages of a distant discovery drove them to a new planet unknown and unexplored. A planed named Earth.\n\n`
                                 }
                             ></Article>
                         </div>
@@ -377,18 +427,39 @@ const Home: NextPage = () => {
                                 align={"left"}
                                 className='pt-8'
                                 imageClass='w-96 scale-150'
-                                heading={"Manifesto"}
-                                subheading={"02"}
-                                description={
-                                    `Amidst NFT's bright and dazzling light, A firm doth rise with might and might. Decentralized, it brings a show, in digital realms, its fame doth grow.\n\n` +
-                                    `Comics, series, and merchandise bold, Cosplays, games, a tale untold. With community's zeal and spirit rare, its mission to bring forth a world fair.\n\n` +
-                                    `To weave a tapestry, with hands entwine, and zip the bounds of thy imagination's vine.\n\n` +
-                                    `In this new world, our spirits shall converge, and creativity, passion, and zeal shall surge.`
-                                }
-                            ></Article>
+                                heading={"BELIEF"}
+                                subheading={"The Atherian Creed"}
+                            >
+                                <div className='flex flex-col gap-10'>
+                                    <p>
+                                        Ather is built on the foundation of
+                                        inclusivity, diversity, and creativity.
+                                        <br />
+                                        <br />
+                                        We believe in the power of collective
+                                        creativity where the community<br></br>
+                                        has the ability to shape the direction
+                                        and outcome of Ather through<br></br>
+                                        fan theories and narratives.
+                                        <br></br>
+                                        <br></br>
+                                        Our goal is to create a space for all
+                                        internet comic-heads to vibe,<br></br>
+                                        interact, and share their imaginations
+                                        in creating a ComicVerse of their own.
+                                        <br></br>
+                                        <br></br>
+                                        This is powered by "Collective Reality"
+                                        a concept where the community shapes
+                                        everything.
+                                    </p>
+                                </div>
+                            </Article>
 
                             <img
-                                className='absolute mt-[38rem] lg:mt-[30rem] xl:mt-[17rem] left-0 right-0 m-auto xl:left-auto xl:-right-10 xl:w-[40rem] w-[60%]'
+                                data-scroll
+                                data-scroll-speed='-2'
+                                className='absolute mt-[44rem] lg:mt-[38rem] xl:mt-[17rem] left-0 right-0 m-auto xl:left-auto xl:-right-10 w-[70%] lg:w-[60%] xl:w-[40rem]'
                                 src='/images/manifestoHand.png'
                                 alt=''
                             />
@@ -397,7 +468,7 @@ const Home: NextPage = () => {
                         {/* Spreading the word landing */}
                         <section
                             data-scroll-section
-                            className='flex h-[40rem] mt-40 mb-32 justify-center items-center'
+                            className='flex h-[95vh] mt-40 mb-32 justify-center items-center'
                             style={{ WebkitClipPath: clipPath, clipPath }}
                         >
                             <div className='absolute flex flex-col justify-center items-center z-50'>
@@ -411,7 +482,9 @@ const Home: NextPage = () => {
 
                                     <div
                                         onClick={() => {
-                                            // setStarquestOpen(true);
+                                            window.open(
+                                                "https://twitter.com/atherverse/status/1629114195995156481"
+                                            );
                                         }}
                                         className='cursor-pointer text-xs lg:text-sm text-white backdrop-blur-lg w-fit px-4 h-12 mt-10 rounded-md flex justify-center items-center font-body'
                                     >
@@ -421,7 +494,7 @@ const Home: NextPage = () => {
                             </div>
                             <div>
                                 <video
-                                    className='max-w-none w-[300vw] h-auto relative brightness-50'
+                                    className='max-w-none w-auto h-[130vh] relative brightness-50'
                                     loop
                                     autoPlay
                                     muted

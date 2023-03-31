@@ -1,9 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     content: ["./src/**/*.{html,js}"],
-    purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+    purge: [
+        "./pages/**/*.{js,ts,jsx,tsx}",
+        "./components/**/*.{js,ts,jsx,tsx}",
+    ],
     variants: {
-        display: ['group-hover']
+        display: ["group-hover"],
     },
     theme: {
         screens: {
@@ -29,13 +32,13 @@ module.exports = {
                 400: "#2f2005",
             },
             white: "#f7f7f7",
-            black: "#050505"
+            black: "#050505",
         },
         extend: {
             textColor: {
-                gray: "#f7f7f740"
-            }
-        }
+                gray: "#f7f7f740",
+            },
+        },
     },
     plugins: [],
-}
+};

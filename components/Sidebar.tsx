@@ -6,7 +6,7 @@ const Sidebar = ({ children }: any) => {
     let { currentSidebarTab } = useConfigStore();
     return (
         <div
-            className='hidden fixed md:flex gap-2 z-50 rotate-180 ml-12 items-center justify-center'
+            className='hidden fixed lg:flex gap-2 z-50 rotate-180 ml-12 items-center justify-center'
             style={{ writingMode: "vertical-lr", height: "100%" }}
         >
             <h1

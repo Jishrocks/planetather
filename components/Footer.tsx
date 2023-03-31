@@ -13,14 +13,14 @@ function FooterLink({ children, ...props }: any) {
                 if (children === "DISCORD") {
                     window.open("https://discord.gg/ather", "_blank");
                 } else if (children === "TWITTER") {
-                    window.open("https://twitter.com/PlanetAtherNFT", "_blank");
+                    window.open("https://twitter.com/atherverse", "_blank");
                 } else if (children === "INSTAGRAM") {
                     window.open(
-                        "https://www.instagram.com/planetathernft",
+                        "https://www.instagram.com/planetather",
                         "_blank"
                     );
                 } else if (children === "LICENSE") {
-                    router.push("/license");
+                    // router.push("/license");
                 }
             }}
         >
@@ -39,7 +39,7 @@ const Footer = ({ children }: any) => {
                 <FooterLink>DISCORD</FooterLink>
                 <FooterLink>TWITTER</FooterLink>
                 <FooterLink>INSTAGRAM</FooterLink>
-                <FooterLink>LICENSE</FooterLink>
+                <FooterLink>LICENSE (SOON)</FooterLink>
             </div>
 
             <div className='grid mt-10'>

@@ -6,8 +6,9 @@ import Lottie from "react-lottie";
 import scrollDown from "../../public/scroll-down.json";
 
 import Tilt from "react-parallax-tilt";
-import { useLocomotiveScroll } from "react-locomotive-scroll";
+import Image from "next/image";
 import useConfigStore from "../../lib/stores/configStore";
+import { useLocomotiveScroll } from "react-locomotive-scroll";
 
 const Landing = ({ children }: any) => {
     const [showScrollNotifier, setShowScrollNotifier] = useState(true);
@@ -21,80 +22,81 @@ const Landing = ({ children }: any) => {
 
     let { setShowStickyFooter } = useConfigStore();
 
-    useEffect(() => {
-        var scrollTop = config.offsetTop;
-        if (scrollTop > 25) {
-            setShowScrollNotifier(false);
-        } else {
-            setShowScrollNotifier(true);
-        }
-        if (scrollTop > 300) {
-            setShowStickyFooter(true);
-        } else {
-            setShowStickyFooter(false);
-        }
-        setLogoRotation(24 + scrollTop / 10);
-        setHeroOpacity(1 - scrollTop / 600);
-        setLogoZoom(1 + scrollTop / 1000);
-        setHeroZoom(1 + scrollTop / 1500);
-    }, [config.offsetTop, setShowStickyFooter]);
-
-    const [clipPath, setClipPath] = useState("");
+    let { scroll, isReady } = useLocomotiveScroll();
 
     useEffect(() => {
-        setClipPath("polygon(100% 0, 100% 88%, 0 100%, 0 12%)");
-    }, []);
+        if (isReady) {
+            scroll.on("scroll", ({ limit, scroll }) => {
+                var scrollTop = scroll.y;
+                if (scrollTop > 25) {
+                    setShowScrollNotifier(false);
+                } else {
+                    setShowScrollNotifier(true);
+                }
+                if (scrollTop > 300) {
+                    setShowStickyFooter(true);
+                } else {
+                    setShowStickyFooter(false);
+                }
+                setLogoRotation(24 + scrollTop / 10);
+                setHeroOpacity(1 - scrollTop / 600);
+                setLogoZoom(1 + scrollTop / 1000);
+                setHeroZoom(1 + scrollTop / 1500);
+            });
+        }
+    }, [isReady, scroll, setShowStickyFooter]);
 
     return (
         <section
             data-scroll-section
-            // data-scroll-sticky
-            // data-scroll-target='#scroll-container'
             className='flex flex-col justify-center items-center h-screen md:h-[80vh] overflow-hidden md:overflow-visible'
         >
             <div
                 data-scroll
                 data-scroll-speed='3'
-                className='absolute invisible md:visible'
+                className='absolute invisible md:visible z-10 pointer-events-none'
             >
                 <div
                     style={{
                         transform: `perspective(500px) rotateX(${logoRotatation}deg) scale(${logoZoom})`,
                     }}
                 >
-                    <img
-                        className={`w-auto h-[50rem] xl:h-[70rem] mb-96`}
-                        src='/images/ATHER_white_logo.png'
-                    ></img>
+                    <div
+                        className={`w-[70rem] h-[50rem] xl:h-[70rem] mb-96 relative`}
+                    >
+                        <Image
+                            alt=''
+                            layout='fill'
+                            objectFit='contain'
+                            src='/images/ATHER_white_logo.png'
+                        ></Image>
+                    </div>
                 </div>
             </div>
-
-            {/* <div className='absolute invisible md:visible mt-24'>
-                <motion.img
-                    className='w-auto h-[25rem] mb-24 md:transition-all md:duration-500'
-                    src='/images/Atherians_Grouped.png'
-                ></motion.img>
-            </div> */}
 
             <div
                 data-scroll
                 data-scroll-speed='-14'
-                className='flex flex-col items-center bottom-0'
+                className='flex flex-col items-center bottom-0 z-10 pointer-events-none'
                 style={{
                     opacity: heroOpacity,
                 }}
             >
-                <img
-                    style={{
-                        transform: `scale(${heroZoom})`,
-                    }}
-                    className='w-auto max-w-none h-[90vh] xl:h-[110vh] mt-56 xl:mt-20 z-10'
-                    src='/images/sentinels/cascade2.png'
-                />
+                <div
+                    style={{ transform: `scale(${heroZoom})` }}
+                    className='w-[80rem] max-w-none h-[90vh] xl:h-[110vh] mt-56 xl:mt-20 z-10 relative'
+                >
+                    <Image
+                        alt=''
+                        layout='fill'
+                        objectFit='contain'
+                        src='/images/sentinels/cascade2.png'
+                    />
+                </div>
             </div>
 
             <div
-                className='hidden md:flex flex-col absolute justify-center items-center w-[100vw] mt-[34rem] transition-all duration-150'
+                className='hidden md:flex flex-col absolute justify-center items-center w-[100vw] mt-[34rem] transition-all duration-150 z-10'
                 style={{
                     opacity: showScrollNotifier ? 1 : 0,
                 }}

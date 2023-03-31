@@ -43,6 +43,17 @@ const StarQuest = ({ children, viewRef }: any) => {
         },
     };
 
+    const subheadingAnimationVariants = {
+        hidden: {
+            y: 150,
+            opacity: 0,
+        },
+        visible: {
+            y: 0,
+            opacity: 0.7,
+        },
+    };
+
     let router = useRouter();
 
     const headingTransition = { duration: 1, type: "spring" };
@@ -50,7 +61,15 @@ const StarQuest = ({ children, viewRef }: any) => {
     const [glowing, setGlowing] = useState(false);
 
     return (
-        <section ref={viewRef} data-scroll-section>
+        <section
+            className='z-50'
+            // style={{
+            //     backgroundImage:
+            //         "linear-gradient(0.99turn, #050505 80%, transparent 90%)",
+            // }}
+            ref={viewRef}
+            data-scroll-section
+        >
             <Fade bottom>
                 <div className='flex relative flex-col h-[35rem] lg:h-[40rem] xl:h-[48rem] w-screen items-center'>
                     <div className='flex flex-col justify-center items-center mt-40 z-30'>
@@ -59,7 +78,7 @@ const StarQuest = ({ children, viewRef }: any) => {
                             animate={animation}
                             transition={headingTransition}
                             initial={"hidden"}
-                            variants={headingAnimationVariants}
+                            variants={subheadingAnimationVariants}
                             className='text-white font-body tracking-widest uppercase text-xs lg:text-sm'
                         >
                             Thy collective belief of roadmaps being primitive.

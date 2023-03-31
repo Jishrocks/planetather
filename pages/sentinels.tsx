@@ -12,6 +12,10 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Navbar, { Page } from "../components/Navbar";
 import Head from "next/head";
+import { makeCollection } from "../components/Home/Collection";
+import AnimatedGradient from "../lib/animatedGradient";
+
+import Image from "next/image";
 
 type SlideProps = {
     className?: string;
@@ -128,7 +132,8 @@ const Sentinels: NextPage = () => {
 
             <ParallaxProvider>
                 <Navbar currentPage={Page.SENTINELS} fixed={true} />
-                <div className='w-screen h-screen flex bg-[#000]'>
+                <div className='w-screen h-screen flex relative bg-[#000] overflow-hidden'>
+                    {/* <AnimatedGradient animationDirection={"left"} /> */}
                     <Swiper
                         speed={700}
                         mousewheel={{ releaseOnEdges: true }}
@@ -140,16 +145,16 @@ const Sentinels: NextPage = () => {
                                 return "";
                             },
                         }}
-                        direction={"vertical"}
-                        effect={"coverflow"}
+                        direction={"horizontal"}
+                        // effect={"coverflow"}
                         style={{ width: "100%" }}
                         modules={[Pagination, EffectCoverflow, Mousewheel]}
-                        className='starquest'
+                        className='starquest z-50'
                     >
                         <SwiperSlide>
                             <Slide heading={"Syké"} subheading={"01"}>
                                 <div className='flex flex-col gap-10'>
-                                    <div className='flex gap-4'>
+                                    <div className='flex gap-4 w-full'>
                                         <div className='flex items-center justify-center border border-white border-opacity-20 uppercase font-body p-4 py-1 w-fit'>
                                             <span className='opacity-60'>
                                                 ABILITY
@@ -255,39 +260,81 @@ const Sentinels: NextPage = () => {
                             </Slide>
                         </SwiperSlide>
                     </Swiper>
-                    <img
-                        className={
-                            "fixed w-[35rem] h-auto bottom-0 right-0 z-50 transition-all " +
-                            (activeIndex == 0 ? "opacity-100" : "opacity-0")
-                        }
-                        src='/images/sentinels/syke.png'
-                        alt='atherian'
-                    />
-                    <img
-                        className={
-                            "fixed w-[35rem] h-auto bottom-0 right-0 z-50 transition-all " +
-                            (activeIndex == 1 ? "opacity-100" : "opacity-0")
-                        }
-                        src='/images/sentinels/cascade.png'
-                        alt='atherian'
-                    />
-                    <img
-                        className={
-                            "fixed w-[35rem] h-auto bottom-0 right-0 z-50 transition-all " +
-                            (activeIndex == 2 ? "opacity-100" : "opacity-0")
-                        }
-                        src='/images/sentinels/kayne.png'
-                        alt='atherian'
-                    />
+                    <div
+                        className={`fixed right-0 pointer-events-none transition-all bottom-0 xl:bottom-auto ${
+                            activeIndex === 0 ? "opacity-100" : "opacity-0"
+                        }`}
+                    >
+                        <div className='w-[40rem] lg:w-[50rem] pointer-events-none max-w-none h-[90vh] xl:h-[110vh] mt-56 xl:mt-20 -z-0 relative opacity-30 lg:opacity-100'>
+                            <Image
+                                alt=''
+                                layout='fill'
+                                objectFit='contain'
+                                className='pointer-events-none'
+                                src='/images/sentinels/syke-h.png'
+                            />
+                            <div
+                                style={{
+                                    background:
+                                        "linear-gradient(to bottom, transparent, #000 90%)",
+                                }}
+                                className='absolute w-[300vh] h-[70vh] bottom-0'
+                            ></div>
+                        </div>
+                    </div>
+                    <div
+                        className={`fixed right-0 pointer-events-none transition-all bottom-0 xl:bottom-auto ${
+                            activeIndex === 1 ? "opacity-100" : "opacity-0"
+                        }`}
+                    >
+                        <div className='w-[40rem] lg:w-[50rem] pointer-events-none max-w-none h-[90vh] xl:h-[110vh] mt-56 xl:mt-20 -z-0 relative opacity-30 lg:opacity-100'>
+                            <Image
+                                alt=''
+                                layout='fill'
+                                objectFit='contain'
+                                className='pointer-events-none'
+                                src='/images/sentinels/cascade-h.png'
+                            />
+                            <div
+                                style={{
+                                    background:
+                                        "linear-gradient(to bottom, transparent, #000 90%)",
+                                }}
+                                className='absolute w-[300vh] h-[70vh] bottom-0'
+                            ></div>
+                        </div>
+                    </div>
+                    <div
+                        className={`fixed right-0 pointer-events-none transition-all bottom-0 xl:bottom-auto ${
+                            activeIndex === 2 ? "opacity-100" : "opacity-0"
+                        }`}
+                    >
+                        <div className='w-[40rem] lg:w-[50rem] pointer-events-none max-w-none h-[90vh] xl:h-[110vh] mt-56 xl:mt-20 -z-0 relative opacity-30 lg:opacity-100'>
+                            <Image
+                                alt=''
+                                layout='fill'
+                                objectFit='contain'
+                                className='pointer-events-none'
+                                src='/images/sentinels/kayne-h.png'
+                            />
+                            <div
+                                style={{
+                                    background:
+                                        "linear-gradient(to bottom, transparent, #000 90%)",
+                                }}
+                                className='absolute w-[300vh] h-[70vh] bottom-0'
+                            ></div>
+                        </div>
+                    </div>
 
-                    <div className='fixed w-[2rem] left-0 h-screen flex flex-col gap-2 items-center justify-center ml-9'>
+                    <div className='fixed w-screen h-[2rem] lg:w-[2rem] lg:h-screen top-0 lg:left-0 flex flex-row lg:flex-col gap-2 items-center justify-center lg:ml-9 mt-16 px-10 lg:mt-0 lg:px-0'>
                         {Array(3)
                             .fill(0)
                             .map((_, i) => (
                                 <div
                                     key={i}
                                     className={
-                                        "rounded-md bg-white transition-opacity w-1 h-20 " +
+                                        "rounded-md bg-white transition-opacity w-full h-1 lg:w-1 lg:h-20 " +
                                         (activeIndex == i
                                             ? "opacity-100"
                                             : "opacity-20")

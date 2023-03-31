@@ -12,6 +12,8 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Navbar, { Page } from "../components/Navbar";
 import Head from "next/head";
+import { makeCollection } from "../components/Home/Collection";
+import AnimatedGradient from "../lib/animatedGradient";
 
 type SlideProps = {
     className?: string;
@@ -128,7 +130,8 @@ const Sentinels: NextPage = () => {
 
             <ParallaxProvider>
                 <Navbar currentPage={Page.INTRODUCTION} fixed={true} />
-                <div className='w-screen h-screen flex bg-[#000]'>
+                <div className='w-screen h-screen flex relative bg-[#000]'>
+                    {/* <AnimatedGradient animationDirection='left' /> */}
                     <Swiper
                         speed={700}
                         mousewheel={{ releaseOnEdges: true }}
@@ -140,8 +143,8 @@ const Sentinels: NextPage = () => {
                                 return "";
                             },
                         }}
-                        direction={"vertical"}
-                        effect={"coverflow"}
+                        direction={"horizontal"}
+                        // effect={"coverflow"}
                         style={{ width: "100%" }}
                         modules={[Pagination, EffectCoverflow, Mousewheel]}
                         className='starquest'
@@ -160,7 +163,7 @@ const Sentinels: NextPage = () => {
                                         <br></br>
                                         <br></br>
                                         We ignite Comics Pop culture across the
-                                        globe, hands together.
+                                        internet, hands together.
                                     </p>
                                 </div>
                             </Slide>
@@ -217,7 +220,7 @@ const Sentinels: NextPage = () => {
                                         <br></br>
                                         <br></br>
                                         Our goal is to create a space for all
-                                        Internet Comic-heads to vibe,<br></br>
+                                        internet comic-heads to vibe,<br></br>
                                         interact, and share their imaginations
                                         in creating a ComicVerse of their own.
                                         <br></br>
@@ -230,39 +233,43 @@ const Sentinels: NextPage = () => {
                             </Slide>
                         </SwiperSlide>
                     </Swiper>
+                    <div className='fixed'>
+                        <div className='relative w-[100vw] h-[100vh]'>
+                            <video
+                                style={{ objectFit: "cover" }}
+                                className='brightness-50 w-[100vw] h-[100vh]'
+                                loop
+                                autoPlay
+                                muted
+                                src='/videos/beginnings.mp4'
+                            ></video>
+                        </div>
+                    </div>
+                    <div className='fixed'>
+                        <div
+                            style={{
+                                background:
+                                    "linear-gradient(to right, #000 30%, transparent 100%)",
+                            }}
+                            className='w-[100vw] h-[100vh] opacity-80'
+                        ></div>
+                    </div>
                     {/* <img
                         className={
-                            "fixed w-[35rem] h-auto bottom-0 right-0 z-50 transition-all " +
-                            (activeIndex == 0 ? "opacity-100" : "opacity-0")
+                            "fixed w-[auto] h-[100vh] bottom-0 right-0 z-50 transition-all"
                         }
-                        src='/images/sentinels/syke.png'
-                        alt='atherian'
-                    />
-                    <img
-                        className={
-                            "fixed w-[35rem] h-auto bottom-0 right-0 z-50 transition-all " +
-                            (activeIndex == 1 ? "opacity-100" : "opacity-0")
-                        }
-                        src='/images/sentinels/cascade.png'
-                        alt='atherian'
-                    />
-                    <img
-                        className={
-                            "fixed w-[35rem] h-auto bottom-0 right-0 z-50 transition-all " +
-                            (activeIndex == 2 ? "opacity-100" : "opacity-0")
-                        }
-                        src='/images/sentinels/kayne.png'
+                        src='/images/ather4.png'
                         alt='atherian'
                     /> */}
 
-                    <div className='fixed w-[2rem] left-0 h-screen flex flex-col gap-2 items-center justify-center ml-9'>
+                    <div className='fixed w-screen h-[2rem] lg:w-[2rem] lg:h-screen top-0 lg:left-0 flex flex-row lg:flex-col gap-2 items-center justify-center lg:ml-9 mt-16 px-10 lg:mt-0 lg:px-0'>
                         {Array(3)
                             .fill(0)
                             .map((_, i) => (
                                 <div
                                     key={i}
                                     className={
-                                        "rounded-md bg-white transition-opacity w-1 h-20 " +
+                                        "rounded-md bg-white transition-opacity w-full h-1 lg:w-1 lg:h-20 " +
                                         (activeIndex == i
                                             ? "opacity-100"
                                             : "opacity-20")

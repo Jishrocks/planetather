@@ -5,9 +5,10 @@ import { Parallax } from "react-scroll-parallax";
 import { useMediaQuery, screenBasedAttribute } from "../lib/mediaQuery";
 import Fade from "react-reveal/Fade";
 import TextScramble from "../lib/TextScramble";
+import Image from "next/image";
 
 type ArticleProps = {
-    align: "left" | "right";
+    align: "left" | "center";
     image?: string;
     imageClass?: string;
     heading: string;
@@ -29,52 +30,43 @@ const Article = (props: ArticleProps) => {
     return (
         <section
             className={
-                "grid grid-cols-1 xl:grid-cols-2 md:ml-16 mr-20 mt-20 mb-20 h-auto " +
+                "md:ml-16 mr-20 mt-20 mb-20 h-auto flex justify-center " +
                 props.className
             }
         >
-            <div
-                className='flex flex-row gap-1 justify-center items-center'
-                style={{ order: props.align == "left" ? 1 : "unset" }}
-            >
-                <div data-scroll data-scroll-speed='-1'>
-                    {props.image && (
-                        <Fade bottom>
-                            <img
-                                src={props.image}
-                                className={
-                                    props.imageClass
-                                        ? `w-[60%] h-auto ml-auto mr-auto ` +
-                                          props.imageClass
-                                        : `w-[60%] h-auto ml-auto mr-auto`
-                                }
-                            />
-                        </Fade>
-                    )}
-                </div>
-            </div>
-
             <div ref={headingRef} data-scroll data-scroll-speed='2'>
                 <Fade bottom>
                     <div
-                        className='flex flex-col ml-10 lg:ml-20'
+                        className={`flex flex-col w-full ${
+                            props.align == "left" ? "ml-10 lg:ml-20" : ""
+                        }`}
                         style={{
                             alignItems:
-                                props.align == "left" ? "start" : "start",
+                                props.align == "left" ? "start" : "center",
                         }}
                     >
-                        <h1 className='text-white w-[300px] lg:w-[480px] xl:w-[640px] opacity-70 uppercase font-subheading text-3xl'>
-                            {props.subheading}
+                        <h1
+                            className={`text-white font-body tracking-widest uppercase text-xs lg:text-sm opacity-70 ${
+                                props.align == "center" ? "text-center" : ""
+                            }`}
+                        >
+                            <TextScramble
+                                texts={[props.subheading]}
+                            ></TextScramble>
                         </h1>
                         <Fade bottom>
                             <h1 className='text-white font-display text-5xl lg:text-6xl uppercase'>
-                                <TextScramble
-                                    texts={[props.heading]}
-                                ></TextScramble>
+                                {props.heading}
                             </h1>
                         </Fade>
 
-                        <p className='content text-white text-sm lg:text-md font-body mt-10 leading-7 w-[480px] xl:w-[640px]'>
+                        <p
+                            className={`content text-white text-sm lg:text-md font-body mt-10 leading-7 ${
+                                props.align == "center"
+                                    ? "text-center w-[480px] xl:w-[600px] xl:max-w-[840px]"
+                                    : "w-[480px] xl:w-[600px] xl:max-w-[640px]"
+                            }`}
+                        >
                             {content}
                         </p>
                     </div>

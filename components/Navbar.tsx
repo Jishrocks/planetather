@@ -1,17 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
 
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
+import { motion } from "framer-motion";
 
 enum Page {
     HOME = "home",
-    CINEMATICS = "cinematics",
+    // CINEMATICS = "cinematics",
     STARQUEST = "starquest",
     SENTINELS = "sentinels",
     INTRODUCTION = "introduction",
     ORIGINALS = "originals programme",
-    DROPS = "drops",
-    LICENSE = "license",
 }
 
 type Props = {
@@ -24,8 +23,102 @@ type Props = {
 const Navbar = (props: Props) => {
     let router = useRouter();
 
+    const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
+
     return (
         <>
+            {/* Mobile Menu */}
+            <motion.div
+                className={`absolute w-screen h-screen z-50 bg-black bg-opacity-90 md:invisible transition-opacity ${
+                    mobileMenuVisible
+                        ? "opacity-100"
+                        : "opacity-0 pointer-events-none"
+                }`}
+            >
+                <div className='w-full h-full flex flex-col'>
+                    <div className='h-[70px] w-full flex z-50'>
+                        {/* Menu */}
+                        <div className='flex md:hidden items-center justify-end w-full mr-5'>
+                            <div
+                                onClick={() => {
+                                    setMobileMenuVisible(!mobileMenuVisible);
+                                }}
+                                className='flex items-center justify-center cursor-pointer'
+                            >
+                                <i className='gg-menu-right invert'></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='flex flex-col gap-0 justify-center items-center w-full'>
+                        <div className='flex justify-center items-center border border-white border-opacity-10 w-full h-24'>
+                            <p
+                                className='cursor-pointer text-white font-display text-md tracking-wide md:tracking-wider'
+                                style={{
+                                    opacity:
+                                        props.currentPage === Page.HOME
+                                            ? 1
+                                            : 0.5,
+                                }}
+                                onClick={() => {
+                                    router.push("/");
+                                }}
+                            >
+                                HOME
+                            </p>
+                        </div>
+                        <div className='flex justify-center items-center border border-white border-opacity-10 w-full h-24'>
+                            <p
+                                className='cursor-pointer text-white font-display text-md tracking-wide md:tracking-wider'
+                                style={{
+                                    opacity:
+                                        props.currentPage === Page.HOME
+                                            ? 1
+                                            : 0.5,
+                                }}
+                                onClick={() => {
+                                    router.push("/introduction");
+                                }}
+                            >
+                                INTRODUCTION
+                            </p>
+                        </div>
+                        <div className='flex justify-center items-center border border-white border-opacity-10 w-full h-24'>
+                            <p
+                                className='cursor-pointer text-white font-display text-md tracking-wide md:tracking-wider'
+                                style={{
+                                    opacity:
+                                        props.currentPage === Page.HOME
+                                            ? 1
+                                            : 0.5,
+                                }}
+                                onClick={() => {
+                                    router.push("/starquest");
+                                }}
+                            >
+                                STARQUEST
+                            </p>
+                        </div>
+                        <div className='flex justify-center items-center border border-white border-opacity-10 w-full h-24'>
+                            <p
+                                className='cursor-pointer text-white font-display text-md tracking-wide md:tracking-wider'
+                                style={{
+                                    opacity:
+                                        props.currentPage === Page.HOME
+                                            ? 1
+                                            : 0.5,
+                                }}
+                                onClick={() => {
+                                    router.push("/sentinels");
+                                }}
+                            >
+                                SENTINELS
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </motion.div>
+
             <section
                 data-scroll-section
                 style={{
@@ -39,19 +132,12 @@ const Navbar = (props: Props) => {
                         ? "fixed top-0 w-full transition-all duration-500 delay-100 "
                         : " ") +
                     (!props.forcedTransparent && props.forcedTransparent != null
-                        ? "bg-black backdrop-blur-md bg-opacity-80"
-                        : "bg-opacity-0")
+                        ? "bg-gradient-to-b from-black to-transparent "
+                        : "bg-opacity-0 ") +
+                    (props.invisible ? "pointer-events-none" : "")
                 }
             >
-                <div className='h-[70px] w-full flex'>
-                    {/* Left Side Text */}
-                    {/* <div className='hidden md:flex items-center'>
-                        <h1 className='font-body font-extralight text-white uppercase text-xs tracking-wide md:tracking-wider'>
-                            <span className='font-display opacity-100'>×</span>{" "}
-                            ENTER THE HIDEOUTS
-                        </h1>
-                    </div> */}
-
+                <div className='h-[70px] w-full flex z-50'>
                     {/* Logo */}
                     <div className='flex items-center w-[6rem]'>
                         <img
@@ -89,6 +175,22 @@ const Navbar = (props: Props) => {
                                 className='cursor-pointer'
                                 style={{
                                     opacity:
+                                        props.currentPage === Page.INTRODUCTION
+                                            ? 1
+                                            : 0.5,
+                                }}
+                                onClick={() => {
+                                    router.push("/introduction");
+                                }}
+                            >
+                                <span className='flex items-center h-full'>
+                                    INTRODUCTION
+                                </span>
+                            </p>
+                            {/* <p
+                                className='cursor-pointer'
+                                style={{
+                                    opacity:
                                         props.currentPage === Page.CINEMATICS
                                             ? 1
                                             : 0.5,
@@ -100,7 +202,7 @@ const Navbar = (props: Props) => {
                                 <span className='flex items-center h-full'>
                                     CINEMATICS
                                 </span>
-                            </p>
+                            </p> */}
                             <p
                                 className='cursor-pointer'
                                 style={{
@@ -133,31 +235,24 @@ const Navbar = (props: Props) => {
                                     SENTINELS
                                 </span>
                             </p>
-                            <div
-                                style={{
-                                    opacity: [
-                                        Page.INTRODUCTION,
-                                        Page.ORIGINALS,
-                                        Page.DROPS,
-                                        Page.LICENSE,
-                                    ].includes(props.currentPage)
-                                        ? 1
-                                        : 0.5,
-                                }}
-                                className='group opacity-50 hover:opacity-100 transition-all duration-300'
-                            >
-                                <p
-                                    className='cursor-pointer'
-                                    onClick={() => {
-                                        router.push("/sentinels");
-                                    }}
-                                >
-                                    <span className='flex items-center uppercase'>
+
+                            {/* {Menu} */}
+                            {/* <div className='group opacity-100 transition-all duration-300'>
+                                <p className='cursor-pointer'>
+                                    <span
+                                        style={{
+                                            opacity: [
+                                                Page.INTRODUCTION,
+                                                Page.ORIGINALS,
+                                            ].includes(props.currentPage)
+                                                ? 1
+                                                : 0.5,
+                                        }}
+                                        className='flex items-center uppercase'
+                                    >
                                         {[
                                             Page.INTRODUCTION,
                                             Page.ORIGINALS,
-                                            Page.DROPS,
-                                            Page.LICENSE,
                                         ].includes(props.currentPage)
                                             ? props.currentPage
                                             : "MORE"}
@@ -171,70 +266,36 @@ const Navbar = (props: Props) => {
                                     }}
                                     className='absolute hidden group-hover:flex flex-col items-center pt-4'
                                 >
-                                    <div className='w-40 border border-white border-opacity-20 flex-col gap-3 p-3 uppercase bg-black bg-opacity-80'>
+                                    <div className='w-40 rounded-md border border-white border-opacity-20 flex-col gap-3 p-3 uppercase bg-black bg-opacity-80'>
                                         <div
-                                            style={{
-                                                opacity:
-                                                    props.currentPage ===
-                                                    Page.INTRODUCTION
-                                                        ? 1
-                                                        : 0.5,
-                                            }}
                                             onClick={() => {
                                                 router.push("/introduction");
                                             }}
-                                            className='h-8 flex justify-start items-center opacity-50 hover:opacity-100 transition-all cursor-pointer'
+                                            className={`h-8 flex justify-start items-center transition-all cursor-pointer ${
+                                                props.currentPage ===
+                                                Page.INTRODUCTION
+                                                    ? "opacity-100"
+                                                    : "opacity-50 hover:opacity-80"
+                                            }`}
                                         >
                                             INTRODUCTION
                                         </div>
                                         <div
-                                            style={{
-                                                opacity:
-                                                    props.currentPage ===
-                                                    Page.ORIGINALS
-                                                        ? 1
-                                                        : 0.5,
-                                            }}
                                             onClick={() => {
                                                 router.push("/originals");
                                             }}
-                                            className='h-8 flex justify-start items-center opacity-50 hover:opacity-100 transition-all cursor-pointer'
+                                            className={`h-8 flex justify-start items-center transition-all cursor-pointer ${
+                                                props.currentPage ===
+                                                Page.ORIGINALS
+                                                    ? "opacity-100"
+                                                    : "opacity-50 hover:opacity-80"
+                                            }`}
                                         >
                                             ORIGINALS PROGRAMME
                                         </div>
-                                        <div
-                                            style={{
-                                                opacity:
-                                                    props.currentPage ===
-                                                    Page.DROPS
-                                                        ? 1
-                                                        : 0.5,
-                                            }}
-                                            onClick={() => {
-                                                router.push("/drops");
-                                            }}
-                                            className='h-8 flex justify-start items-center opacity-50 hover:opacity-100 transition-all cursor-pointer'
-                                        >
-                                            DROPS
-                                        </div>
-                                        <div
-                                            style={{
-                                                opacity:
-                                                    props.currentPage ===
-                                                    Page.LICENSE
-                                                        ? 1
-                                                        : 0.5,
-                                            }}
-                                            onClick={() => {
-                                                router.push("/license");
-                                            }}
-                                            className='h-8 flex justify-start items-center opacity-50 hover:opacity-100 transition-all cursor-pointer'
-                                        >
-                                            LICENSE
-                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                         {/* Socials */}
                         <div className='flex items-center gap-5'>
@@ -270,7 +331,12 @@ const Navbar = (props: Props) => {
                     </div>
 
                     {/* Menu */}
-                    <div className='flex md:hidden items-center justify-end w-full'>
+                    <div
+                        onClick={() => {
+                            setMobileMenuVisible(!mobileMenuVisible);
+                        }}
+                        className='flex md:hidden items-center justify-end w-full cursor-pointer'
+                    >
                         <div className='flex items-center justify-center'>
                             <i className='gg-menu-right invert'></i>
                         </div>

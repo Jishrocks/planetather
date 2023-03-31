@@ -11,7 +11,7 @@ const Creators = ({ children, viewRef }: any) => {
         >
             <Fade bottom>
                 <div className='flex flex-col justify-center items-center mb-10 z-30'>
-                    <h1 className='text-white font-body tracking-widest uppercase text-xs lg:text-sm'>
+                    <h1 className='text-white font-body tracking-widest uppercase text-xs lg:text-sm opacity-70'>
                         The makers
                     </h1>
                     <h1 className='text-white font-display tracking-wide uppercase text-6xl lg:text-7xl'>
@@ -22,7 +22,7 @@ const Creators = ({ children, viewRef }: any) => {
                 <div className='flex flex-row gap-5 justify-center items-center'>
                     <div className='flex justify-center items-end w-[325px]'>
                         <img
-                            className='grayscale'
+                            className='grayscale rounded-md'
                             src='https://cdn.discordapp.com/attachments/934914135613931593/1033142127691055264/unknown.png'
                             alt=''
                         />
@@ -33,7 +33,7 @@ const Creators = ({ children, viewRef }: any) => {
                     </div>
                     <div className='flex justify-center items-end w-[325px]'>
                         <img
-                            className='grayscale'
+                            className='grayscale rounded-md'
                             src='https://cdn.discordapp.com/attachments/934914135613931593/1033144036569133056/unknown.png'
                             alt=''
                         />
@@ -43,7 +43,7 @@ const Creators = ({ children, viewRef }: any) => {
                     </div>
                     <div className='flex justify-center items-end w-[325px]'>
                         <img
-                            className='grayscale'
+                            className='grayscale rounded-md'
                             src='https://cdn.discordapp.com/attachments/934914135613931593/1033145177239466074/IMG_0417.jpg'
                             alt=''
                         />
@@ -56,7 +56,7 @@ const Creators = ({ children, viewRef }: any) => {
                 <div className='flex flex-row gap-5 justify-center items-center mt-5'>
                     <div className='flex justify-center items-end w-[325px]'>
                         <img
-                            className='grayscale'
+                            className='grayscale rounded-md'
                             src='https://cdn.discordapp.com/attachments/934914135613931593/1033396677408731268/aman_Cropped.jpg'
                             alt=''
                         />
@@ -66,7 +66,7 @@ const Creators = ({ children, viewRef }: any) => {
                     </div>
                     <div className='flex justify-center items-end w-[325px]'>
                         <img
-                            className='grayscale w-full'
+                            className='grayscale rounded-md w-full'
                             src='https://cdn.discordapp.com/attachments/934914135613931593/1033395131493142559/Moo_Cropped.png'
                             alt=''
                         />
@@ -76,7 +76,7 @@ const Creators = ({ children, viewRef }: any) => {
                     </div>
                     <div className='flex justify-center items-end w-[325px]'>
                         <img
-                            className='grayscale w-full'
+                            className='grayscale rounded-md w-full'
                             src='https://pbs.twimg.com/media/FrFhSFFaQAAdWRv?format=jpg&name=large'
                             alt=''
                         />
