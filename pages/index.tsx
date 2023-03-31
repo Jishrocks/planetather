@@ -30,6 +30,8 @@ import { useInView } from "react-intersection-observer";
 import useConfigStore from "../lib/stores/configStore";
 import { Tab } from "../lib/stores/configStore";
 
+import AnimatedGradient from "../lib/AnimatedGradient";
+
 import Image from "next/image";
 
 function UnresponsiveHandler() {
