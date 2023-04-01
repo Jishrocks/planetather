@@ -64,7 +64,7 @@ const Creators = ({ children, viewRef }: any) => {
                             Hades <span style={{ opacity: 0.7 }}>/ Author</span>
                         </h1>
                     </div>
-                    <div className='flex justify-center items-end w-[325px]'>
+                    {/* <div className='flex justify-center items-end w-[325px]'>
                         <img
                             className='grayscale rounded-md w-full'
                             src='https://cdn.discordapp.com/attachments/934914135613931593/1033395131493142559/Moo_Cropped.png'
@@ -73,7 +73,7 @@ const Creators = ({ children, viewRef }: any) => {
                         <h1 className='text-white absolute font-body text-xs lg:text-sm tracking-wide uppercase z-10 mb-6'>
                             Moo <span style={{ opacity: 0.7 }}>/ Animator</span>
                         </h1>
-                    </div>
+                    </div> */}
                     <div className='flex justify-center items-end w-[325px]'>
                         <img
                             className='grayscale rounded-md w-full'

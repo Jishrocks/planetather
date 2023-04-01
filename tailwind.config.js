@@ -9,6 +9,7 @@ module.exports = {
         display: ["group-hover"],
     },
     theme: {
+        fluidTypography: {},
         screens: {
             sm: "575px",
             md: "768px",
@@ -40,5 +41,5 @@ module.exports = {
             },
         },
     },
-    plugins: [],
+    plugins: [require("tailwind-fluid-typography")],
 };

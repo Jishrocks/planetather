@@ -14,7 +14,6 @@ import Navbar, { Page } from "../components/Navbar";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import { makeCollection } from "../components/Home/Collection";
-import AnimatedGradient from "../lib/animatedGradient";
 
 import Image from "next/image";
 
@@ -399,7 +398,7 @@ const Starquest: NextPage = () => {
                         alt='atherian'
                     /> */}
 
-                    <div className='fixed w-screen h-[2rem] lg:w-[2rem] lg:h-screen top-0 lg:left-0 flex flex-row lg:flex-col gap-2 items-center justify-center lg:ml-9 mt-16 px-10 lg:mt-0 lg:px-0'>
+                    <div className='fixed w-screen h-[2rem] lg:w-[2rem] lg:h-screen bottom-0 lg:left-0 flex flex-row lg:flex-col gap-2 items-center justify-center lg:ml-9 mt-16 px-24 lg:mt-0 lg:px-0'>
                         {Array(6)
                             .fill(0)
                             .map((_, i) => (
