@@ -15,6 +15,7 @@
         "@mui/material": "^5.11.14",
         "@react-spring/parallax": "^9.7.1",
         "@types/react": "^18.0.29",
+        "@vercel/analytics": "^0.1.11",
         "css.gg": "^2.0.0",
         "framer-motion": "^6.5.1",
         "freezeframe": "^5.0.2",

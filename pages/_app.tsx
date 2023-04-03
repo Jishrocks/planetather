@@ -4,6 +4,7 @@ import "css.gg/icons/all.css";
 import "swiper/css";
 import "swiper/css/pagination";
 
+import { Analytics } from "@vercel/analytics/react";
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
@@ -77,6 +78,7 @@ function MyApp({ Component, pageProps }) {
             <LoadingHandler />
             <UnresponsiveHandler />
             <Component {...pageProps} />
+            <Analytics />
         </>
     );
 }
