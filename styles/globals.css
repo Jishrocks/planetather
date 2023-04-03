@@ -284,3 +284,9 @@ html.has-scroll-dragging {
 .navbar-icon {
   transform: scale(0.5) !important;
 }
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.2); opacity:1; }
+  100% { transform: scale(1); opacity: 0.5; } 
+} 

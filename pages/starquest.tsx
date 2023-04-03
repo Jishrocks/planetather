@@ -13,7 +13,6 @@ import { useInView } from "react-intersection-observer";
 import Navbar, { Page } from "../components/Navbar";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import { makeCollection } from "../components/Home/Collection";
 
 import Image from "next/image";
 

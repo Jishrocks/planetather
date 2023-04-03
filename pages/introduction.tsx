@@ -12,7 +12,6 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Navbar, { Page } from "../components/Navbar";
 import Head from "next/head";
-import { makeCollection } from "../components/Home/Collection";
 
 type SlideProps = {
     className?: string;
