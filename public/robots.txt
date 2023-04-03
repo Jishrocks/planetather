@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://planetather.io
+
+# Sitemaps
+Sitemap: https://planetather.io/sitemap.xml
