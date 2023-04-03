@@ -91,7 +91,7 @@ const Collection = ({ children, viewRef }: any) => {
                 <article className='flex w-[200%]'>
                     <MakeCollection
                         urls={Array.from({ length: 15 }, (_, i) => i + 1).map(
-                            (i) => `/images/collection/${i}.png`
+                            (i) => `/images/nfts/${i}.png`
                         )}
                         blur={true}
                         animationDirection={"left"}
@@ -99,7 +99,7 @@ const Collection = ({ children, viewRef }: any) => {
 
                     <MakeCollection
                         urls={Array.from({ length: 15 }, (_, i) => i + 1).map(
-                            (i) => `/images/collection/${i}.png`
+                            (i) => `/images/nfts/${i}.png`
                         )}
                         blur={false}
                         animationDirection={"right"}
