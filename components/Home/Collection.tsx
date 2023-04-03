@@ -90,46 +90,17 @@ const Collection = ({ children, viewRef }: any) => {
 
                 <article className='flex w-[200%]'>
                     <MakeCollection
-                        urls={[
-                            "https://media.discordapp.net/attachments/934914135613931593/1092107535508590632/Untitled_Artwork.jpg",
-                            "https://media.discordapp.net/attachments/934914135613931593/1092106821872926720/Untitled_Artwork.png",
-                            "https://media.discordapp.net/attachments/934914135613931593/1092105477447483472/Untitled_Artwork.png",
-                            "https://media.discordapp.net/attachments/934914135613931593/1092104738297872424/Untitled_Artwork.png",
-                            "https://media.discordapp.net/attachments/934914135613931593/1092102555921821777/Untitled_Artwork.png",
-                            "https://media.discordapp.net/attachments/934914135613931593/1092097894091333702/IMG_2561.png",
-                            "https://media.discordapp.net/attachments/934914135613931593/1091791264409718784/IMG_2526.png",
-                            "https://media.discordapp.net/attachments/934914135613931593/1091791264090959983/IMG_2529.png",
-                            "https://cdn.discordapp.com/attachments/934914135613931593/1092108176922509312/Untitled_Artwork.png",
-                            "https://media.discordapp.net/attachments/934914135613931593/1091783967872663673/IMG_2523.png",
-                            "https://media.discordapp.net/attachments/934914135613931593/1091783968325636176/IMG_2536.png",
-                            "https://media.discordapp.net/attachments/934914135613931593/1091783967423860898/IMG_2522.png",
-                            "https://media.discordapp.net/attachments/934914135613931593/1091783966555643946/IMG_2517.png",
-                            "https://media.discordapp.net/attachments/934914135613931593/1091783965943283893/IMG_2516.png",
-                            "https://media.discordapp.net/attachments/934914135613931593/1091783968719912980/IMG_2537.png",
-                            "https://cdn.discordapp.com/attachments/934914135613931593/1091784641624682566/Untitled_Artwork.png",
-                        ]}
+                        urls={Array.from({ length: 15 }, (_, i) => i + 1).map(
+                            (i) => `/images/collection/${i}.png`
+                        )}
                         blur={true}
                         animationDirection={"left"}
                     ></MakeCollection>
 
                     <MakeCollection
-                        urls={[
-                            "https://media.discordapp.net/attachments/934914135613931593/1092107535508590632/Untitled_Artwork.jpg",
-                            "https://media.discordapp.net/attachments/934914135613931593/1092106821872926720/Untitled_Artwork.png",
-                            "https://media.discordapp.net/attachments/934914135613931593/1092105477447483472/Untitled_Artwork.png",
-                            "https://media.discordapp.net/attachments/934914135613931593/1092104738297872424/Untitled_Artwork.png",
-                            "https://media.discordapp.net/attachments/934914135613931593/1092102555921821777/Untitled_Artwork.png",
-                            "https://media.discordapp.net/attachments/934914135613931593/1092097894091333702/IMG_2561.png",
-                            "https://media.discordapp.net/attachments/934914135613931593/1091791264409718784/IMG_2526.png",
-                            "https://media.discordapp.net/attachments/934914135613931593/1091791264090959983/IMG_2529.png",
-                            "https://media.discordapp.net/attachments/934914135613931593/1091783967872663673/IMG_2523.png",
-                            "https://media.discordapp.net/attachments/934914135613931593/1091783968325636176/IMG_2536.png",
-                            "https://media.discordapp.net/attachments/934914135613931593/1091783967423860898/IMG_2522.png",
-                            "https://media.discordapp.net/attachments/934914135613931593/1091783966555643946/IMG_2517.png",
-                            "https://media.discordapp.net/attachments/934914135613931593/1091783965943283893/IMG_2516.png",
-                            "https://media.discordapp.net/attachments/934914135613931593/1091783968719912980/IMG_2537.png",
-                            "https://cdn.discordapp.com/attachments/934914135613931593/1091784641624682566/Untitled_Artwork.png",
-                        ]}
+                        urls={Array.from({ length: 15 }, (_, i) => i + 1).map(
+                            (i) => `/images/collection/${i}.png`
+                        )}
                         blur={false}
                         animationDirection={"right"}
                     ></MakeCollection>
