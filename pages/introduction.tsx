@@ -103,25 +103,28 @@ const Sentinels: NextPage = () => {
         <>
             <Head>
                 <title>Ather • Sentinels</title>
+                <meta property='og:title' content='Ather' />
                 <meta
-                    name='description'
-                    content="idk right now I'll change this later"
+                    name='og:description'
+                    content="Ather is a brand owned by it's community. A community that empowers creative minds to bring their ideas to life. We ignite Comics Pop culture across the internet, hands together."
+                />
+                <meta
+                    property='og:image'
+                    content='https://planetather.io/_next/image?url=%2Fimages%2Father4.png&w=1920&q=40'
                 />
 
-                {/* <!-- Facebook Meta Tags --> */}
-                <meta property='og:url' content='https://example.com' />
-                <meta property='og:type' content='website' />
-                <meta property='og:title' content='Ather' />
-                <meta property='og:description' content='undefined' />
-                <meta property='og:image' content='' />
-
                 {/* <!-- Twitter Meta Tags --> */}
-                <meta name='twitter:card' content='summary_large_image' />
-                <meta property='twitter:domain' content='example.com' />
-                <meta property='twitter:url' content='https://example.com' />
+                <meta property='twitter:domain' content='planetather.io' />
+                <meta property='twitter:url' content='https://planetather.io' />
                 <meta name='twitter:title' content='Ather' />
-                <meta name='twitter:description' content='undefined' />
-                <meta name='twitter:image' content='' />
+                <meta
+                    name='twitter:description'
+                    content="Ather is a brand owned by it's community. A community that empowers creative minds to bring their ideas to life. We ignite Comics Pop culture across the internet, hands together."
+                />
+                <meta
+                    name='twitter:image'
+                    content='https://planetather.io/_next/image?url=%2Fimages%2Father4.png&w=1920&q=40'
+                />
 
                 <link rel='icon' href='/favicon.ico' />
             </Head>
