@@ -2,24 +2,45 @@ import Image from "next/image";
 import React from "react";
 import Fade from "react-reveal/Fade";
 
-function randomIntFromInterval(min, max) {
-    // min and max included
-    return Math.floor(Math.random() * (max - min + 1) + min);
+function shuffleArray(array) {
+    let currentIndex = array.length,
+        randomIndex;
+
+    // While there remain elements to shuffle.
+    while (currentIndex != 0) {
+        // Pick a remaining element.
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        // And swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex],
+            array[currentIndex],
+        ];
+    }
+
+    return array;
 }
 
-function makeCollection(
-    urls: string[],
-    blur: boolean,
-    animationDirection: "left" | "right"
-) {
+type MakeCollectionProps = {
+    urls: string[];
+    blur: boolean;
+    animationDirection: "left" | "right";
+};
+const MakeCollection = (props: MakeCollectionProps) => {
+    const [urls, _] = React.useState<string[]>(shuffleArray(props.urls));
     return (
-        <div className={blur ? "absolute opacity-70" : ""}>
+        <div className={props.blur ? "absolute opacity-70" : ""}>
             <ul
-                className={`flex list-none gap-5 ${blur ? "blur-[120px]" : ""}`}
+                className={`flex list-none gap-5 ${
+                    props.blur ? "blur-[120px]" : ""
+                }`}
                 style={{
                     animation: "bannermove 60s linear infinite",
                     animationDirection:
-                        animationDirection == "right" ? "reverse" : "normal",
+                        props.animationDirection == "right"
+                            ? "reverse"
+                            : "normal",
                 }}
             >
                 {urls.map((url, index) => (
@@ -48,7 +69,7 @@ function makeCollection(
             </ul>
         </div>
     );
-}
+};
 
 const Collection = ({ children, viewRef }: any) => {
     return (
@@ -68,50 +89,50 @@ const Collection = ({ children, viewRef }: any) => {
                 </div>
 
                 <article className='flex w-[200%]'>
-                    {makeCollection(
-                        [
-                            "https://cdn.discordapp.com/attachments/934914135613931593/1078656767023656972/Male_Hair_Part_1.png",
-                            "https://cdn.discordapp.com/attachments/934914135613931593/1078067539453689986/Untitled_Artwork.png",
-                            "https://cdn.discordapp.com/attachments/934914135613931593/1070717652089192639/Untitled_Artwork.png",
-                            "https://cdn.discordapp.com/attachments/934914135613931593/1078064869808545872/Untitled_Artwork.png",
-                            "https://cdn.discordapp.com/attachments/934914135613931593/1078060534806614126/Untitled_Artwork.png",
-                            "https://cdn.discordapp.com/attachments/934914135613931593/1078058003527372970/Untitled_Artwork.png",
-                            "https://cdn.discordapp.com/attachments/934914135613931593/1078055575805501500/Untitled_Artwork.png",
-                            "https://cdn.discordapp.com/attachments/934914135613931593/1078065929134559313/IMG_2173.png",
-                            "https://cdn.discordapp.com/attachments/934914135613931593/1077674089801596989/IMG_2158.PNG",
-                            "https://cdn.discordapp.com/attachments/934914135613931593/1076599435854893098/13.png",
-                            "https://cdn.discordapp.com/attachments/934914135613931593/1076599436236558346/14.png",
-                            "https://cdn.discordapp.com/attachments/934914135613931593/1076599236780638398/10.png",
-                            "https://cdn.discordapp.com/attachments/934914135613931593/1076599072099672174/3.png",
-                            "https://cdn.discordapp.com/attachments/934914135613931593/1076599237158117416/11.png",
-                            "https://cdn.discordapp.com/attachments/934914135613931593/1076599072766562415/4.png",
-                            "https://cdn.discordapp.com/attachments/934914135613931593/1075725019809845329/Female_Hair_2.png",
-                        ],
-                        true,
-                        "left"
-                    )}
-                    {makeCollection(
-                        [
-                            "https://cdn.discordapp.com/attachments/934914135613931593/1078656767023656972/Male_Hair_Part_1.png",
-                            "https://cdn.discordapp.com/attachments/934914135613931593/1078067539453689986/Untitled_Artwork.png",
-                            "https://cdn.discordapp.com/attachments/934914135613931593/1070717652089192639/Untitled_Artwork.png",
-                            "https://cdn.discordapp.com/attachments/934914135613931593/1078064869808545872/Untitled_Artwork.png",
-                            "https://cdn.discordapp.com/attachments/934914135613931593/1078060534806614126/Untitled_Artwork.png",
-                            "https://cdn.discordapp.com/attachments/934914135613931593/1078058003527372970/Untitled_Artwork.png",
-                            "https://cdn.discordapp.com/attachments/934914135613931593/1078055575805501500/Untitled_Artwork.png",
-                            "https://cdn.discordapp.com/attachments/934914135613931593/1078065929134559313/IMG_2173.png",
-                            "https://cdn.discordapp.com/attachments/934914135613931593/1077674089801596989/IMG_2158.PNG",
-                            "https://cdn.discordapp.com/attachments/934914135613931593/1076599435854893098/13.png",
-                            "https://cdn.discordapp.com/attachments/934914135613931593/1076599436236558346/14.png",
-                            "https://cdn.discordapp.com/attachments/934914135613931593/1076599236780638398/10.png",
-                            "https://cdn.discordapp.com/attachments/934914135613931593/1076599072099672174/3.png",
-                            "https://cdn.discordapp.com/attachments/934914135613931593/1076599237158117416/11.png",
-                            "https://cdn.discordapp.com/attachments/934914135613931593/1076599072766562415/4.png",
-                            "https://cdn.discordapp.com/attachments/934914135613931593/1075725019809845329/Female_Hair_2.png",
-                        ],
-                        false,
-                        "right"
-                    )}
+                    <MakeCollection
+                        urls={[
+                            "https://media.discordapp.net/attachments/934914135613931593/1092107535508590632/Untitled_Artwork.jpg",
+                            "https://media.discordapp.net/attachments/934914135613931593/1092106821872926720/Untitled_Artwork.png",
+                            "https://media.discordapp.net/attachments/934914135613931593/1092105477447483472/Untitled_Artwork.png",
+                            "https://media.discordapp.net/attachments/934914135613931593/1092104738297872424/Untitled_Artwork.png",
+                            "https://media.discordapp.net/attachments/934914135613931593/1092102555921821777/Untitled_Artwork.png",
+                            "https://media.discordapp.net/attachments/934914135613931593/1092097894091333702/IMG_2561.png",
+                            "https://media.discordapp.net/attachments/934914135613931593/1091791264409718784/IMG_2526.png",
+                            "https://media.discordapp.net/attachments/934914135613931593/1091791264090959983/IMG_2529.png",
+                            "https://cdn.discordapp.com/attachments/934914135613931593/1092108176922509312/Untitled_Artwork.png",
+                            "https://media.discordapp.net/attachments/934914135613931593/1091783967872663673/IMG_2523.png",
+                            "https://media.discordapp.net/attachments/934914135613931593/1091783968325636176/IMG_2536.png",
+                            "https://media.discordapp.net/attachments/934914135613931593/1091783967423860898/IMG_2522.png",
+                            "https://media.discordapp.net/attachments/934914135613931593/1091783966555643946/IMG_2517.png",
+                            "https://media.discordapp.net/attachments/934914135613931593/1091783965943283893/IMG_2516.png",
+                            "https://media.discordapp.net/attachments/934914135613931593/1091783968719912980/IMG_2537.png",
+                            "https://cdn.discordapp.com/attachments/934914135613931593/1091784641624682566/Untitled_Artwork.png",
+                        ]}
+                        blur={true}
+                        animationDirection={"left"}
+                    ></MakeCollection>
+
+                    <MakeCollection
+                        urls={[
+                            "https://media.discordapp.net/attachments/934914135613931593/1092107535508590632/Untitled_Artwork.jpg",
+                            "https://media.discordapp.net/attachments/934914135613931593/1092106821872926720/Untitled_Artwork.png",
+                            "https://media.discordapp.net/attachments/934914135613931593/1092105477447483472/Untitled_Artwork.png",
+                            "https://media.discordapp.net/attachments/934914135613931593/1092104738297872424/Untitled_Artwork.png",
+                            "https://media.discordapp.net/attachments/934914135613931593/1092102555921821777/Untitled_Artwork.png",
+                            "https://media.discordapp.net/attachments/934914135613931593/1092097894091333702/IMG_2561.png",
+                            "https://media.discordapp.net/attachments/934914135613931593/1091791264409718784/IMG_2526.png",
+                            "https://media.discordapp.net/attachments/934914135613931593/1091791264090959983/IMG_2529.png",
+                            "https://media.discordapp.net/attachments/934914135613931593/1091783967872663673/IMG_2523.png",
+                            "https://media.discordapp.net/attachments/934914135613931593/1091783968325636176/IMG_2536.png",
+                            "https://media.discordapp.net/attachments/934914135613931593/1091783967423860898/IMG_2522.png",
+                            "https://media.discordapp.net/attachments/934914135613931593/1091783966555643946/IMG_2517.png",
+                            "https://media.discordapp.net/attachments/934914135613931593/1091783965943283893/IMG_2516.png",
+                            "https://media.discordapp.net/attachments/934914135613931593/1091783968719912980/IMG_2537.png",
+                            "https://cdn.discordapp.com/attachments/934914135613931593/1091784641624682566/Untitled_Artwork.png",
+                        ]}
+                        blur={false}
+                        animationDirection={"right"}
+                    ></MakeCollection>
                 </article>
             </Fade>
         </section>
@@ -119,4 +140,3 @@ const Collection = ({ children, viewRef }: any) => {
 };
 
 export default Collection;
-export { makeCollection };

@@ -51,30 +51,23 @@ let isMobileDevice = function () {
 };
 
 function UnresponsiveHandler() {
-    let isSupported = useMediaQuery(
-        "(min-width: 500px) and (min-height: 500px)"
-    );
-
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
         setIsMobile(isMobileDevice());
     }, []);
 
-    if (!isSupported) {
-        return (
-            <div className='z-[99999] fixed w-screen h-screen backdrop-blur-3xl bg-[#00000070] flex flex-col items-center justify-center'>
-                <h1 className='text-6xl'>😔</h1>
-                <h1 className='text-sm mt-5 text-white font-body uppercase'>
-                    We don't support this resolution yet.<br></br>
-                    {isMobile
-                        ? "Seems like you're on mobile, please set zoom to around 50% and reload the page :("
-                        : ""}
-                </h1>
-            </div>
-        );
-    }
-    return <div></div>;
+    return (
+        <div className='z-[99999] visible md:invisible fixed w-screen h-screen backdrop-blur-3xl bg-[#00000070] flex flex-col items-center justify-center'>
+            <h1 className='text-6xl'>😔</h1>
+            <h1 className='text-sm mt-5 text-white font-body uppercase'>
+                We don't support this resolution yet.<br></br>
+                {isMobile
+                    ? "Seems like you're on mobile, please set zoom to around 50% and reload the page :("
+                    : ""}
+            </h1>
+        </div>
+    );
 }
 
 const Home: NextPage = () => {

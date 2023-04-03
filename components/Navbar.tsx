@@ -300,25 +300,25 @@ const Navbar = (props: Props) => {
                         {/* Socials */}
                         <div className='flex items-center gap-5'>
                             <img
-                                className='hover:scale-110 mt-[2px] cursor-pointer h-auto w-4'
+                                className='hover:scale-110 transition-all mt-[2px] cursor-pointer h-auto w-4'
                                 onClick={() => {
                                     window.open("https://discord.gg/ather");
                                 }}
-                                src='/images/discord.avif'
+                                src='/images/discord.png'
                                 alt='discord'
                             />
                             <img
-                                className='hover:scale-110 mt-[2px] cursor-pointer h-auto w-4'
+                                className='hover:scale-110 transition-all mt-[2px] cursor-pointer h-auto w-4'
                                 onClick={() => {
                                     window.open(
                                         "https://twitter.com/atherverse"
                                     );
                                 }}
-                                src='/images/twitter.avif'
+                                src='/images/twitter.png'
                                 alt='twitter'
                             />
                             <img
-                                className='hover:scale-110 mt-[2px] cursor-pointer h-auto w-4'
+                                className='hover:scale-110 transition-all mt-[2px] cursor-pointer h-auto w-4'
                                 onClick={() => {
                                     window.open(
                                         "https://www.instagram.com/planetather/"
