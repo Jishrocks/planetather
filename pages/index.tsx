@@ -491,7 +491,7 @@ const Home: NextPage = () => {
 
                         <Collection viewRef={collectionViewRef} />
 
-                        <Creators viewRef={creatorsViewRef} />
+                        {/* <Creators viewRef={creatorsViewRef} /> */}
 
                         <Footer />
                     </main>

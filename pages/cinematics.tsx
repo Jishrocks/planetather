@@ -127,6 +127,7 @@ const Sentinels: NextPage = () => {
             </Head>
 
             <ParallaxProvider>
+                {/* Yo I live in my mama's basement */}
                 <Navbar currentPage={Page.CINEMATICS} fixed={true} />
                 <div className='w-screen h-screen flex bg-[#000]'>
                     <Swiper
